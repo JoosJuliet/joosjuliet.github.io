@@ -1,12 +1,10 @@
 ---
 layout: post
+section-type: post
 title: "object-orient-and-function-programming."
-date: 2018-05-31
-categories:
-  - Programming_Tech
-description:
-image: https://picsum.photos/2000/1200?image=1003
-image-sm: https://picsum.photos/500/300?image=1003
+categories: Programming_Tech
+tags: [ 'object-orient', 'functional-programming' ]
+comments: true
 ---
 
 

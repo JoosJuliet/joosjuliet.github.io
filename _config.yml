@@ -1,32 +1,76 @@
-# Site settings
-email: 
-baseurl: ""
-paginate: 5
-paginate_path: "/blog/page-:num"
-google_analytics: 
-
-# SEO settings
-title: Trophy
-description: 
-url: ""
-twitter_username: 
-default_img: 
-
-# Profile settings
-name: 
-profile_img: 
-profile: 
-social:
-  github: 
-
-# Build settings
-exclude: ["_screenshots", "Gemfile", "Gemfile.lock", "LICENSE.txt", "README.md"]
-markdown: kramdown
-permalink: /:year/:month/:day/:title/
-
-# Sass
+# Site
+title:              JOOS
+bio:                'Developer'
+description:        "Joos's blog"
+reading_time:       true
+words_per_minute:   200
+logo:               'assets/img/logo.png'
+background:         'assets/img/placeholder-big.jpg'
+tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
+locale:             en_US
+url:                https://joosjuliet.github.io/
+# Jekyll
+permalink:          /:title/
+markdown:           kramdown
+highlighter:        rouge
+kramdown:
+  auto_ids:         true
+  footnote_nr:      1
+  entity_output:    as_char
+  toc_levels:       1..6
+  enable_coderay:   false
+mathjax:            true
 sass:
-  style: compressed
+  sass_dir:         _sass
+  style:            compressed
+
+# Comments
+disqus_shortname:   joosjuliet
+comments:           true
+
+# Social
+# if you don't have any of social below, comment the line.
+google:
+  #plus:            #username
+  #analytics:        UA-91683940-1
+  #verify:
+  #ad-client:
+  #ad-slot:
+#bing-verify:
+email:              saven7788@gmail.com
+#twitter:            none
+#facebook:           wkdtjsgur100
+github-url:         JoosJuliet
+#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
+#linkedin:          username
+#xing:              username
+#instagram:          username
+#lastfm:            username
+#tumblr:            username
+#medium:            '@username'
+#pinterest:         username
+#foursquare:        username
+#steam:              username
+#dribbble:          username
+#youtube:           username
+#youtube-channel:   channel
+#soundcloud:        username
+#weibo:             username
+#flickr:            username
+#codepen:           username
+#keybase:           username
+#xmpp:              username@server.com
+#hackernews:        username
 
 # Gems
-gems: [jekyll-paginate, jekyll-sitemap, octopress-autoprefixer]
+gems:
+  - jekyll-mentions
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+
+jekyll-mentions:
+    base_url: https://github.com
+
+# Exclude list
+exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
