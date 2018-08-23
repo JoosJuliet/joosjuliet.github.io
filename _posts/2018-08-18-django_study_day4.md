@@ -360,7 +360,7 @@ class SimplestView(View):
 
 
 1-1. FBV 를 활용하여 글 목록 전체 표시
-
+```python
 * urls.py
 from django.conf.urls import url
 from . import views
@@ -377,11 +377,13 @@ def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5] # 최근 5개의 질문 리스트만 가져온다.
     context = {'latest_question_list' : latest_question_list}
     return render(request, 'polls/index.html', context)
-
+```
 1-2. CBV - ListView 를 활용하여 글 목록 전체 표시
 
 * 게시판의 글 목록 전체를 표시하거나, 특정 DB table의 record 전체 (혹은 일부)를 List로 표시할 때 활용할 수 있다.
 * 리스트가 테이블의 모든 레코드인 경우 모델 클래스만 지정하면 된다.
+```python
+
 * urls.py
 from bookmark.views import BookmarkLV
 
@@ -399,10 +401,10 @@ class BookmarkLV(ListView):
         2) 템플릿 파일 : bookmark_list.html (모델명소문자_list.html)
         """
         model = Bookmark
-
+```
 기적....
 
-```python3
+```python
 * urls.py
 from django.conf.urls import url
 from . import views
@@ -445,6 +447,8 @@ class IndexView(ListView):
 1. 뷰 모듈은 뷰 로직을 포함해야 한다.
 2. URL 모듈은 URL 로직을 포함해야 한다.
 # 나쁜 예
+```python
+
 from django.conf.urls import url
 from django.views.generic import DetailView
 
@@ -462,9 +466,12 @@ urlpatterns = [
             template_name="tastings/results.html"),
         name="results"),
 ]
+```
 
 
 8.3 URLCONF에서 느슨한 결합 유지하기
+```python
+
 # tastings/views.py
 from django.views.generic import ListView, DetailView, UpdateView
 from django.core.urlresolvers import reverse
@@ -512,6 +519,8 @@ urlpatterns = [
         name='update'
     )
 ]
+```
+
 이리 바꿔야 한다. 그 이유는
 *
 뷰들 사이에서 인자나 속성이 중복 사용하면 x [DRY원칙]
@@ -527,6 +536,7 @@ URL 이름공간은 앱 레벨 또는 인스턴스 레벨에서의 구분자를 
 Django 는 이 app 들의 URL 을 URLconf 에 이름공간(namespace)을 추가해 구별한다.
  polls/urls.py 파일에 app_name 을 추가하여 어플리케이션의 이름공간을 설정할 수 있습니다.
 
+```python
 polls/urls.py
 from django.urls import path
 
@@ -539,15 +549,19 @@ urlpatterns = [
     path('<int:question_id>/results/', views.results, name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
 ]
-
+```
 이제, polls/index.html template 의 기존 내용을
+```python
 polls/templates/polls/index.html
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
-
+```
 아래와 같이 이름공간으로 나눠진 detail 의 view 를 가르키도록 변경하세요.
+
 polls/templates/polls/index.html
+```python
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 
+```
 
 
 8.4.3 검색, 업그레이드, 리팩터링을 쉽게 하기
@@ -567,6 +581,8 @@ polls/templates/polls/index.html
 8.5 URLCONF에서 뷰를 문자열로 지목하지 말자
 
 urls.py에서 뷰를 지목(reference)하자. 아래는 urls.py를 올바르게 정의하는 방법이다.
+```python
+
 # polls/urls.py
 from django.conf.urls import url
 
@@ -576,6 +592,7 @@ urlpatterns = [
     # 뷰를 명시적으로 정의
     url(r'^$', views.index, name='index'),
 ]
+```
 
 
 
@@ -610,6 +627,8 @@ locals()를 쓰지 말고 dict{}을 써라.
 *
 뷰가 어 떤 걸 반환하려고 했는지 알 길이 없어졌기 때문
 # 나쁜 예
+```python
+
 def ice_cream_store_display(request, store_id):
     store = get_object_or_404(Store, id=store_id)
     date = timezone.now()
@@ -623,6 +642,7 @@ def ice_cream_store_display(request, store_id):
         'now': timezone.now()
         })
 
+```
 
 
 3.요약
