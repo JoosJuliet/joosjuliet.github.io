@@ -1,17 +1,19 @@
 ---
 layout: post
 section-type: post
-title: "[재귀 함수 사용할 때 주의할 것] Tail_Recursion"
+title: "[재귀 함수 사용할 때 주의할 것] Tail_Recursion_Optimize"
 categories: Python
 tags: [ 'python', 'tail_recursion', 'stack_overflow', 'call_stack' ]
 comments: true
 ---
 
-# tail_recursion 이 나온 배경
+# tail_recursion_optimize 가 나온 배경
 
 우리는 종종 재귀함수를 쓴다.
 재귀 함수는 자기 자신을 호출하는 함수이다.
 코드가 짧아져 가독성을 높일 수 있지만, 스택 오버 플로우를 일으킬 수 있는 엄청난 위험성이 내재되어 있다.
+
+그 위험성을 해결할 수 있게 해주는 것이 tail_recursion_optimize이다.
 
 ## 재귀함수가 stack overflow를 일으키는 이유
 
@@ -22,15 +24,7 @@ comments: true
 함수가 return값을 반환해야 stack이 비워지는데, 함수가 끝나지 않은 도중에 계속 함수가 호출됨으로
 계속 메모리가 쌓이게 된다. 그래서 stack overflow가 일어난다.
 
-이런 단점을 보완하기 위해 나온 것은 *tail_recursion* 이라는 최적화 방법이다.
 
-# tail_recursion
-*[주의사항]컴파일러가 이런 최적화 기능을 지원하는지 먼저 확인해야 합니다. gcc는 제공합니다. python은... py언어단 부터 제공 안합니다.*
-
-함수 호출이 반복되어 스택이 깊어지는 문제를 컴파일러가 스택 재사용을 할 수 있게 하는 것입니다.
-(값이 변할 여지가 없으므로 스택을 덮어 쓸 수 있기 때문에)
-
-## 일반 재귀함수와 꼬리 재귀함수를 비교
 일반 재귀함수
 ``` cpp
 int fibonacci(n) {
@@ -38,17 +32,6 @@ int fibonacci(n) {
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 ```
-
-꼬리 재귀함수
-``` cpp
-function fibonacciTailRecursion(n, previousFibo, previousPreviousFibo) {
-  if (n < 2) return n * previousFibo;
-  return fibonacciTailRecursion(n - 1, previousFibo + previousPreviousFibo, previousFibo);
-  }
-```
-
-연산이 어떻게 되는지 보면
-
 일반 재귀함수
 ```
 호출 : fibonacci(3)
@@ -68,6 +51,30 @@ return 2
 무려 함수 호출을... n이 3인데 5번이나 한다.
 심지어 n이 6이면 25번한다 ^^
 즉 n이 100만 되도 stack_overflow가 난다.
+
+
+
+이런 단점을 보완하기 위해 나온 것은 *tail_recursion* 이라는 최적화 방법이다.
+
+# tail_recursion
+*[주의사항]컴파일러가 이런 최적화 기능을 지원하는지 먼저 확인해야 합니다. gcc는 제공합니다. python은... py언어단 부터 제공 안합니다.*
+
+함수 호출이 반복되어 스택이 깊어지는 문제를 컴파일러가 스택 재사용을 할 수 있게 하는 것입니다.
+(값이 변할 여지가 없으므로 스택을 덮어 쓸 수 있기 때문에)
+
+## 일반 재귀함수와 꼬리 재귀함수를 비교
+
+
+꼬리 재귀함수
+``` cpp
+function fibonacciTailRecursion(n, previousFibo, previousPreviousFibo) {
+  if (n < 2) return n * previousFibo;
+  return fibonacciTailRecursion(n - 1, previousFibo + previousPreviousFibo, previousFibo);
+  }
+```
+
+연산이 어떻게 되는지 보면
+
 
 꼬리 재귀함수
 ```
@@ -130,3 +137,6 @@ es6부터 공식지원한다.
 # 참고자료
 https://homoefficio.github.io/2015/07/27/%EC%9E%AC%EA%B7%80-%EB%B0%98%EB%B3%B5-Tail-Recursion/
 http://bozeury.tistory.com/entry/%EA%BC%AC%EB%A6%AC-%EC%9E%AC%EA%B7%80-%EC%B5%9C%EC%A0%81%ED%99%94Tail-Recursion
+
+https://homoefficio.github.io/2015/07/27/%EC%9E%AC%EA%B7%80-%EB%B0%98%EB%B3%B5-Tail-Recursion/
+https://groups.google.com/forum/#!topic/scala-korea/5PCCAS8wu8o
