@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[재귀 함수 사용할 때 주의할 것] Tail_Recursion_Optimize"
+title: "(작성중) [재귀 함수 사용할 때 주의할 것] Tail_Recursion_Optimize"
 categories: Python
 tags: [ 'python', 'tail_recursion', 'stack_overflow', 'call_stack' ]
 comments: true
@@ -12,17 +12,19 @@ comments: true
 우리는 종종 재귀함수를 쓴다.
 재귀 함수는 자기 자신을 호출하는 함수이다.
 코드가 짧아져 가독성을 높일 수 있지만, 스택 오버 플로우를 일으킬 수 있는 엄청난 위험성이 내재되어 있다.
+그럼으로 1. 함수 과다 호출 2. stack overflow 라는 위험성이 있다.
+
 
 그 위험성을 해결할 수 있게 해주는 것이 tail_recursion_optimize이다.
 
 ## 재귀함수가 stack overflow를 일으키는 이유
 
 함수를 호출 시 함수의 입력 값(매개변수), 리턴 값, 리턴 됐을 때 돌아갈 위치 값 등을 스택에 저장한다.
-*재귀함수를 사용하면 함수가 끝나지 않은 채 연속적으로 함수를 호출함으로 stack에 메모리가 쌓이게 됩니다.*
+*재귀함수를 사용하면 함수가 끝나지 않은 채 연속적으로 함수를 호출함으로 stack에 메모리가 끊임 없이 쌓이게 됩니다.*
 
 즉 재귀함수를 사용하면 호출시 마다 스택에 해당 함수관련 정보가 memory를 계속 쌓이게 되고,
-함수가 return값을 반환해야 stack이 비워지는데, 함수가 끝나지 않은 도중에 계속 함수가 호출됨으로
-계속 메모리가 쌓이게 된다. 그래서 stack overflow가 일어난다.
+함수가 return값을 반환해야 stack이 비워지는데, 함수가 끝나지 않은 도중에 계속 함수가 호출됨으로 함수의 깊이는 계속 깊어만 진다.
+즉 계속 메모리가 쌓이게 되고 그래서 stack overflow가 일어난다.
 
 
 일반 재귀함수
@@ -34,25 +36,65 @@ int fibonacci(n) {
 ```
 일반 재귀함수
 ```
-호출 : fibonacci(3)
+호출 : fibonacci(6)
 
-call fibonacci(3)
-  call fibonacci(2)
-    call fibonacci(1)
+call fibonacci(6)
+  call fibonacci(5)
+    call fibonacci(4)
+      call fibonacci(3)
+        call fibonacci(2)
+
+          call fibonacci(1)
+          return 1
+          call fibonacci(0)
+          return 0
+        return 1
+        call fibonacci(1)
+        return 1
+      return 2
+      call fibonacci(2)
+        call fibonacci(1)
+        return 1
+        call fibonacci(0)
+        return 0
+      return 1
+    return 3
+    call fibonacci(3)
+      call fibonacci(2)
+        call fibonacci(1)
+        return 1
+        call fibonacci(0)
+        return 0
+      return 1
+      call fibonacci(1)
+      return 1
+    return 2
+  return 5
+  call fibonacci(4)
+    call fibonacci(3)
+      call fibonacci(2)
+        call fibonacci(1)
+        return 1
+        call fibonacci(0)
+        return 0
+      return 1
+      call fibonacci(1)
+      return 1
+    return 2
+    call fibonacci(2)
+      call fibonacci(1)
+      return 1
+      call fibonacci(0)
+      return 0
     return 1
-    call fibonacci(0)
-    return 0
-  return 1
-
-  call fibonacci(1)
-  return 1
-return 2
+  return 3
+return 8
 ```
-무려 함수 호출을... n이 3인데 5번이나 한다.
-심지어 n이 6이면 25번한다 ^^
+앞에 fibonacci를 호출 했음에도 계속 다시 함수를 stack에 호출한다.
+
+무려 함수 호출을... n이 3인데 5번이나 하고 심지어 n이 6이면 25번하며,
+딱 봐도 정신이 혼란스럽다.
 즉 n이 100만 되도 stack_overflow가 난다.
-
-
 
 이런 단점을 보완하기 위해 나온 것은 *tail_recursion* 이라는 최적화 방법이다.
 
