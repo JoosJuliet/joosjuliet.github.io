@@ -56,3 +56,10 @@ sorted(students, key=lambda student: student[1])
 key파라미터에는 함수가 와야 한다. key 파라미터에 함수가 설정되면 소트해야 할 리스트들의 항목들이 하나씩 key 함수에 전달되어 key 함수가 실행되게 된다. 이 때 수행된 key 함수의 리턴값을 기준으로 소트가 진행된다.
 
 위 예에서는 key함수에 students의 요소인 튜플데이터가 key함수의 입력으로 순차적으로 전달될 것이다. key함수는 입력된 튜플 데이터의 "나이"를 의미하는 2번째 항목을 리턴하는 lambda함수이다. 따라서 sorted수행 후 나이순으로 소트된 리스트가 리턴된다.
+
+``` python
+sorted(student_objects, key=attrgetter('age'), reverse=True)
+# [('dave', 32, 'B'), ('jane', 22, 'A'), ('sally', 17, 'B')]
+```
+
+reverse=True 넣으면 역순으로 된다
