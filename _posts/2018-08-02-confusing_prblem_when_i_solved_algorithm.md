@@ -98,3 +98,17 @@ print('{:04.2f}'.format(sqrt(2)))
 # 1.41
 
 ```
+
+# defaultdict
+orderd 되지 않는 다는 것을 주의
+
+``` python
+from collections import defaultdict # 콜렉션에서 불러옵니다.
+d = defaultdict(lambda: 0) # Default 값을 0으로 설정합니다.
+k =[1,2,3,3]
+for a in k:
+  d[a] += 1
+print(d)
+# defaultdict(<function <lambda> at 0x100a81f28>, {1: 1, 2: 1, 3: 2})
+
+```
