@@ -63,3 +63,38 @@ sorted(student_objects, key=attrgetter('age'), reverse=True)
 ```
 
 reverse=True 넣으면 역순으로 된다
+
+
+## 역순 포문
+``` python
+>>> for i in range(10, 0, -1):    # 10에서 1까지 역순으로 숫자 생성
+...     print('Hello, world!', i)
+
+>>> for i in reversed(range(10)):    # range에 reversed를 사용하여 숫자의 순서를 반대로 뒤집음
+...     print('Hello, world!', i)    # 9부터 0까지 10번 반복
+```
+## Counter
+``` python
+from collections import Counter # 콜렉션에서 불러옵니다.
+def pickingNumbers(a):
+  d = Counter(a)
+```
+
+## permutation
+``` python
+from itertools import permutations
+
+# Complete the formingMagicSquare function below.
+def formingMagicSquare(s):
+  comb = permutations(range(1,10),9)
+  # 1부터 10까지 9개를 permutation한다
+```
+
+# sqrt
+``` python
+from math import sqrt
+
+print('{:04.2f}'.format(sqrt(2)))
+# 1.41
+
+```

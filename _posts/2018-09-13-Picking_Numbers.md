@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "[hacker_rank] Picking Numbers with python3"
 categories: Algorithm
-tags: [ 'algorithm', '백준' ]
+tags: [ 'algorithm', 'hacker_rank' ]
 comments: true
 ---
 
