@@ -112,3 +112,7 @@ print(d)
 # defaultdict(<function <lambda> at 0x100a81f28>, {1: 1, 2: 1, 3: 2})
 
 ```
+
+# set
+
+시간복잡도 찾는데 O(1)
