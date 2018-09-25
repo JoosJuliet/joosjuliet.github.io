@@ -116,3 +116,15 @@ print(d)
 # set
 
 시간복잡도 찾는데 O(1)
+
+
+# 숫자 -> alphabet, alphabet -> 숫자
+
+``` python
+print(chr(97))
+#'a'
+print(chr(65))
+#'A'
+print(ord('a'))
+#97
+```
