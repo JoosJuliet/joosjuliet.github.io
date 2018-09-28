@@ -117,6 +117,15 @@ print(d)
 
 시간복잡도 찾는데 O(1)
 
+``` python
+seen = {1,2,3}
+print(4 in seen)
+# False
+seen = {1,2,3}
+print(1 in seen)
+# True
+
+```
 
 # 숫자 -> alphabet, alphabet -> 숫자
 
