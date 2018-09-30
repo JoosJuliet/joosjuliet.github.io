@@ -28,7 +28,15 @@ print(array)
 ```
 이렇게 중간에 원하는 index에 값을 넣는 방법이다.
 
+혹은...
+``` python
+array = [1,2,3]
+array = [0] + array
+print(array)
+# [0,1,2,3]
 
+```
+초간단하고 더 짧은 코드도 있다
 
 # sorted
 
@@ -80,16 +88,6 @@ def pickingNumbers(a):
   d = Counter(a)
 ```
 
-## permutation
-``` python
-from itertools import permutations
-
-# Complete the formingMagicSquare function below.
-def formingMagicSquare(s):
-  comb = permutations(range(1,10),9)
-  # 1부터 10까지 9개를 permutation한다
-```
-
 # sqrt
 ``` python
 from math import sqrt
@@ -137,3 +135,88 @@ print(chr(65))
 print(ord('a'))
 #97
 ```
+
+
+# 한 단어인 string을 list로 만들기
+
+``` python
+s1 = 'python'
+print(list(s1))
+# ['p', 'y', 't', 'h', 'o', 'n']
+```
+
+# combinations nCr
+순서를 생각하지 않은 순열
+
+``` python
+import itertools
+import operator
+
+shapes = ['circle', 'triangle', 'square',]
+result = itertools.combinations(shapes, 2)
+for each in result:
+  print(each)
+# ('circle', 'triangle')
+# ('circle', 'square')
+# ('triangle', 'square')
+```
+
+nCr 직접 구현
+``` python
+def ncr(n, r):
+  if n < 2 : return 0
+  return factorial(n) // (factorial(n-r) * factorial(r))
+```
+
+# permutations nPr
+순서를 생각한 순열
+
+
+## string
+``` python
+import itertools
+import operator
+
+alpha_data = ['a', 'b', 'c']
+result = itertools.permutations(alpha_data)
+for each in result:
+  print(each)
+# ('a', 'b', 'c')
+# ('a', 'c', 'b')
+# ('b', 'a', 'c')
+# ('b', 'c', 'a')
+# ('c', 'a', 'b')
+# ('c', 'b', 'a')
+```
+
+
+## number
+``` python
+from itertools import permutations
+
+# Complete the formingMagicSquare function below.
+def formingMagicSquare(s):
+  comb = permutations(range(1,10),9)
+  # 1부터 10까지 9개를 permutation한다
+```
+
+
+nPr 직접 구현
+``` python
+def npr(n, r):
+  if n < 2 : return 0
+  return factorial(n) // factorial(n-r)
+```
+
+
+
+
+# 스트링 풀기
+
+원래 글자는 msg
+while True:
+  <!-- 여기서 돌면서 j라는 변수의 길이를 늘린다. -->
+  if j>=len(msg):
+  <!-- j가 더 커지거나 같아지는 순간 -->
+    break
+  <!--  break로 끝-->
