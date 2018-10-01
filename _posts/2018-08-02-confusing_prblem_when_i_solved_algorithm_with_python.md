@@ -137,6 +137,8 @@ print(ord('a'))
 ```
 
 
+
+
 # combinations nCr
 순서를 생각하지 않은 순열
 
@@ -205,6 +207,17 @@ def npr(n, r):
 
 
 # String Part
+
+## 특정 문자, 단어에서 찾기
+time complexity : O(nm)
+The time complexity is O(N) on average, O(NM) worst case (N being the length of the longer string, M, the shorter string you search for).
+
+index 반환
+
+``` python
+a = 'abc'
+a.find('b') # 1
+```
 
 ## 한 단어인 string을 list로 만들기
 
@@ -307,6 +320,9 @@ char = list('hello')
 print(char)
 # ['h', 'e', 'l', 'l', 'o']
 ```
+
+
+
 
 -------
 참고 자료:
