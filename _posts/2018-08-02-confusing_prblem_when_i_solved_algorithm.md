@@ -137,14 +137,6 @@ print(ord('a'))
 ```
 
 
-# 한 단어인 string을 list로 만들기
-
-``` python
-s1 = 'python'
-print(list(s1))
-# ['p', 'y', 't', 'h', 'o', 'n']
-```
-
 # combinations nCr
 순서를 생각하지 않은 순열
 
@@ -169,10 +161,12 @@ def ncr(n, r):
 ```
 
 # permutations nPr
+시간복잡도 O(N!)
 순서를 생각한 순열
 
 
 ## string
+
 ``` python
 import itertools
 import operator
@@ -210,13 +204,110 @@ def npr(n, r):
 
 
 
+# String Part
 
-# 스트링 풀기
+## 한 단어인 string을 list로 만들기
+
+``` python
+s1 = 'python'
+print(list(s1))
+# ['p', 'y', 't', 'h', 'o', 'n']
+```
+
+## 스트링 문제 풀 때 유용했던 것(지울 예정)
 
 원래 글자는 msg
+``` python
 while True:
-  <!-- 여기서 돌면서 j라는 변수의 길이를 늘린다. -->
+  # 여기서 돌면서 j라는 변수의 길이를 늘린다.
   if j>=len(msg):
-  <!-- j가 더 커지거나 같아지는 순간 -->
+  # j가 더 커지거나 같아지는 순간
     break
-  <!--  break로 끝-->
+  # break로 끝-
+```
+
+## string 뒤집기
+
+``` python
+string = 'aio'
+print(string[::-1])
+# oia
+```
+
+## step 뒤집기
+
+slice한 값의 범위에서 step 값을 주어 그 값만큼 건너뛰어 가져오는 기능
+
+- 문법
+``` python
+list[ 시작값:끝값:step ]
+```
+
+- 실전
+``` python
+list1 = list(range(20))
+print(list1)
+#[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+print(list1[5:15:3])
+#[5, 8, 11, 14]
+# 5부터 15까지 3씩 뛰어넘기
+
+print(list1[15:5:-1])
+# [15, 14, 13, 12, 11, 10, 9, 8, 7, 6]
+# 15부터 5까지 index를 거꾸로 1씩 가게하기
+
+print(list1[::3])
+#[0, 3, 6, 9, 12, 15, 18]
+# 처음부터 3씩 마지막까지 가게 하기
+
+print(list1[::-3])
+# [19, 16, 13, 10, 7, 4, 1]
+# 마지막부터 3씩 처음까지 가게 하기
+
+```
+
+
+## 원하는 문자가 string에 있는 확인하기
+list도 string과 문법이 같기에 list역시 여기다 쓴다
+
+``` python
+my_list = [1, 9, 8, 5, 0, 6]
+print(5 in my_list)
+# True
+my_str = 'hello world'
+print('e' in my_str)
+# True
+```
+
+## 문자열 => 리스트, 공백시 스페이스 기준
+
+- 문법
+``` python
+list = str.split()
+```
+
+- 실전
+``` python
+char = list('hello')
+print(char)
+#['h', 'e', 'l', 'l', 'o']
+```
+
+# 리스트 => 문자열, 리스트에서 문자열으로
+
+- 문법
+``` python
+” “.join( list )
+```
+
+- 실전
+``` python
+char = list('hello')
+print(char)
+# ['h', 'e', 'l', 'l', 'o']
+```
+
+-------
+참고 자료:
+https://wayhome25.github.io/
