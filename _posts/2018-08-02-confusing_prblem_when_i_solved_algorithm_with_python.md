@@ -321,9 +321,26 @@ print(char)
 # ['h', 'e', 'l', 'l', 'o']
 ```
 
+# 문자열의 구성요소 쉽게 아는 함수
 
+isdigit(), islower(), isupper()
+
+isdigit()은 문자열에서 사용되는 메소드로 '문자열이 숫자로 구성되어 있는가' 라는 것을 확인해 주는 메소드일 뿐이다.
+
+
+``` python
+>>> is_digit("123")
+True
+>>> is_digit("-123")
+True
+>>> is_digit("23.45")
+True
+>>> is_digit("a12")
+False
+```
 
 
 -------
 참고 자료:
+http://seorenn.blogspot.com/2011/04/python-isdigit.html
 https://wayhome25.github.io/
