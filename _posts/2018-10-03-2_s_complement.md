@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: "2의 보수, 1의 보수"
-categories: Algorithm, Computer_Science
+categories: Computer_Science
 tags: [ 'algorithm', '2's_complement', '1's_complement', 'computer_science' ]
 comments: true
 ---
