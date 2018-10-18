@@ -7,6 +7,23 @@ tags: [ 'algorithm' ]
 comments: true
 ---
 
+# 문자열 비교
+
+equals
+
+``` JAVA
+String s1 = "Joos";
+String s2 = "Joos";
+String s3 = new String ("Joos");
+String s4 = "Juilet"
+
+System.out.println(s1.equals(s2)); //true
+System.out.println(s1.equals(s3)); //true
+System.out.println(s1.equals(s4)); //false
+
+```
+
+
 
 # Prime 알기
 
@@ -223,9 +240,71 @@ Arrays.sort( 배열명 );
 
 
 
+## Stack
+
+``` JAVA
+
+import java.util.*;
+public class Main {
+
+    private static Scanner sc = new Scanner(System.in);
+    public static void main(String args[]) {
+        Stack<String> s = new Stack<String>();
+
+        s.push("A");
+        s.push("B");
+        s.push("C");
+
+        System.out.println("STACK 출력순서");
+        while(!s.empty()){
+            System.out.println(s.pop());
+        }
+      }
+}
+
+```
+
+
+boolean empty()  - true , false 로 비었는지 리턴함
+Object peek() - 스택의 최상위 (젤늦게 넣은) 객체를 반환 / Only 출력개념
+Object pop() - 스택의 최상위 객체를 꺼낸다 / 꺼내면 객체는 사라짐
+Object push(Object item) - 스택에 객체를 저장한다.
+
+## Queue
+
+``` JAVA
+import java.util.*;
+public class Main {
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String args[]) {
+        Queue<String> q = new LinkedList<String>();
+        q.offer("A");
+        q.offer("B");
+        q.offer("C");
+
+        System.out.println("Queue 출력순서");
+        while(!q.isEmpty()){
+            System.out.println(q.poll()); // poll은 큐 객체를 불러온다.
+//             A B C 순으로 나온다.
+        }
+      }
+
+
+
+}
+
+```
+Object element() - 저장된 요소를 불러옴
+boolean offer(Object o ) - Queue에 객체 저장 ( true : 성공, false : 실패 ) 반환
+Object peek() - 저장된 객체를 반환 / 없을경우 Null 을 반환
+Object poll() - 객체를 꺼내온다 / 꺼낸객체는 사라짐
+
+
 -----
 참고 site:
 http://mainia.tistory.com/2323 [녹두장군 - 상상을 현실로]
 http://vaert.tistory.com/107 [Vaert Street]
-
+https://m.blog.naver.com/PostView.nhn?blogId=blueday9404&logNo=110181765204&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
 https://www.hackerrank.com/challenges/java-negative-subarray/problem
