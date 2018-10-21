@@ -339,6 +339,30 @@ True
 False
 ```
 
+# bisect
+
+## bisect_left
+
+``` python
+def get_grade(score):
+  r = (50, 60, 70, 90, 100)
+  g = 'FDCBA'
+  return g[bisect_left(r, score)]
+```
+
+``` python
+print(get_grade(55)) # D
+print(get_grade(50)) # F
+print(get_grade(100)) # A
+```
+
+주어진 r에서 score가 <= 로 index를 알려준다.
+즉 < <= n
+
+100이상은 하면 깨진다.
+
+
+
 
 -------
 참고 자료:
