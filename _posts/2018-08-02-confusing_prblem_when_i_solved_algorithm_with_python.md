@@ -362,7 +362,16 @@ print(get_grade(100)) # A
 100이상은 하면 깨진다.
 
 
+# 가장 큰 수, 가장 작은 수
 
+``` python
+import sys
+max = sys.maxsize
+min = -sys.maxsize -1
+```
+
+# max에서 key사용
+https://stackoverflow.com/questions/18296755/python-max-function-using-key-and-lambda-expression
 
 -------
 참고 자료:
