@@ -2,8 +2,8 @@
 layout: post
 section-type: post
 title: "[ 작성중 ] 부동소수점 (with. python3, java)"
-categories: Algorithm
-tags: [ 'algorithm' ]
+categories: Computer_Science
+tags: [ 'computer_science' ]
 comments: true
 ---
 
