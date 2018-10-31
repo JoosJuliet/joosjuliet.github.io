@@ -300,6 +300,8 @@ Object element() - 저장된 요소를 불러옴
 boolean offer(Object o ) - Queue에 객체 저장 ( true : 성공, false : 실패 ) 반환
 Object peek() - 저장된 객체를 반환 / 없을경우 Null 을 반환
 Object poll() - 객체를 꺼내온다 / 꺼낸객체는 사라짐
+remove() - 젤 앞에 것 가져온다.
+boolean isEmpty() - queue에 값이 존재하는지 아닌지 알려준다.
 
 
 -----
