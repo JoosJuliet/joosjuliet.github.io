@@ -373,6 +373,18 @@ min = -sys.maxsize -1
 # max에서 key사용
 https://stackoverflow.com/questions/18296755/python-max-function-using-key-and-lambda-expression
 
+
+# ddc[n]의 값을 기준으로 sort한다.
+
+
+# lambda is an anonymous function, it is equivalent to:
+
+# def func(p):
+#    return p.totalScore
+# Now max becomes:
+#
+# max(players, key=func)
+
 -------
 참고 자료:
 http://seorenn.blogspot.com/2011/04/python-isdigit.html
