@@ -374,16 +374,30 @@ min = -sys.maxsize -1
 https://stackoverflow.com/questions/18296755/python-max-function-using-key-and-lambda-expression
 
 
-# ddc[n]의 값을 기준으로 sort한다.
+ddc[n]의 값을 기준으로 sort한다.
 
+lambda is an anonymous function, it is equivalent to:
+``` python
+def func(p):
+    return p.totalScore
+```
+Now max becomes:
+``` python
+max(players, key=func)
+```
 
-# lambda is an anonymous function, it is equivalent to:
+# cmp function
 
-# def func(p):
-#    return p.totalScore
-# Now max becomes:
-#
-# max(players, key=func)
+> Finding the sign (- / +) of a number
+
+x < y => x - y < 0 and the function returns -1.
+x == y => x - y == 0 and the function returns 0.
+x > y => x - y > 0 and the function returns 1.
+
+``` python
+cmp(-123, 0) #returns -1
+cmp( 123, 0) #returns  1
+```
 
 -------
 참고 자료:
