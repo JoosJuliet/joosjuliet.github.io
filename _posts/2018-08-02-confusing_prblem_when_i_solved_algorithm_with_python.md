@@ -385,20 +385,6 @@ Now max becomes:
 ``` python
 max(players, key=func)
 ```
-
-# cmp function
-
-> Finding the sign (- / +) of a number
-
-x < y => x - y < 0 and the function returns -1.
-x == y => x - y == 0 and the function returns 0.
-x > y => x - y > 0 and the function returns 1.
-
-``` python
-cmp(-123, 0) #returns -1
-cmp( 123, 0) #returns  1
-```
-
 -------
 참고 자료:
 http://seorenn.blogspot.com/2011/04/python-isdigit.html
