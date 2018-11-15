@@ -157,6 +157,8 @@ for each in result:
 
 nCr 직접 구현
 ``` python
+from math import factorial
+
 def ncr(n, r):
   if n < 2 : return 0
   return factorial(n) // (factorial(n-r) * factorial(r))
@@ -199,6 +201,8 @@ def formingMagicSquare(s):
 
 nPr 직접 구현
 ``` python
+from math import factorial
+
 def npr(n, r):
   if n < 2 : return 0
   return factorial(n) // factorial(n-r)
@@ -385,6 +389,16 @@ Now max becomes:
 ``` python
 max(players, key=func)
 ```
+
+# 비트연산으로 나누기 2와 제곱승 하기
+
+``` python
+
+ 1<<3 이면 1을 왼쪽으로 세 칸 시프트 한 것이기 때문에 2^3=8
+4 >> 1
+# 2
+```
+
 -------
 참고 자료:
 http://seorenn.blogspot.com/2011/04/python-isdigit.html

@@ -9,7 +9,6 @@ comments: true
 
 
 <p align="center">
-<img src="/assets/img/kimdax.png" />
 </p>
 
 이런 글을 많이 봤는데 전혀 그렇다고 생각 안하고요
