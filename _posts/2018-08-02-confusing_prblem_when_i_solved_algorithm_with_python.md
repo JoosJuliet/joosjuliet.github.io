@@ -399,6 +399,39 @@ max(players, key=func)
 # 2
 ```
 
+# list 돌 때 편한 것
+
+``` python
+l = ['a', 'b', 'c']
+for i,h in enumerate(l):
+  print(i, v)
+
+# 0 a
+# 1 b
+# 2 c
+```
+
+# list 의 top 구하기
+
+``` python
+s = [1,2,3]
+print(s[-1])
+
+# 3
+```
+
+# dictionary key와 value로 sort하기
+
+``` python
+import operator
+x = {1:2, 3:4,4:3,2:1,0:0}
+
+# value 기준으로 정렬하기
+sorted_v_x = sorted(x.items(), key=operator.itemgetter(1))
+# key 기준으로 정렬
+sorted_k_x = sorted(x.items(), key=operator.itemgetter(0))
+```
+
 -------
 참고 자료:
 http://seorenn.blogspot.com/2011/04/python-isdigit.html
