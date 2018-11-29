@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "[two scoop of django] 7장 쿼리와 데이터베이스 레이어 && 8장 함수 기반 뷰와 클래스 기반 뷰"
 categories: Django
-tags: [ 'Django', 'two_scoop_of_django' ]
+tags: [ 'Django', 'two_scoop_of_django', 'python' ]
 comments: true
 ---
 
@@ -32,7 +32,7 @@ comments: true
 ObjectDoesNotExist : 모든 모델 객체에서 이용 가능 (import 필요)
 DoesNotExist : 특정 모델에서만 이용 가능
 
-```python
+``` python
 from django.core.exceptions import ObjectDoesNotExist
 
 from flavors.models import flavor
@@ -54,7 +54,7 @@ def list_any_line_item(model, sku):
 ```
 팁2 여러 개의 객체가 반환되었을 때
     - 쿼리가 하나 이상의 객체를 반환할 수도 있다면 MultipleObjectsReturned 예외
-```python
+``` python
 from flavors.models import Flavor
 from store.exceptions import OutOfStock, CorruptedDatabase
 def list_flavor_line_item(sku):
@@ -73,7 +73,7 @@ def list_flavor_line_item(sku):
 7.3 쿼리를 좀더명확하게하기위해 지연연산이용하기
 
 코드를 명확하게 복잡한 쿼리의 경우 몇 줄 안 되는 코드에 너무 많은 기능을 엮어서 기술하는 것은 피해야한다.
-```python
+``` python
 #나쁜예
 from django.models import Q
 from promos.models import Promo
@@ -88,7 +88,7 @@ def fun_function(**kwargs):
 데이터가 정말로 필요하기 전 까지는 장고가 SQL을 호출하지 않는 특징
 따라서 ORM 메소드와 함수를 얼마든지 연결해서 코드를 쓸 수 있다.
 한 줄에 길게 쓰는 대신에 여러줄에 나눠서 쓰면 가독성을 엄청나게 향상시키며, 유지보수를 쉽게 해준다.
-```python
+``` python
 #리팩토링 버전[지연 연산 한 버전]
 from django.models import Q
 
@@ -121,7 +121,7 @@ Query Expressions (공식문서)
 모든 고객 레코드에 대해서 for loop가 돌고있다. => 매우 느리고, 메모리 소모가 크다
 경합상황 (race condition)에 직면할 가능성이 크다. => 데이터 분실 우려
 경합상황 : 다중 프로그래밍 시스템이나 다중 처리기 시스템에서 두 명령어가 동시에 같은 기억 장소를 액세스할 때 그들 사이의 경쟁에 의해 수행 결과를 예측할 수 없게 되는 것.
-```python
+``` python
 
 # 나쁜 예제
 from models.customers import Customer
@@ -191,7 +191,7 @@ Transaction : (명사) 처리, 처리과정
 특정 루틴을 설정에서 제외시키고 싶다면 뷰 함수에서 transaction.non_atomic_requests()로 데코레이팅한다.
 의료정보나 금융 정보에 사용한다.
 
-```python
+``` python
 
 # settings/base.py
 
@@ -207,7 +207,7 @@ ATOMIC_REQUESTS를 이용할 때 주의해야 할 또 다른 점은, 오직 에�
 작업 처리 중 확인 메일을 보낸 후 에러 발생 해 롤백을 하면 화나니...
 일단 non_atomic_requests()로 데코레이팅 하고, atomic()을 쓰는 것을 추천하는 것 같다(나의 생각)
 
-```python
+``` python
 
 # flavors/views.py
 from django.db import transaction
@@ -237,7 +237,7 @@ from .models import Flavor
 
 장고는 트랜잭션 메커니즘을 두가지 제공
 데코레이터(decorator)를 이용한 트랜잭션 예시
-```python
+``` python
 
 from django.db import transaction
 
@@ -253,7 +253,7 @@ def transaction_test1(arg1, arg2):
 
 with 명령어를 이용한 트랜잭션 예시
 
-```python
+``` python
 
 from django.db import transaction
 
@@ -269,7 +269,7 @@ def transaction_test2(arg1, arg2):
 
 try / except 블록에서 원자를 래핑하면 무결성 오류를 자연스럽게 처리 할 수 있습니다.
 
-```python
+``` python
 
 from django.db import IntegrityError, transaction
 
@@ -340,7 +340,7 @@ def simplest_view(request):
     return HttpResponse("FBV")
 
 # 클래스 기반 뷰의 기본 형태
-```python3
+``` python3
 class SimplestView(View):
     def get(self, request, *args, **kwargs):
         # 비즈니스 로직이 여기에 위치한다.
@@ -360,7 +360,7 @@ class SimplestView(View):
 
 
 1-1. FBV 를 활용하여 글 목록 전체 표시
-```python
+``` python
 * urls.py
 from django.conf.urls import url
 from . import views
@@ -382,7 +382,7 @@ def index(request):
 
 * 게시판의 글 목록 전체를 표시하거나, 특정 DB table의 record 전체 (혹은 일부)를 List로 표시할 때 활용할 수 있다.
 * 리스트가 테이블의 모든 레코드인 경우 모델 클래스만 지정하면 된다.
-```python
+``` python
 
 * urls.py
 from bookmark.views import BookmarkLV
@@ -404,7 +404,7 @@ class BookmarkLV(ListView):
 ```
 기적....
 
-```python
+``` python
 * urls.py
 from django.conf.urls import url
 from . import views
@@ -447,7 +447,7 @@ class IndexView(ListView):
 1. 뷰 모듈은 뷰 로직을 포함해야 한다.
 2. URL 모듈은 URL 로직을 포함해야 한다.
 # 나쁜 예
-```python
+``` python
 
 from django.conf.urls import url
 from django.views.generic import DetailView
@@ -470,7 +470,7 @@ urlpatterns = [
 
 
 8.3 URLCONF에서 느슨한 결합 유지하기
-```python
+``` python
 
 # tastings/views.py
 from django.views.generic import ListView, DetailView, UpdateView
@@ -536,7 +536,7 @@ URL 이름공간은 앱 레벨 또는 인스턴스 레벨에서의 구분자를 
 Django 는 이 app 들의 URL 을 URLconf 에 이름공간(namespace)을 추가해 구별한다.
  polls/urls.py 파일에 app_name 을 추가하여 어플리케이션의 이름공간을 설정할 수 있습니다.
 
-```python
+``` python
 polls/urls.py
 from django.urls import path
 
@@ -551,16 +551,15 @@ urlpatterns = [
 ]
 ```
 이제, polls/index.html template 의 기존 내용을
-```python
+``` python
 polls/templates/polls/index.html
 <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
 ```
 아래와 같이 이름공간으로 나눠진 detail 의 view 를 가르키도록 변경하세요.
 
 polls/templates/polls/index.html
-```python
+``` python
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-
 ```
 
 
@@ -581,7 +580,7 @@ polls/templates/polls/index.html
 8.5 URLCONF에서 뷰를 문자열로 지목하지 말자
 
 urls.py에서 뷰를 지목(reference)하자. 아래는 urls.py를 올바르게 정의하는 방법이다.
-```python
+``` python
 
 # polls/urls.py
 from django.conf.urls import url
@@ -627,7 +626,7 @@ locals()를 쓰지 말고 dict{}을 써라.
 *
 뷰가 어 떤 걸 반환하려고 했는지 알 길이 없어졌기 때문
 # 나쁜 예
-```python
+``` python
 
 def ice_cream_store_display(request, store_id):
     store = get_object_or_404(Store, id=store_id)
