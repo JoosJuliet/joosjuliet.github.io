@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "[two scoop of django] 9장 함수기반뷰의모범적인이용 && 10장 클래스 기반 뷰의 모범적인 이용"
 categories: Django
-tags: [ 'Django', 'two_scoop_of_django' ]
+tags: [ 'Django', 'two_scoop_of_django', 'python' ]
 comments: true
 ---
 
@@ -34,7 +34,7 @@ comments: true
 매개변수화 시켜서 사용하는 것이 더 좋다
 객체에 여러 추가적인 속성을 덧붙일 수 있다.
 
-```python
+``` python
 # sprinkles/views.py
 from django.views.generic import DetailView
 from .utils import check_sprinkles
@@ -53,7 +53,7 @@ class SprinkleDetail(DetailView):
 ### 9.3 편리한 데코레이터
 그런데 이 건 데코레이터로 할 수도 있다.
 
-```python
+``` python
 # sprinkles/decorators.py
 from functools import wraps
 from . import utils
@@ -73,7 +73,7 @@ def check_sprinkles(view_func):
 
 이를 함수에 추가한다.
 
-```python
+``` python
 # views.py
 from django.shortcuts import get_object_or_404, render
 from .decorators import check_sprinkles
@@ -130,7 +130,7 @@ http request받아서 넘겨주기가 핵심
 Mixin 은 클래스에 추가적인 속성이나 메소드를 제공하는 것
 
 파이썬은 Mixin 을 위한 특별한 키워드는 없으며, 단지 다중상속을 통해서 만들기 때문에 이 과정에서 문제가 생길 소지가 생긴다.
-```python
+``` python
 class Mixin1(object):
     def test(self):
         print "Mixin1"
@@ -156,7 +156,7 @@ Mixin1
  믹스인이란 실체화된 클래스가 아니라 상속해 줄 기능들을 제공하는 클래스
 프로그래밍 언어에서 다중 상속을 해야 할 때 믹스인을 쓰면 클래스에 더 나은 기능과 역할을 제공
 
-```python
+``` python
 from django.views.generic import TemplateView
 
 class FreshFruitMixin(object):
@@ -198,7 +198,7 @@ class FruityFlavorView(FreshFruitMixin, TemplateView):
 #### 10.4.1 인증된 사용자에게만 장고 클래스 기반 뷰/제네릭 클래스 기반 뷰 접 근 가능하게 하기
 
 django.contrib.auth.decorators.login_required 데 코레이터와 클래스 기반 뷰를 이용하는 데 도움이 되긴 하지만, 예제들이 정형화 된 틀에 너무 박혀 있는 문제점이다.
-```python
+``` python
 # flavors/views.py
 from django.views.generic import DetailView
 from braces.views import LoginRequiredMixin
@@ -214,7 +214,7 @@ class FlavorDetailView(LoginRequiredMixin, DetailView):
 순서를 잊고 잘못된 순서로 나열하면 예상치 못한 결과를 초래하게 된다
 
 #### 10.4.2 뷰에서 유효한 폼을 이용하여 커스텀 액션 구현하기
-```python
+``` python
 from django.views.generic import CreateView
 from braces.views import LoginRequiredMixin
 from .models import Flavor
@@ -228,7 +228,7 @@ class FlavorCreateView(LoginRequiredMixin, CreateView):
 이미 체크된 폼에 대해 커스텀 로직을 적용하고 싶을 경우, form_valid()에 로직 을 추가하면 된다. form_valid()의 반환형은 django.http.HttpResponseRedirect 가 된다.
 #### 10.4.3 뷰에서 부적합한 폼을 이용하여 커스텀 액션 구현하기
 
-```python
+``` python
 from django.views.generic import CreateView
 from braces.views import LoginRequiredMixin
 from .models import Flavor
@@ -242,7 +242,7 @@ class FlavorCreateView(LoginRequiredMixin, CreateView):
 form_valid()에서 로직을 추가했던 것과 같은 방법으로 form_invalid()에서도 로직을 추가할 수 있다.
 #### 10.4.4 뷰 객체 이용하기
 
-```python
+``` python
 from django.utils.functional import cached_property
 from django.views.generic import UpdateView, TemplateView
 from braces.views import LoginRequiredMixin
@@ -268,7 +268,7 @@ class FlavorUpdateView(LoginRequiredMixin, FavoriteMixin, UpdateView):
 class FlavorDetailView(LoginRequiredMixin, FavoriteMixin, TemplateView):
     model = Flavor
 ```
-```html
+``` html
 {# flavors/base.html #}
 {% extends "base.html" %}
 {% block likes_and_favorites %} <ul>
