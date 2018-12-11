@@ -68,8 +68,8 @@ def index(request):
 ```
 ##  1-2. CBV - ListView 를 활용하여 글 목록 전체 표시
 
-* 게시판의 글 목록 전체를 표시하거나, 특정 DB table의 record 전체 (혹은 일부)를 List로 표시할 때 활용할 수 있다.
-* 리스트가 테이블의 모든 레코드인 경우 모델 클래스만 지정하면 된다.
+- 게시판의 글 목록 전체를 표시하거나, 특정 DB table의 record 전체 (혹은 일부)를 List로 표시할 때 활용할 수 있다.
+- 리스트가 테이블의 모든 레코드인 경우 모델 클래스만 지정하면 된다.
 
 ``` python
 
@@ -94,14 +94,14 @@ class BookmarkLV(ListView):
 기적....
 
 ``` python
-# * urls.py
+# - urls.py
 from django.conf.urls import url
 from . import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'), # as_view() 클래스 함수를 통해 함수뷰 생성
 ]
-# * views.py
+# - views.py
 from django.views.generic import ListView
 from .models import Question
 
@@ -110,7 +110,7 @@ class IndexView(ListView):
     context_object_name = 'question_list' # 디폴트 컨텍스트 변수명 :  object_list
     def get_queryset(self): # 컨텍스트 오버라이딩
       return Question.objects.order_by('-pub_date')[5:]
-# * 디폴트 설정을 그대로 사용한다면 아래와 같이 간단하게 작성할 수 있다.
+# - 디폴트 설정을 그대로 사용한다면 아래와 같이 간단하게 작성할 수 있다.
 from django.views.generic import ListView
 from .models import Question
 
@@ -211,10 +211,10 @@ urlpatterns = [
 
 이리 바꿔야 한다. 그 이유는
 뷰들 사이에서 인자나 속성이 중복 사용하면 x [DRY원칙]
-* URLConf는 URL 라우팅이라는 명확한 작업만 처리만 하고 로직은 뷰로 다 보내는기
-* 클래스 기반임으로 뷰 상속 가능. :
-    * 인증 절차 추가, 권한 설정 추가 등 비즈니스 로직 수월
-* 표준화된 정의를 구현해 커스텀 로직 얼마든지 구현 가능 :
+- URLConf는 URL 라우팅이라는 명확한 작업만 처리만 하고 로직은 뷰로 다 보내는기
+- 클래스 기반임으로 뷰 상속 가능. :
+    - 인증 절차 추가, 권한 설정 추가 등 비즈니스 로직 수월
+- 표준화된 정의를 구현해 커스텀 로직 얼마든지 구현 가능 :
 8.4 URL 이름공간 이용하기
 
 URL 이름공간은 앱 레벨 또는 인스턴스 레벨에서의 구분자를 제공한다.
@@ -252,8 +252,8 @@ polls/templates/polls/index.html
 ## 8.4.4 더 많은 앱과 템플릿 리버스 트릭을 허용하기
 
 꼼수(trick)은 일반적으로 확실한 이득을 주기보다는 프로젝트의 복잡성만 높이는 결과를 가져다 주지만, 몇몇 꼼수는 간단히 짚고 넘어갈 정도의 가치는 있다.
-* django-debug-toolbar 같은 디버그 레벨에서 내부적인 검사를 실행하는 개발 도구
-* 최종 사용자에게 ‘모듈’을 추가하게 하여 사용자 계정의 기능을 변경하는 프로젝트
+- django-debug-toolbar 같은 디버그 레벨에서 내부적인 검사를 실행하는 개발 도구
+- 최종 사용자에게 ‘모듈’을 추가하게 하여 사용자 계정의 기능을 변경하는 프로젝트
 개발자들은 언제든지 이러한 경우에 URL 이름공간을 이용한 창의적인 꼼수를 구현할 수 있지만, 가장 단순 명료한 해결 방안을 먼저 강구하고 시도하는게 옳바르다.
 
 
