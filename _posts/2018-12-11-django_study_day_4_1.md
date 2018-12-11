@@ -221,26 +221,7 @@ URL 이름공간은 앱 레벨 또는 인스턴스 레벨에서의 구분자를 
  tastings_detail 대신 tasting:detail로 하면 굿
 실제 Django 의 project 는 app 이 몇개라도 올 수 있습니다.
 Django 는 이 app 들의 URL 을 URLconf 에 이름공간(namespace)을 추가해 구별한다.
- polls/urls.py 파일에 app_name 을 추가하여 어플리케이션의 이름공간을 설정할 수 있습니다.
-
-``` python
-# polls/urls.py
-app_name = 'polls'
-urlpatterns = [
-  path('<int:question_id>/', views.detail, name='detail'),
-]
-```
-이제, polls/index.html template 의 기존 내용을
-``` python
-# polls/templates/polls/index.html
-<li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
-```
-아래와 같이 이름공간으로 나눠진 detail 의 view 를 가르키도록 변경하세요.
-
-polls/templates/polls/index.html
-``` python
-<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-```
+polls/urls.py 파일에 app_name 을 추가하여 어플리케이션의 이름공간을 설정할 수 있습니다.
 
 
 ## 8.4.3 검색, 업그레이드, 리팩터링을 쉽게 하기
