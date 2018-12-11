@@ -230,12 +230,12 @@ from django.urls import path
 from . import views
 
 app_name = 'polls'
-urlpatterns = [
-#    path('', views.index, name='index'),
-    path('<int:question_id>/', views.detail, name='detail'),
-    path('<int:question_id>/results/', views.results, name='results'),
-    path('<int:question_id>/vote/', views.vote, name='vote'),
-]
+# urlpatterns = [
+# #    path('', views.index, name='index'),
+#     path('<int:question_id>/', views.detail, name='detail'),
+#     path('<int:question_id>/results/', views.results, name='results'),
+#     path('<int:question_id>/vote/', views.vote, name='vote'),
+# ]
 ```
 이제, polls/index.html template 의 기존 내용을
 ``` python
@@ -274,10 +274,10 @@ from django.conf.urls import url
 
 from . import views
 
-urlpatterns = [
-    # 뷰를 명시적으로 정의
-    url(r'^$', views.index, name='index'),
-]
+# urlpatterns = [
+#     # 뷰를 명시적으로 정의
+#     url(r'^$', views.index, name='index'),
+# ]
 ```
 
 
