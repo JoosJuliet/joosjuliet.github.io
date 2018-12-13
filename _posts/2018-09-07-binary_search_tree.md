@@ -8,7 +8,9 @@ comments: true
 ---
 
 이진 트리 (binary tree)는 최대 두 개의 자식 노드를 가지는 트리 형태의 자료구조로서, 효율적인 탐색 혹은 정렬을 위해 사용된다.
-평균 *O(logn)* 의 시간복잡도로 찾을 수 있다.
+
+균형 트리는 삽입, 찾기, 삭제 *O(logn)* 의 시간복잡도이고,
+그냥 트리는 한쪽으로 치우쳐서 계속 찾아야 하는 상황이 벌어질 수 있어서 *O(n)* 이다.
 
 실제 코딩인터뷰를 할 때 최대한 *O(logn)* 의 시간복잡도 대답을 해야함으로, 자주 활용되는 dataStructure이다.
 
@@ -74,7 +76,7 @@ def InorderTraversal(self, root):
     # 왼쪽의 node가 없을 때 까지 계속 뒤로 내려가지 않고 호출된다.
     res.append(root.data)
     # root이다.
-    res = res + self.inorderTraversal(root.right)
+    res += self.inorderTraversal(root.right)
     # 오른쪽의 node가 없을 때 까지 계속 뒤로 내려가지 않고 호출된다.
   return res
 ```
@@ -86,8 +88,8 @@ def PreorderTraversal(self, root):
   res = []
   if root:
     res.append(root.data)
-    res = res + self.PreorderTraversal(root.left)
-    res = res + self.PreorderTraversal(root.right)
+    res += self.PreorderTraversal(root.left)
+    res += self.PreorderTraversal(root.right)
   return res
 ```
 
@@ -100,7 +102,7 @@ def PostorderTraversal(self, root):
   res = []
   if root:
     res = self.PostorderTraversal(root.left)
-    res = res + self.PostorderTraversal(root.right)
+    res += self.PostorderTraversal(root.right)
     res.append(root.data)
   return res
 ```
