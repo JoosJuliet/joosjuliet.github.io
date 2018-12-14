@@ -61,7 +61,8 @@ students = [
 sorted(students, key=lambda student: student[1])
 #  [('sally', 17, 'B'), ('jane', 22, 'A'), ('dave', 32, 'B')]
 ```
-key파라미터에는 함수가 와야 한다. key 파라미터에 함수가 설정되면 소트해야 할 리스트들의 항목들이 하나씩 key 함수에 전달되어 key 함수가 실행되게 된다. 이 때 수행된 key 함수의 리턴값을 기준으로 소트가 진행된다.
+*key파라미터에는 함수가 와야 한다.{ex) len}* key 파라미터에 함수가 설정되면 소트해야 할 리스트들의 항목들이 하나씩 key 함수에 전달되어 key 함수가 실행되게 된다. 이 때 수행된 key 함수의 리턴값을 기준으로 소트가 진행된다.
+
 
 위 예에서는 key함수에 students의 요소인 튜플데이터가 key함수의 입력으로 순차적으로 전달될 것이다. key함수는 입력된 튜플 데이터의 "나이"를 의미하는 2번째 항목을 리턴하는 lambda함수이다. 따라서 sorted수행 후 나이순으로 소트된 리스트가 리턴된다.
 
@@ -73,7 +74,20 @@ sorted(student_objects, key=attrgetter('age'), reverse=True)
 reverse=True 넣으면 역순으로 된다
 
 
-## 역순 포문
+## dictionary key와 value로 sort하기
+
+``` python
+import operator
+x = {1:2, 3:4,4:3,2:1,0:0}
+
+# value 기준으로 정렬하기
+sorted_v_x = sorted(x.items(), key=operator.itemgetter(1))
+# key 기준으로 정렬
+sorted_k_x = sorted(x.items(), key=operator.itemgetter(0))
+```
+
+
+# 역순 포문
 ``` python
 >>> for i in range(10, 0, -1):    # 10에서 1까지 역순으로 숫자 생성
 ...     print('Hello, world!', i)
@@ -81,7 +95,9 @@ reverse=True 넣으면 역순으로 된다
 >>> for i in reversed(range(10)):    # range에 reversed를 사용하여 숫자의 순서를 반대로 뒤집음
 ...     print('Hello, world!', i)    # 9부터 0까지 10번 반복
 ```
-## Counter
+
+
+# Counter
 ``` python
 from collections import Counter # 콜렉션에서 불러옵니다.
 def pickingNumbers(a):
@@ -343,7 +359,7 @@ True
 False
 ```
 
-# bisect
+# bisect Part
 
 ## bisect_left
 
@@ -399,7 +415,9 @@ max(players, key=func)
 # 2
 ```
 
-# list 돌 때 편한 것
+# list Part
+
+## list 돌 때 편한 것
 
 ``` python
 l = ['a', 'b', 'c']
@@ -411,7 +429,7 @@ for i,h in enumerate(l):
 # 2 c
 ```
 
-# list 의 top 구하기
+## list 의 top 구하기
 
 ``` python
 s = [1,2,3]
@@ -420,17 +438,12 @@ print(s[-1])
 # 3
 ```
 
-# dictionary key와 value로 sort하기
+재귀 푸는법
+1. 트리를 그림으로 그린다.
+2. 말단 노드일 경우를 처리한다. -> 반환 하는 타입을 일치시켜야 함.
+3. 각 자식노드에서 부모노드를 올라올 때 어떻게 처리되는지 보고 그걸 코드로 옮겨서 반환하도록 한다.
 
-``` python
-import operator
-x = {1:2, 3:4,4:3,2:1,0:0}
 
-# value 기준으로 정렬하기
-sorted_v_x = sorted(x.items(), key=operator.itemgetter(1))
-# key 기준으로 정렬
-sorted_k_x = sorted(x.items(), key=operator.itemgetter(0))
-```
 
 -------
 참고 자료:
