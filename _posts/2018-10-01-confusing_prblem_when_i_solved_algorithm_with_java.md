@@ -7,6 +7,25 @@ tags: [ 'algorithm' ]
 comments: true
 ---
 
+# swap과 call by Reference와 call by value
+
+http://re-build.tistory.com/3
+
+# Array 배열 정렬하기
+
+``` JAVA
+int[] arr = {2,3,1,378,19,25};
+Arrays.sort(arr);
+
+System.out.println(Arrays.toString(arr));
+
+public static void swap(final int[] arr, final int pos1, final int pos2){
+    final int temp = arr[pos1];
+    arr[pos1] = arr[pos2];
+    arr[pos2] = temp;
+}
+```
+
 # 문자열 비교
 
 equals
@@ -378,6 +397,88 @@ public class Sorter {
 
 ```
 
+
+``` java
+
+package com.company;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+class SoccerPlayer implements  Comparable<SoccerPlayer>{
+    private String name;
+    private String position;
+    private int age;
+
+    public SoccerPlayer(String name, String position, int age){
+        this.name = name;
+        this.position = position;
+        this.age = age;
+    }
+    public String getName(){
+        return this.name;
+    }
+
+    @Override
+    public int compareTo(SoccerPlayer player){
+        return name.compareTo(player.getName());
+    }
+}
+
+
+
+public class Main {
+
+    private static final Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        ArrayList<String> sportsList = new ArrayList<String>();
+        sportsList.add("Soccer");
+        sportsList.add("Baseball");
+        sportsList.add("Tennis");
+        sportsList.add("Ski");
+
+        Collections.sort(sportsList);
+
+        for(int i=0; i<sportsList.size(); i++){
+            System.out.println(sportsList.get(i)+ "");
+//            순서대로 나간다
+        }
+
+        ArrayList<SoccerPlayer> playerList = new ArrayList<SoccerPlayer>();
+
+        SoccerPlayer player1 = new SoccerPlayer("메시", "공격수", 23);
+        SoccerPlayer player2 = new SoccerPlayer("호날두", "공격수", 25);
+        SoccerPlayer player3 = new SoccerPlayer("줄라탄", "공격수", 26);
+        SoccerPlayer player4 = new SoccerPlayer("박지성", "미드필더", 30);
+        SoccerPlayer player5 = new SoccerPlayer("오스카", "미드필더", 21);
+        SoccerPlayer player6  =  new SoccerPlayer("기안", "공격수", 33);
+
+        playerList.add(player1);
+        playerList.add(player2);
+        playerList.add(player3);
+        playerList.add(player4);
+        playerList.add(player5);
+        playerList.add(player6);
+
+        Collections.sort(playerList);
+
+        for(int i=0; i<playerList.size(); i++){
+            System.out.println(playerList.get(i).getName());
+        }
+
+
+    }
+}
+
+```
+
+
+```
 
 -----
 참고 site:
