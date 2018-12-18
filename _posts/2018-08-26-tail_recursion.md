@@ -7,6 +7,31 @@ tags: [ 'python', 'tail_recursion', 'stack_overflow', 'call_stack' ]
 comments: true
 ---
 
+# 재귀적 수행 시간 구하기
+
+
+``` python
+def f(n) :
+  if n <= 1:
+    return
+  return f(n-1) + f(n-1)
+```
+
+함수 f가 두번 호출로 O(N**2)으로 오해를 받을 수도 있지만
+
+<img alt="function_tree" src = "https://www.dropbox.com/s/ol8btyd557e9rs8/Screenshot%202018-12-18%2012.22.40.png?dl=0"/>
+
+트리의 깊이가 N이고, 각 노드는 두개의 자식 노드를 갖고 있다.
+따라서 깊이가 한 단계 깊어질 때마다 이전보다 두배 더 많이 호출하게 된다.
+그럼으로 2의 제곱들의 합 인 2**(N+1) -1 이 시간복잡도 이다.
+
+보통 재귀함수의 수행시간은 O(분기**깊이)로 표현된다.
+
+
+https://joosjuliet.github.io/11724/
+tail recursion 되는 것 해결책
+파이썬 재귀 최대깊이 지정 sys.setrecursionlimit( limit )
+
 # tail_recursion_optimize 가 나온 배경
 
 우리는 종종 재귀함수를 쓴다.
@@ -177,6 +202,9 @@ es6부터 공식지원한다.
 
 ---
 # 참고자료
+재귀적 수행 시간 구하기 부분
+[코딩인터뷰 69쪽 11번째 줄부터 70쪽까지]
+
 https://homoefficio.github.io/2015/07/27/%EC%9E%AC%EA%B7%80-%EB%B0%98%EB%B3%B5-Tail-Recursion/
 http://bozeury.tistory.com/entry/%EA%BC%AC%EB%A6%AC-%EC%9E%AC%EA%B7%80-%EC%B5%9C%EC%A0%81%ED%99%94Tail-Recursion
 
