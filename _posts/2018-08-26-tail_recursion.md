@@ -27,6 +27,31 @@ def f(n) :
 
 보통 재귀함수의 수행시간은 O(분기**깊이)로 표현된다.
 
+# 다른 문제들
+
+- n!을 구하는 코드의 big O는?
+``` python
+def factorial(n):
+  if n < 0 :
+    return -1
+  else if n == 0 :
+    return 1
+  else:
+    return n * factorial(n-1)
+```
+단순히 n부터 1까지 반복하는 재귀함수여서 O(N)이다.
+
+- permutation을 구하는 코드의 big O는?
+``` python
+def permutation(str, prefix):
+  if len(str) == 0 :
+    print(prefix)
+  else:
+    for i in range(0, len(str)):
+      permutation(str[0:i]+str[i+1:], prefix + str[i])
+```
+N!의 순열이 존재함으로 O(N!)이다.
+
 
 https://joosjuliet.github.io/11724/
 tail recursion 되는 것 해결책

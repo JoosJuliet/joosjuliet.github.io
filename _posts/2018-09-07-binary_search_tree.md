@@ -63,6 +63,19 @@ def insert(self, data):
 
 어떤 노드들을 먼저 순회할 지에 따라 각 순회 방법을 나눈다.
 
+## Preorder traversal
+Root -> Left ->Right
+<img alt="success" src = "/images/2018-09-09-binary_search_tree/pre-order-traversal.gif"/>
+``` Python
+def PreorderTraversal(self, root):
+  res = []
+  if root:
+    res.append(root.data)
+    res += self.PreorderTraversal(root.left)
+    res += self.PreorderTraversal(root.right)
+  return res
+```
+
 ## Inorder traversal
 Left노드 -> Root -> Right
 
@@ -80,19 +93,6 @@ def InorderTraversal(self, root):
     # 오른쪽의 node가 없을 때 까지 계속 뒤로 내려가지 않고 호출된다.
   return res
 ```
-## Preorder traversal
-Root -> Left ->Right
-<img alt="success" src = "/images/2018-09-09-binary_search_tree/pre-order-traversal.gif"/>
-``` Python
-def PreorderTraversal(self, root):
-  res = []
-  if root:
-    res.append(root.data)
-    res += self.PreorderTraversal(root.left)
-    res += self.PreorderTraversal(root.right)
-  return res
-```
-
 
 ## Postorder traversal
 Left -> Right -> Root
