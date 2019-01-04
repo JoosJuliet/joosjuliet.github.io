@@ -22,7 +22,7 @@ comments: true
 - python 실력 키우기
 - django로 이력만들기
 - vue로 이력만들기
-- 백준 100문제 풀기 (아직 5문제 남았따)
+- 백준 100문제 풀기
 - google codejam kickstart 1문제 풀기
 - 글 올리는 습관만들기
 - 꾸준히 운동하는 습관 만들기
@@ -43,7 +43,8 @@ comments: true
 19년도에는 퀄리티를 높이기 위해서 더 노력을 해야될 것 같아요.
 
 
-# 2. 일주일에 한번은 알고리즘을 go로 풀어보자!
+# 2. 알고리즘!
+- Java로 알고리즘 풀기, 그리고 3월 이후에는 go로 일주일에 한번 알고리즘 풀기 (새로운 습관)
 - google codejam kickstart 2문제 풀기 (목표)
 - hacker rank 하루에 medium 한문제씩 풀기 (새로운 습관)
 
