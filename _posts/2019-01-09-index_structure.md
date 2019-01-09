@@ -7,7 +7,9 @@ tags: [ 'DB', 'database', 'index', 'computer_science' ]
 comments: true
 ---
 
-
+이 컨텐츠는 시리즈물입니다.  
+[db index 1편] index 란?:   https://joosjuliet.github.io/index/  
+[db index 2편] index structure란?:    https://joosjuliet.github.io/index_structure/  
 
 # Index Architecture
 ![clustered vs non-clustered index](https://dl.dropbox.com/s/ac278pxr0ujg3rq/Screenshot%202019-01-09%2017.05.54.png)
@@ -53,9 +55,10 @@ comments: true
   - join연산을 where문 속에 넣으면 primary key와 foreign key의 equality연산을 하기 때문이다.
 
 ---
-참고:
-InnoDB는 B+tree를 사용한다: https://blog.jcole.us/2013/01/10/btree-index-structures-in-innodb/
-B-tree 관련: https://medium.com/@mena.meseha/what-is-the-difference-between-mysql-innodb-b-tree-index-and-hash-index-ed8f2ce66d69
-DB테이블에 전부 인덱스를 걸면? : https://hashcode.co.kr/questions/1551/%EC%99%9C-db-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%EB%AA%A8%EB%93%A0-%EC%BB%AC%EB%9F%BC%EC%97%90-%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%A5%BC-%EA%B1%B8%EB%A9%B4-%EC%95%88%EB%90%98%EB%82%98%EC%9A%94
-Index관련 동영상 강의: https://www.youtube.com/watch?v=de0Ky5IhW0E
-Fractal Tree - https://12bme.tistory.com/143?category=682920 - http://gywn.net/2014/05/fractal-index-in-tokudb/
+참고:  
+InnoDB는 B+tree를 사용한다:   https://blog.jcole.us/2013/01/10/btree-index-structures-in-innodb/  
+B-tree 관련:   https://medium.com/@mena.meseha/what-is-the-difference-between-mysql-innodb-b-tree-index-and-hash-index-ed8f2ce66d69  
+DB테이블에 전부 인덱스를 걸면?:  
+ https://hashcode.co.kr/questions/1551/%EC%99%9C-db-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%EB%AA%A8%EB%93%A0-%EC%BB%AC%EB%9F%BC%EC%97%90-%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%A5%BC-%EA%B1%B8%EB%A9%B4-%EC%95%88%EB%90%98%EB%82%98%EC%9A%94  
+Index관련 동영상 강의:   https://www.youtube.com/watch?v=de0Ky5IhW0E  
+Fractal Tree -   https://12bme.tistory.com/143?category=682920 -   http://gywn.net/2014/05/fractal-index-in-tokudb/  
