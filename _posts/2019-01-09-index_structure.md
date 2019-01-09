@@ -8,8 +8,8 @@ comments: true
 ---
 
 이 컨텐츠는 시리즈물입니다.  
-[db index 1편] index 란?:   https://joosjuliet.github.io/index/  
-[db index 2편] index structure란?:    https://joosjuliet.github.io/index_structure/  
+[db index 1편] index 란?: https://joosjuliet.github.io/index/  
+[db index 2편] index structure란?: https://joosjuliet.github.io/index_structure/   
 
 # Index Architecture
 ![clustered vs non-clustered index](https://dl.dropbox.com/s/ac278pxr0ujg3rq/Screenshot%202019-01-09%2017.05.54.png)
