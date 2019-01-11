@@ -7,6 +7,27 @@ tags: [ 'algorithm' ]
 comments: true
 ---
 
+# 제곱
+3의 제곱 (3의 2승) 구하기
+``` java
+System.out.println( Math.pow(3, 2) );
+```
+출력 결과: 9.0
+함수의 입출력이 모두, 실수형인 double형입니다. 따라서 정수의 결과값을 구하려면, 정수로 변환해 주어야 합니다.
+
+
+# double to int
+``` java
+Double d = 5.25;
+Integer i = d.intValue(); // i becomes 5
+```
+Or
+``` java
+double d = 5.25;
+int i = (int) d;
+```
+
+
 # swap과 call by Reference와 call by value
 
 http://re-build.tistory.com/3
