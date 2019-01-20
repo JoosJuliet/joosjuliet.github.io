@@ -98,7 +98,7 @@ comments: true
 
 
 
-## 5장. 테스트 주도 개발 (rad - green - refactor)
+## 5장. 테스트 주도 개발 (red - green - refactor)
 
 
 ### 3법칙
