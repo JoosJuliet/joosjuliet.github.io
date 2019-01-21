@@ -12,6 +12,7 @@ comments: false
 <hr>
 ## Education
 University of Hanyang
+- Software Engineering
 
 ## Experience
 - Full cycle development using Django, Vue, AWS
