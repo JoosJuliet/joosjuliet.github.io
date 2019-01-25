@@ -15,6 +15,10 @@ University of Hanyang
 - Software Engineering
 
 ## Experience
+
+- Backend Engineer using Spring, AWS
+SK Encar *Jaunary 2019*
+
 - Full cycle development using Django, Vue, AWS
 SmartStudy *March 2018 - June 2018*
 
@@ -32,10 +36,10 @@ Academic Scholarship - Third place on Mathematics *GPA : 3.9*
 ## Awards
 - Grand Prize (1the place)
 Global Hackathon *January 2017*
+https://github.com/SavingOkja/Server
 
 - NH Bank Ceo Prize 2017 (company place)
 Unithon *October 2017*
-https://github.com/SavingOkja/Server
 
 - Encouragement Prize (4th place)
 Korea Open Souce Software Developers Lab *November 2018*
@@ -43,34 +47,64 @@ Korea Open Souce Software Developers Lab *November 2018*
 
 ## Project
 
-1. 비 개발자도 동영상을 혼자서 변환을 할 수 있게 하는 프로젝트 (2018-05-01 ~ 2018-06-01)
+1. Create a web page where anyone can convert the video's extension (2018-05-01 ~ 2018-06-01)
+- SmartStudy
+
+- task
+  - As a content-based project, use polymorphism to increase efficiency
+  - Use the appropriate cloud service (AWS) for your project
+    - Using Amazon Elastic Transcoder effectively shortens transcoding time of video.
+    - Using the rest API, you can do the transcoding without having to enter AWS first.
+    - lambda, using SNS service, letting you know the results of trans coding in real time.
+
+- stack
+  - AWS, Python, Django
+
+<!-- 1. 누구나 동영상의 확장자를 변환을 할 수 있는 웹 페이지 만들기 (2018-05-01 ~ 2018-06-01)
   - SmartStudy
   - task
-    - 콘텐츠 기반의 프로젝트이므로 다형성을 사용해 정리의 효율성을 높임
-    - 프로젝트에 적절한 cloud service(AWS)를 적재적소에 사용
-      - Amazon Elastic Transcoder 를 사용해 동영상의 trans coding의 효율성을 높임
+    - 콘텐츠 기반의 프로젝트여서 다형성을 사용해 정리의 효율성을 높임
+    - 프로젝트에 cloud service(AWS)를 적재적소에 사용
+      - Amazon Elastic Transcoder 를 사용해 동영상의 trans coding의 시간을 효율적으로 높임
       - rest API를 사용해서 먼저 trans coding을 하고 싶은 동영상을 AWS에 들어가지 않고도 할 수 있게 함.
       - lambda, SNS 서비스를 사용해 trans coding의 결과를 실시간으로 알려줌
   - stack
-    - AWS, Python, django
+    - AWS, Python, Django -->
 
-2. 동시 접속한 사람이 30만이 넘는 상황을 위한 웹서버 스케일링 (2018-04-01 ~ 2018-05-15)
-  - SmartStudy
-  - task
-    - AWS로 안전하게 로드 밸런싱이 되게 만들기
-      - ECS의 도커 컨테이너를 10개로 늘림
-      - Elasticache를 scale up 해 성능을 높임
-      - RDS의 MYSQL db를 master-slave로 사용할 수 있도록 오픈소스를 이용해 프로젝트 구조 변환
-  - stack
-    - AWS, Python, Django
+2. Scaling Web servers for over 300,000 concurrent users. (2018-04-01 ~ 2018-05-15)
+- SmartStudy
+
+- task
+  - Safely load-balanced with AWS.
+  - Increase the ECS's docker container to 10.
+  - Scale up Elasticache to increase performance.
+  - Convert project structure using open source to use RDS's MYSQL db as master-slave.
+
+- stack
+  - AWS, Python, Django
 
 <hr>
 <br/>
 
 ## Opensource
 1. it-chain (2018-08-16 ~ 2018-10-25)
-경량화된 private chain engine 만들기
 
+- task
+  - Analyzing the private chain created by domain-driven development and changing the structure accordingly
+  (https://github.com/DE-labtory/engine/pull/844)
+  - Create a variety of accounts with the same file in the account management part created when you make a smart contract
+  (https://github.com/DE-labtory/engine/pull/964)
+  - Create a part that cleans up accounts that were previously in the smart contract
+  (https://github.com/DE-labtory/engine/pull/964)
+  - Describe the architect of it-chain in English
+  (https://github.com/DE-labtory/engine/pull/993)
+
+
+-  go, leveldb, docker, rabbitmq
+- This is URL about that project description.
+   - https://github.com/DE-labtory/engine/blob/develop/ARCHITECTURE-EN.md
+<!-- 경량화된 private chain engine 만들기 -->
+<!--
 - stack
   - go, leveldb, docker
 - task
@@ -81,14 +115,14 @@ Korea Open Souce Software Developers Lab *November 2018*
   - smart contract 부분에서 이전에 생겼던 계좌들을 정리하는 부분 만들기
   (https://github.com/DE-labtory/engine/pull/964)
   -  it-chain의 architect에 대한 설명을 영어로 쓰기
-  (https://github.com/DE-labtory/engine/pull/993)
+  (https://github.com/DE-labtory/engine/pull/993) -->
 
 
 # Other Activities
-- 한국 과학 창조부 지원 프로젝트 *2017.03 ~ 2017.12*
+- Korean Government Science Creation Support Project *2017.03 ~ 2017.12*
   - [Github_url][https://github.com/JoosJuliet/duckmate-server]
-- 쇼핑몰 관련 front 개발(외주) *2017.03 ~ 2017.04*
-- 기술 블로그 운영(https://joosjuliet.github.io/)
+- Shopping mall front *2017.03 ~ 2017.04*
+- Technology blog management(https://joosjuliet.github.io/)
 
 
 <hr>
