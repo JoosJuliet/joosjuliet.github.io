@@ -46,8 +46,26 @@ Korea Open Souce Software Developers Lab *November 2018*
 
 
 ## Project
+1. (Opensource_project)it-chain (2018-08-16 ~ 2018-10-25)
+Create a lightweight private chain engine
 
-1. Create a web page where anyone can convert the video's extension (2018-05-01 ~ 2018-06-01)
+- task
+  - Analyzing the private chain created by domain-driven development and changing the structure accordingly
+  (https://github.com/DE-labtory/engine/pull/844)
+  - Create a variety of accounts with the same file in the account management part created when you make a smart contract
+  (https://github.com/DE-labtory/engine/pull/964)
+  - Create a part that cleans up accounts that were previously in the smart contract
+  (https://github.com/DE-labtory/engine/pull/964)
+  - Describe the architect of it-chain in English
+  (https://github.com/DE-labtory/engine/pull/993)
+-  stack
+  - go, leveldb, docker, rabbitmq, grpc
+
+
+- This is URL about that project description.
+   - https://github.com/DE-labtory/engine/blob/develop/ARCHITECTURE-EN.md
+
+2. Create a web page where anyone can convert the video's extension (2018-05-01 ~ 2018-06-01)
 - SmartStudy
 
 - task
@@ -71,7 +89,7 @@ Korea Open Souce Software Developers Lab *November 2018*
   - stack
     - AWS, Python, Django -->
 
-2. Scaling Web servers for over 300,000 concurrent users. (2018-04-01 ~ 2018-05-15)
+3. Scaling Web servers for over 300,000 concurrent users. (2018-04-01 ~ 2018-05-15)
 - SmartStudy
 
 - task
@@ -83,26 +101,21 @@ Korea Open Souce Software Developers Lab *November 2018*
 - stack
   - AWS, Python, Django
 
+4. Make Facebook chatbot(2017-01-02 ~ 2017-09-30)
+- Dreamyoungs
+
+- task
+  - Develop and apply factory patterns and increased efficiency.
+  - Make mercedes benz, hana bank, gm daewoo motors chatbot
+
+- stack
+  - GCP, Node, javascript
+ 
+
 <hr>
 <br/>
 
-## Opensource
-1. it-chain (2018-08-16 ~ 2018-10-25)
 
-- task
-  - Analyzing the private chain created by domain-driven development and changing the structure accordingly
-  (https://github.com/DE-labtory/engine/pull/844)
-  - Create a variety of accounts with the same file in the account management part created when you make a smart contract
-  (https://github.com/DE-labtory/engine/pull/964)
-  - Create a part that cleans up accounts that were previously in the smart contract
-  (https://github.com/DE-labtory/engine/pull/964)
-  - Describe the architect of it-chain in English
-  (https://github.com/DE-labtory/engine/pull/993)
-
-
--  go, leveldb, docker, rabbitmq
-- This is URL about that project description.
-   - https://github.com/DE-labtory/engine/blob/develop/ARCHITECTURE-EN.md
 <!-- 경량화된 private chain engine 만들기 -->
 <!--
 - stack
