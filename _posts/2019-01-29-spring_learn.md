@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "JPA에서 Entity란?"
 category: Spring
-tags: [ 'Spring', 'Java', 'skEncar' ]
+tags: [ 'Spring', 'Java', 'SKEncar', 'JPA' ]
 comments: true
 ---
 
