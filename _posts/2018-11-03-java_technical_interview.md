@@ -30,15 +30,27 @@ comments: true
   - 구현 객체와 같은 동작 보장
   - 상속의 관계가 없는 클래스간 서로 공통되는 로직을 구현하여 쓸 수 있도록한다.
   - Implement 키워드
-
+  - 인터페이스는 생성자를 선언할 수 없다.
 
 - Abstract
-  - 미완성 클래스 + 미완성 method
-  - 자신의 생성자로 객체 생성 불가능
-  - 하위 클래스를 참조하여 상위 클래스의 객체를 생성
-  - 하위 클래스를 제어하기 위해 사용
+  - 대상이 두가지가 있다.
+    - class
+    - method
+
+  - abstract class
+    - 클래스 내에 추상메서드가 선언되어 있음을 의마한다.
+  - abstract method
+    - 선언부만 작성하고 구현부는 작성하지 않은 추상 메서드
+
+  - 추상 클래스를 상속받은 클래스는 추상 클래스가 갖고 있는 추상 메소드를 반드시 구현해야 한다.
+    - @Override 사용
+    - 추상 클래스를 상속받고, 추상 클래스가 갖고 있는 추상 메소드를 구현하지 않으면 해당 클래스도 추상 클래스가 된다.
+
   - 상속 받아서 기능 확장
   - extends 키워드
+  - 객체를 생성할 수 없다.
+  - 생성자를 선언할 수 있다.(그렇지만 생성자를 직접 호출하여 객체를 생성할 수는 없다. super() 메소드를 이용),
+
 
 
 # 3. Call by Reference, Call by Value
@@ -174,6 +186,58 @@ struct point    // point라는 이름의 구조체 선언
 Car a = new Car();
 ```
 
+# 23. Spring Framework(스프링 프레임워크)
+
+<span style="background-color:yellow"><b>자바(JAVA) 플랫폼을 위한 오픈소스(Open Source) 애플리케이션 프레임워크(Framework)</b></span>
+
+자바 개발을 위한 프레임워크로 상속 받아서 많은 기능을 사용할 수 있게 해준다.  
+특히 자바SE(standard edition)로 된 자바 객체(POJO)를 자바EE(enterprise edition)에 의존적이지 않게 연결해주는 역할  
+(Java EE는 Java SE 스펙을 기반으로 하는데 이걸 의존적이지 않게 연결 해주니 존좋인듯 하다.)  
+
+스프링 특징 간단히  
+  - 크기와 부하의 측면에서 경량.  
+  - 제어 역행(IoC)이라는 기술을 통해 애플리케이션의 느슨한 결합을 도모
+  - 관점지향 프로그래밍(AOP)을 위한 풍부한 지원
+  - 애플리케이션 객체의 생명 주기와 설정을 포함하고 관리한다는 점에서 일종의 컨테이너(Container)라고 할 수 있음
+  - 간단한 컴포넌트로 복잡한 애플리케이션을 구성하고 설정할 수 있음
+
+스프링 특징 자세히
+
+a. 경량 컨테이너로서 자바 객체를 직접 관리.
+  각각의 객체 생성, 소멸과 같은 라이프 사이클을 관리하며 스프링으로부터 필요한 객체를 얻어올 수 있다.
+
+b. 스프링은 POJO(Plain Old Java Object) 방식의 프레임워크.
+  일반적인 J2EE 프레임워크에 비해 구현을 위해 특정한 인터페이스를 구현하거나 상속을 받을 필요가 없어 기존에 존재하는 라이브러리 등을 지원하기에 용이하고 객체가 가볍다.
+
+c. 스프링은 제어의 역행(IoC : Inversion of Control)을 지원.
+  컨트롤의 제어권이 사용자가 아니라 프레임워크에 있어서 필요에 따라 스프링에서 사용자의 코드를 호출한다.
+
+d. 스프링은 의존성 주입(DI : Dependency Injection)을 지원
+  각각의 계층이나 서비스들 간에 의존성이 존재할 경우 프레임워크가 서로 연결시켜준다.
+
+e. 스프링은 관점 지향 프로그래밍(AOP : Aspect-Oriented Programming)을 지원
+  따라서 트랜잭션이나 로깅, 보안과 같이 여러 모듈에서 공통적으로 사용하는 기능의 경우 해당 기능을 분리하여 관리할 수 있다.
+
+f. 스프링은 영속성과 관련된 다양한 서비스를 지원
+  Hibernate 등 이미 완성도가 높은 데이터베이스 처리 라이브러리와 연결할 수 있는 인터페이스를 제공한다.
+
+g. 스프링은 확장성이 높음.
+  스프링 프레임워크에 통합하기 위해 간단하게 기존 라이브러리를 감싸는 정도로 스프링에서 사용이 가능하기 때문에 수많은 라이브러리가 이미 스프링에서 지원되고 있고 스프링에서 사용되는 라이브러리를 별도로 분리하기도 용이하다.
+
+
+# 24. JAVA SE (Java Platform Standard Edition) vs JAVA EE (Java Platform EnterPrise Edition)
+
+- JAVA SE  
+  - 표준 자바 플랫폼.
+  - JAVA의 프로그래밍을 할 때 주로 사용하는 거의 모든 기술들의 core들이 있다고 생각하면 된다.(ex. networking, security, database access, gui etc...)  
+  - 또 SE platform의 코어 API에는 virtual machine, development tools,  deployment technologies, 그리고 other class libraries 그리고 Java technology applications에서 기본으로 사용하는 toolkits 들이 구성을 이루고 있다.  
+
+
+- JAVA EE  
+  - JAVA SE에 서버측을 위한 기능을 부가하였기 때문에 SE기능을 모두 포함한다.  
+  - The Java EE platform provides an API and runtime environment for developing and running large-scale, multi-tiered, scalable, reliable, and secure network applications.
+
+
 <!--
 6. 자바의 JVM의 역할에 대해서 설명해 보시오.
 
@@ -197,47 +261,6 @@ c. 개발자를 위한 다양한 도구들이 지원된다.
 장점 - 개발 시간을 줄일 수 있고 오류로부터 자유로울 수 있다.
 단점 - 프레임워크에 너무 의존하면 개발 능력이 떨어져서 프레임워크 없이 개발하는 것이 불가능해지는 점이다.
 
-17. Spring Framework(스프링 프레임워크)
-
-자바(JAVA) 플랫폼을 위한 오픈소스(Open Source) 애플리케이션 프레임워크(Framework)
-자바 엔터프라이즈 개발을 편하게 해주는 오픈 소스 경량급 애플리케이션 프레임워크
-자바 개발을 위한 프레임워크로 종속 객체를 생성해주고,  조립해주는 도구
-자바로 된 프레임워크로 자바SE로 된 자바 객체(POJO)를 자바EE에 의존적이지 않게 연결해주는 역할
-
-스프링 특징 간단히
-  - 크기와 부하의 측면에서 경량.
-  - 제어 역행(IoC)이라는 기술을 통해 애플리케이션의 느슨한 결합을 도모
-  - 관점지향 프로그래밍(AOP)을 위한 풍부한 지원
-  - 애플리케이션 객체의 생명 주기와 설정을 포함하고 관리한다는 점에서 일종의 컨테이너(Container)라고 할 수 있음
-  - 간단한 컴포넌트로 복잡한 애플리케이션을 구성하고 설정할 수 있음
-
-스프링 특징 자세히
-
-a. 경량 컨테이너로서 자바 객체를 직접 관리.
-  각각의 객체 생성, 소멸과 같은 라이프 사이클을 관리하며 스프링으로부터 필요한 객체를 얻어올 수 있다.
-
-b. 스프링은 POJO(Plain Old Java Object) 방식의 프레임워크.
-
-  일반적인 J2EE 프레임워크에 비해 구현을 위해 특정한 인터페이스를 구현하거나 상속을 받을 필요가 없어 기존에 존재하는 라이브러리 등을 지원하기에 용이하고 객체가 가볍다.
-
-c. 스프링은 제어의 역행(IoC : Inversion of Control)을 지원.
-  컨트롤의 제어권이 사용자가 아니라 프레임워크에 있어서 필요에 따라 스프링에서 사용자의 코드를 호출한다.
-
-d. 스프링은 의존성 주입(DI : Dependency Injection)을 지원
-  각각의 계층이나 서비스들 간에 의존성이 존재할 경우 프레임워크가 서로 연결시켜준다.
-
-e. 스프링은 관점 지향 프로그래밍(AOP : Aspect-Oriented Programming)을 지원
-  따라서 트랜잭션이나 로깅, 보안과 같이 여러 모듈에서 공통적으로 사용하는 기능의 경우 해당 기능을 분리하여 관리할 수 있다.
-
-f. 스프링은 영속성과 관련된 다양한 서비스를 지원
-
-   iBatis나 Hibernate 등 이미 완성도가 높은 데이터베이스 처리 라이브러리와 연결할 수 있는 인터페이스를 제공한다.
-
-g. 스프링은 확장성이 높음.
-
-   스프링 프레임워크에 통합하기 위해 간단하게 기존 라이브러리를 감싸는 정도로 스프링에서 사용이 가능하기 때문에 수많은 라이브러리가
-
-   이미 스프링에서 지원되고 있고 스프링에서 사용되는 라이브러리를 별도로 분리하기도 용이하다.
 
    # 22. 자바의 특징에 대해 말해보시오.
 
@@ -254,8 +277,13 @@ g. 스프링은 확장성이 높음.
 
 ---
 참고링크:
-http://rongscodinghistory.tistory.com/m/44
-http://hahahoho5915.tistory.com/16 [넌 잘하고 있어]
+http://rongscodinghistory.tistory.com/m/44  
+http://hahahoho5915.tistory.com/16 [넌 잘하고 있어]  
+https://yolojeb.tistory.com/20 [개발 일기]  
+(23번 참고)  
+https://www.ibm.com/support/knowledgecenter/ko/SSQP76_8.9.1/com.ibm.odm.dserver.rules.res.managing/topics/con_javase_javaee_applis.html  
+(24번 참고)  
+https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html  
 
-21번 구조체에 대한 설명
-http://knkky.tistory.com/53 [남깐느]
+21번 구조체에 대한 설명  
+http://knkky.tistory.com/53 [남깐느]  
