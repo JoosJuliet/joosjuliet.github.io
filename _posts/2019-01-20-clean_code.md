@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "클린 코더 (단순 기술자에서 진정한 소프트웨어 장인이 되기까지) 요약 및 감상문"
 category: Book
-tags: [ 'book', 'programmer' ]
+tags: [ 'book', 'programmer', 'SKEncar' ]
 comments: true
 ---
 # 1. 책을 읽게 된 이유
