@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[db index 2편] index structure의 종류? (cluster index, non-cluster index )"
+title: "[db index 2편] index structure의 종류와 선정 지침 (cluster index, non-cluster index, Hash Index, B Tree, B+ Tree, Fractal-Tree, Adaptive Hash Index, 인덱스 선정 지침이란?, 인덱스가 사용되지 않는 경우는?, query tuning을 위한 추가 지침)"
 categories: DB
 tags: [ 'DB', 'database', 'index', 'computer_science' ]
 comments: true
@@ -98,8 +98,8 @@ comments: true
 
 - B tree와 대부분 특징들이 같다 .
 - 다른 점은 leaf node들이 서로 list로 연결되어 있고, leaf 노드들만 data entry라는 점이다.
-- 예를 들어서 10이 있으면 자식노드도 10을 다 가지고 있다.
-- 그럼으로 공간을 많이 먹는다.(자식들이 상위것 뿐만 아니라 상위의 상위것 까지 index를 다 가지고 있으니까)
+- 예를 들어서 10이 있으면 자식노드들이 모두 10을 가지고 있다.(자식들이 상위것 뿐만 아니라 상위의 상위것 까지 index를 다 가지고 있다.)
+- 그럼으로 공간을 많이 먹는다.
 - 대신 데이터를 탐색할 때 무적권 logN이 걸린다.
 - 그리고 시작포인트만 읽고 쭉 필요한 데이터를 읽으면 됨으로 range qeury에 유용하다.
 
@@ -107,8 +107,102 @@ comments: true
 *TMI 파일시스템들은 모두 블록 인덱싱을 위해 B+트리 타입을 사용한다.*
 
 
-# Fractal-Tree
+## B Tree vs B+ Tree
+![b_tree_vs_bp_tree](/images/2019-01-09-index_structure/b_tree_vs_b+_tree.png)
 
+## B-Tree 계열의 단점
+![b_tree_disadvantage](/images/2019-01-09-index_structure/b_tree_disadvantage.png)
+
+대용량 데이터가 되면 메모리에 다 못올라감 -> Disk I/O 발생!
+-> *Fractal-Tree의 등-장*
+
+# Fractal-Tree
+- <span style="background-color:yellow"><b>"Big I/O"에 촛점을 맞춘 자료 구조로, 잦은 Disk I/O를 줄이고, 한번에 다량의 데이터를 하단 노드로 전달함에 따라 데이터가 많은 상황에서도 효과적으로 처리할 수 있는 방안을 제시</b></span>
+
+
+## 장점
+- B Tree의 장점을 그대로 가져오고, 대용량 데이터 환경에서 효율적이다.
+- B Tree 인덱스에서 인덱스 키를 검색하거나 변경하는 과정 중에 발생하는 가장 큰 문제는 디스크에서 랜덤으로 값을 찾는 것이었다.
+- 그러므로 I/O를 상대적으로 많이 해야한다.
+- 우리의 Fractal-Tree는 Sequantial I/O를 가능하게 해준다!
+- 인덱스 단편화(Fragmentation)를 최적화 할 필요가 없다.
+
+
+## 단점
+- transaction은 ACID를 잘 보장해야 하는데 동시성(Concurrency)의 성능이 떨어지기 때문에, 멀티 스레드 환경에서는 성능이 낮고, 따라서 OLTP(transaction) 환경에서는 아직 적용하기에 무리가 있다.
+- OLAP(분석), DW(Data Warehouse)에서는 적합함
+
+
+## Fractal-Tree의 동작원리
+![fractal_tree](/images/2019-01-09-index_structure/fractal_tree.png)
+
+- 모든 내부 노드에 message buffer가 있음.
+- 버퍼는 disk i/o의 부담을 줄이기 위해서 하는 것이다.
+- 한번에 실행하면 sequential 하게 하니까 더 좋다.
+- 버퍼가 가득 차면 더 이상 공간이 없게 되는데, 이 순간 데이터를 자식 노드로 내린다. (내릴 때 동시에 하다보니 데이터 손실 및 많은 것이 부담이 된다.) 이 단계에서 Disk I/O가 발생하는 단계이다.
+- B-Tree에서 데이터 유입시 매번 자식 노드로 데이터를 보내며 발생하던 잦은 Disk I/O 수가 Fractal Tree에서는 각 노드에 존재하는 버퍼 공간으로 인해 극적으로 감소한다. 
+
+
+## InnoDB의 급격한 성능저하와 그 이유
+![toku_db](/images/2019-01-09-index_structure/toku_db.png)
+
+[참고] TPS는 transaction per second, Oracle에서 한 트랜잭션을 commit, rollback의 수를 의미한다면 초당 commit, rollback이 일어나는 횟수이고,
+Load Runner과 같은 툴에서는 초당 툴을 통해 정의한 한번의 행위(특정 페이지 방문)을 의미한다고 할 수 있다.
+
+
+- TPS가 일정 수준을 넘어서면 급격한 성능 저하가 발생하는데, Fractal-Tree는 이런 급격한 성능 저하 현상이 없다.
+- Fractal-Tree의 평균적인 처리 능력은 이론적으로 B-Tree보다 400배 가량 빠르며, 실제로도 TokuDB의 키 추가 및 삭제 작업은 InnoDB보다 100배 가량 빠른 처리속도를 보여줍니다.
+- 이 그래프는 single thread 환경에서 테스트 한 것이다.
+- 멀티 스레드 환경에서는 달라질 수 있다.
+
+
+# Adaptive Hash Index
+![adaptive_hash_index](/images/2019-01-09-index_structure/adaptive_hash_index.png)
+
+- InnoDB에서 지원함.
+- 자주 사용되는 데이터 값을 내부적으로 판단하여 상황에 맞게 해쉬 값을 설정한다.
+- 캐싱을 하는 것과 같다.
+참고: http://tech.kakao.com/2016/04/07/innodb-adaptive-hash-index/
+
+
+
+
+
+
+#시리즈를 마치며 quiz
+## 왜 DB 테이블의 모든 컬럼에 인덱스를 걸면 어떻게 될까?
+- 인덱스를 생성하면 레코드가 추가/삭제/변경 될때마다 인덱스 값도 추가/삭제/변경해야 함 -> Disk I/O를 유발, 공간을 차지함.
+- InnoDB의 인덱스는 B+ Tree인데, CRUD할 때마다 Tree를 reorganization해줘야 함. -> 비용이 많이 듬. Bulk loading이 대안책!
+- Bulk loading이란? 삭제할 때 reorganization 해야하는데, 그냥 표시만 해놓는다. 삭제는 안하고, 실 데이터보다 index크기가 더 커질수 있다.
+
+
+## 인덱스 선정 지침이란?
+- tuple이 많이 들어있는 대용량의 relation
+- relation에서 대부분의 query가 검색하는 tuple이 2%~4% 인 경우에는 인덱스를 생성하는 것이 좋다.
+- 가능하면 한 relation에 세 개 이하의 인덱스를 만드는 것이 좋다. -> CRUD가 일어나면 인덱스를 많이 업데이트 해야하니까!
+- 갱신이 빈번하게 이루어지는 attribute/relation은 인덱스를 많이 만드는 것을 피해야한다.
+- file의 recode들을 충분히 분할할 수 있어야 한다.
+- 가능하면 Integer Attribute에 인덱스를 만드는 것이 가장 좋고, 고정 길이 attribute에 인덱스를 만드는 것이 좋다. 이유는…모른다! 댓글좀 달아주세요!
+- 대량의 데이터를 삽입할 때는 모든 인덱스를 제거하고 데이터 삽입이 끝난 후에 인덱스들을 다시 생성하는 것이 좋다.
+
+
+## 인덱스가 사용되지 않는 경우는?
+- relation의 크기가 너무 작아서 인덱스가 도움이 되지 않는다고 판단되었을 경우(손익분기점을 넘었을 경우)
+  - mysql에서 손익분기점을 못넘으면 index를 자동으로 사용안한다
+- attribute에 산술연산자가 사용되었을 경우
+  -  ``` WHERE SALARY * 12 > 400000000;```
+  - 12에 대한 index가 없어서, 그럼 index사용안된다.
+- 널값에 대해서는 인덱스가 사용되지 않음 
+  - ``` WHERE MANAGER Is NULL; ```
+- != 는 sql <>가 문법인데 이거에는 index가 사용 x
+
+
+## query tuning을 위한 추가 지침
+- GROUP BY HAVING의 사용을 느리니까 최소화 해라(임시공간 사용, 다 돌면서 group도 지어야한다)
+- group by와 where의 차이는 group by는 이건 뇌피셜 임시공간 필요없다. group by는 전체 테이블을 full search해야한다.
+- 중복이 많이 없으면 N**2 ``` select sum(*) from employee group by salary; ```
+- 임시 relation을 웬만해선 사용하지 말자.
+- ``` SELECT * FROM … ``` 대신에 ``` SELECT atr1, atr2 FROM … ``` 같이 구체적으로 attribute를 명시하자.  
 
 ---
 참고:  
@@ -116,4 +210,9 @@ InnoDB는 B+tree를 사용한다: https://blog.jcole.us/2013/01/10/btree-index-s
 B-tree 관련: https://medium.com/@mena.meseha/what-is-the-difference-between-mysql-innodb-b-tree-index-and-hash-index-ed8f2ce66d69  
 DB테이블에 전부 인덱스를 걸면?:   https://hashcode.co.kr/questions/1551/%EC%99%9C-db-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-%EB%AA%A8%EB%93%A0-%EC%BB%AC%EB%9F%BC%EC%97%90-%EC%9D%B8%EB%8D%B1%EC%8A%A4%EB%A5%BC-%EA%B1%B8%EB%A9%B4-%EC%95%88%EB%90%98%EB%82%98%EC%9A%94  
 Index관련 동영상 강의: https://www.youtube.com/watch?v=de0Ky5IhW0E  
+
+ B Tree vs B+ Tree 출처: http://www.jidum.com/jidums/view.do?jidumId=157  
 Fractal Tree  : https://12bme.tistory.com/143?category=682920 -   http://gywn.net/2014/05/fractal-index-in-tokudb/  
+
+TPS 설명:
+https://aozjffl.tistory.com/375 [자수성가한 부자]  
