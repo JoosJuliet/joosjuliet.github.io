@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "ORM이란? JPA란? Hibernate란?"
 category: Spring
-tags: [ 'Spring', 'Java', 'SKEncar', 'JPA' ]
+tags: [ 'Spring', 'Java', 'SKEncar', 'JPA', '글또2기' ]
 comments: true
 ---
 
@@ -32,7 +32,7 @@ RDB는 데이터 중심으로 구조화 되어있고, 집합적인 사고를 요
 - 개발자는 SQL을 직접 작성하는 것이 아니라 어떤 SQL이 실행될지 생각만 하면 된다.
 
 # Hibernate란?
-<span style="background-color:yellow"><b>JPA를 사용하기 위해서는 JPA를 구현한 ORM 프레임워크</b></span>
+<span style="background-color:yellow"><b>JPA를 사용하기 위해서 JPA를 구현한 ORM 프레임워크</b></span>
 
 <img alt="success" src = "/images/2019-01-31-hibernate/Hibernate.png"/>
 

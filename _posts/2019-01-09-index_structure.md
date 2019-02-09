@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "[db index 2편] index structure의 종류와 선정 지침 (cluster index, non-cluster index, Hash Index, B Tree, B+ Tree, Fractal-Tree, Adaptive Hash Index, 인덱스 선정 지침이란?, 인덱스가 사용되지 않는 경우는?, query tuning을 위한 추가 지침)"
 categories: DB
-tags: [ 'DB', 'database', 'index', 'computer_science' ]
+tags: [ 'DB', 'database', 'index', 'computer_science', '글또2기' ]
 comments: true
 ---
 
