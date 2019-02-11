@@ -9,7 +9,10 @@ comments: true
 
 이 컨텐츠는 시리즈물입니다.  
 [db index 1편] index 란?: https://joosjuliet.github.io/index/  
-[db index 2편] index structure란?: https://joosjuliet.github.io/index_structure/   
+[db index 2편] index structure란?:  
+https://joosjuliet.github.io/index_structure/  
+[db index 3편] index structure의 종류와 선정 지침  
+https://joosjuliet.github.io/index_guidline/  
 
 
 #시리즈를 마치며 quiz
