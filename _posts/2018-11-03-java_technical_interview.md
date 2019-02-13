@@ -238,6 +238,11 @@ g. 스프링은 확장성이 높음.
   - The Java EE platform provides an API and runtime environment for developing and running large-scale, multi-tiered, scalable, reliable, and secure network applications.
 
 
+# 25. long 과 Long의 차이
+Java 에서 long 은 primitive type, 즉, 원시형 데이터로 클래스가 아니다.
+long 은 64bit 정수값을 표현하는 데이터 타입으로 8byte 의 메모리 공간을 사용한다.
+Long 은 long 과 마찬가지로 64bit 정수 값을 표현하지만 이것은 클래스다.
+
 <!--
 6. 자바의 JVM의 역할에 대해서 설명해 보시오.
 
@@ -287,3 +292,4 @@ https://docs.oracle.com/javaee/6/firstcup/doc/gkhoy.html
 
 21번 구조체에 대한 설명  
 http://knkky.tistory.com/53 [남깐느]  
+25번 출처: https://yjacket.tistory.com/63
