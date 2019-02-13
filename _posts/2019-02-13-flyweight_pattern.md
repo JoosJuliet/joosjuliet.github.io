@@ -74,6 +74,18 @@ public class TreeFactory{
 
 }
 
+보면 좋은 자료 :
+https://effectiveprogramming.tistory.com/entry/Flyweight-패턴
+
+팩토리 패턴
+
+객체를 만들어내는 부분을 서브 클래스(Sub-Class)에 위임하는 패턴.
+즉, new 키워드를 호출하는 부분을 서브 클래스에 위임하는 겁니다. 결국 팩토리 메소드 패턴은 객체를 만들어내는 공장(Factory 객체)을 만드는 패턴이라 이해하면 됩니다.
+참고 : https://blog.seotory.com/post/2016/08/java-factory-pattern
+
+
+
+
 
 ```
 ---
