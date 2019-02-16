@@ -7,11 +7,6 @@ tags: [ 'interview', 'technology', 'it', 'OS' ]
 comments: true
 ---
 
-9. WAS와 웹서버의 차이점은?
-
-12. 개발시에 중요하다 생각하는 요소를 3가지 기술해 보시오.
-
-14. AOP란 무엇이고 왜 사용하는지
 
 
 1. What is an operating system?
