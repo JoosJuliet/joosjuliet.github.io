@@ -51,7 +51,6 @@ public class Singleton{
 }
 
 public class Solution{
-
     public static void main(String[] args) throws IOException {
         Singleton.getInstance().getName();
     }
@@ -61,7 +60,7 @@ public class Solution{
 
 이 방법의 단점
 - 프로그램의 크기가 커져서 수 많은 클래스에서 위와 같은 singleton pattern을 사용한다고 가정해보자.
-- ``` new Singleton(); ```으로 인해 클래스가 load 되는 시점에 인스턴스를 생성시키는데 이마저도 부담스러운 경우도 있따.
+- new Singleton()으로 인해 클래스가 load 되는 시점에 인스턴스를 생성시키는데 이마저도 부담스러운 경우도 있따.
 - <b>또한 Singleton 클래스가 인스턴스화 되는 시점에 <b>어떠한 에러처리도 할 수가 없다.</b>
 
 
