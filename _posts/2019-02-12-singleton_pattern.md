@@ -35,8 +35,10 @@ singleton은 전역변수를 쓰고 싶어서 나온 개념이다.
 static 객체 특징
 - 객체가 생기기 전에 이미 생성된다.
 - 객체가 생기기 전에도 사용이 가능하다. (즉, 객체를 생성하지 않고도 사용할 수 있다.)
-참고 : https://gmlwjd9405.github.io/2018/08/04/java-static.html  
+참고 : https://gmlwjd9405.github.io/2018/08/04/java-static.html
+
 ``` java
+
 public class Singleton{
     private static Singleton instance = new Singleton(); // static 변수는 변수공간을 항상 유지해야 할때 사용
     private Singleton(){
@@ -51,7 +53,6 @@ public class Singleton{
 }
 
 public class Solution{
-
     public static void main(String[] args) throws IOException {
         Singleton.getInstance().getName();
     }
@@ -61,7 +62,7 @@ public class Solution{
 
 이 방법의 단점
 - 프로그램의 크기가 커져서 수 많은 클래스에서 위와 같은 singleton pattern을 사용한다고 가정해보자.
-- ``` new Singleton(); ```으로 인해 클래스가 load 되는 시점에 인스턴스를 생성시키는데 이마저도 부담스러운 경우도 있따.
+- new Singleton()으로 인해 클래스가 load 되는 시점에 인스턴스를 생성시키는데 이마저도 부담스러운 경우도 있따.
 - <b>또한 Singleton 클래스가 인스턴스화 되는 시점에 <b>어떠한 에러처리도 할 수가 없다.</b>
 
 
