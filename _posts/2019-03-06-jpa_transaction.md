@@ -12,6 +12,18 @@ comments: true
 감사합니다:)
 
 
+---
+
+
+*이 글은 시리즈물 입니다.*
+[1편 [DB] 트랜잭션(1편. 트랜잭션의 정의, 대상, ACID, 제어어(TCL)[COMMIT, ROLLBACK, SAVEPOINT], mysql에서의 트랜잭션)] https://joosjuliet.github.io/tcl/  
+[2편 [DB] 트랜잭션(2편. jpa에서 transaction이란)] https://joosjuliet.github.io/jpa_transaction/  
+
+
+---
+
+
+
 @transactional
 @transactional이란?
 https://lng1982.tistory.com/299
