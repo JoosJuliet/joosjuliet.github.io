@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: "쿠버네티즈란? 도커와의 관계는? 도커 와 쿠버네티즈의 차이? 도커와 쿠버네티즈를 비교? 쿠버네티즈 vs 도커 컴포즈?"
-category: Algorithm
+category: cloud
 tags: [ 'kubernetes', 'docker', 'google', 'gcp' ]
 comments: true
 ---
