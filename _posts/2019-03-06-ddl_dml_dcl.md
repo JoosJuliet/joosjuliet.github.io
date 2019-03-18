@@ -11,7 +11,7 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 
-
+---
 # SQL (Structered Query Language)
  - <span style="background-color:yellow"><b> 관계형 데이터베이스 관리 시스템(RDBMS)의 데이터를 관리하기 위해 설계된 특수 목적의 프로그래밍 언어 </b></span>
  - 관계형 데이터베이스 관리 시스템에서 자료의 검색과 관리, 데이터베이스 스키마 생성과 수정, 데이터베이스 객체 접근 조정 관리를 위해 고안
@@ -35,6 +35,13 @@ comments: true
 - DROP - 이미 존재하는 데이터베이스 관계 ( 테이블 ) , 뷰 , 인덱스 , 저장 프로시저를 삭제한다.
 - ALTER - 이미 존재하는 데이터베이스 개체에 대한 변경 , RENAME의 역할을 한다.
 - TRUNCATE - 관계 ( 테이블 )에서 데이터를 제거한다. ( 한번 삭제시 돌이킬 수 없음.)
+
+
+*프로시저*
+<span style="background-color:yellow"><b> 쿼리를 마치 하나의 함수처럼 실행하기 위한 쿼리의 집합 </b></span>
+- 특정 작업을 수행 하는 BLOCK
+- 자주 사용되는 SQL문을 DB 객체로 생성해서 저장한 후 사용시에 프로시저명을 호출해서 사용
+- 매개 변수를 받을 수 있고, 반복적으로 사용
 
 
 
@@ -90,3 +97,6 @@ SQL정의 :
 ddl,dml,dcl 차이:  
 https://brownbears.tistory.com/180  
 https://zzdd1558.tistory.com/88  
+
+프로시저란?
+https://ko.wikipedia.org/wiki/%EC%A0%80%EC%9E%A5_%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80
