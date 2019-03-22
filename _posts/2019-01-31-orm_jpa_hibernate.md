@@ -1,11 +1,16 @@
 ---
 layout: post
 section-type: post
-title: "ORM이란? JPA란? Hibernate란?"
+title: "[Hibernate에 대해서 제대로 알자!] 1탄 ORM이란? JPA란? Hibernate란?"
 category: Spring
-tags: [ 'Spring', 'Java', 'SKEncar', 'JPA', '글또2기' ]
+tags: [ 'Spring', 'Java', 'SKEncar', 'JPA', '글또2기', '시리즈물' ]
 comments: true
 ---
+이 글은 시리즈 물입니다.
+[1탄 ORM이란? JPA란? Hibernate란?] https://joosjuliet.github.io/orm_jpa_hibernate/  
+[2탄 Hibernate의 구조를 알자!] https://joosjuliet.github.io/hibernate_structure/  
+[3탄 Hibernate가 어떻게 obejct를 만드는가?] https://joosjuliet.github.io/hibernate_first_step/  
+
 
 # ORM이란?
 - <span style="background-color:yellow"><b>객체가 테이블이 되도록 매핑 시켜주는 프레임워크</b></span>
@@ -22,7 +27,6 @@ RDB는 데이터 중심으로 구조화 되어있고, 집합적인 사고를 요
 - 테이블은 외래키를 사용해서 다른 테이블과 연관관계를 가지고 조인을 사용해서 연관된 테이블을 조회
 
 ## 객체 그래프 탐색
-
 <span style="background-color:yellow"><b>이 패러다임의 불일치를 해결하기 위한 결과물이 JPA</b></span>
 
 
@@ -31,12 +35,15 @@ RDB는 데이터 중심으로 구조화 되어있고, 집합적인 사고를 요
 - ORM을 사용하기 위한 인터페이스를 모아둔 것
 - 개발자는 SQL을 직접 작성하는 것이 아니라 어떤 SQL이 실행될지 생각만 하면 된다.
 
-# Hibernate란?
+# Hibernate Framework란?
 <span style="background-color:yellow"><b>JPA를 사용하기 위해서 JPA를 구현한 ORM 프레임워크</b></span>
 
 <img alt="success" src = "/images/2019-01-31-hibernate/Hibernate.png"/>
+
+
 
 ---
 참고자료:
 https://victorydntmd.tistory.com/195
 자바 ORM 표준 JPA 프로그래밍 (책)
+https://www.javatpoint.com/hibernate-tutorial
