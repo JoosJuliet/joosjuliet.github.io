@@ -20,11 +20,29 @@ comments: true
 로직을 사용하는 객체들은 자기의 입맛에 맞게 로직을 효율적으로 수정할 수 있다. 새로운 로직을 추가하거나 변경할 때 객체의 종류 수 만큼 반복하지 않고, 단 한번으로 반영할 수 있다.
 
 # 예시
-여기의 핵심은 행동 역시 객체를 선언하는 것이다.
+여기의 핵심은 행동 역시 객체선언하는 것이다.
 그리고 상속보다는 composition을 이용한다.
 
-상속만으로 진행하게 되면 무분별한 소스 중복이 일어나기 때문이다. 
+핵심은
+- 로직을 정의하는 행동에도 객체를 선언
+- 상속보다는 구성(Composition) 을 이용
+- Interface와 로직의 class와의 관계를 composition 하고 유닛에서 상황에 맞는 로직을 쓰게끔 유도
 
+>사전지식
+
+https://hyeonstorage.tistory.com/176 -> 접근제어자, 접근 권한
+- protected
+동일 패키지와 동일 패키지에 포함되지는 않지만 하위 클래스 관계에 있는 클래스도 접근할 수 있다.
+
+https://hyeonstorage.tistory.com/146 ->여기에서 4번 보여주기
+
+
+
+출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
+
+출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
+
+출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
 
 
 ---
