@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[legacy 환경설정으로 얻은 지식들] Applet이란? Jar파일이란?, Artifact란? "
+title: "[legacy 환경설정으로 얻은 지식들] Applet이란?, JAR파일이란?, WAR파일이란?, Artifact란? "
 category: Spring
 tags: [ 'Spring', '환경설정', 'SKencar' ]
 comments: true
@@ -52,7 +52,27 @@ Zip은 압축을 하는 utility로 보관 기능이 중점이다.
 
 
 
-# 3. Aritifact란?
+# 3. WAR(WebApplication Archive)란?
+<span style="background-color:yellow"><b>웹 어플리케이션을 지원하기 위한 압축방식</b></span>
+- ~~web archive war는 jar과 이름만 비슷함으로 헷갈릴 필요도 없다~~
+- 웹 어플리케이션 저장소이며 웹 어플리케이션을 압축해 저장해 놓은 파일
+- 개발한 웹어플리케이션 프로젝트가 <b>WAS에서 돌아갈 수 있는 구조</b>를 담고 있으며 jsp, servlet, gif, html, jar 등을 압축하고 지원해준다.
+- jar와 같은 맥락으로 servlet context 접근을 위해 관련된 모든 파일들을 패키지화해준다.
+
+
+## 배포
+WAS에 웹 어플리케이션을 배포하기 위해서는 톰캣을 기준으로 다음의 세가지 방법이 있습니다.
+- 1. 웹 어플리케이션 프로젝트 그대로 복사하여 WAS webapps 폴더 하위에 복사하여 배포
+  - 웹 어플리케이션 규모가 크고 서버가 외부에 있는 경우 수많은 폴더들과 파일을 통째로 옮겨야 하기 때문에 번거롭다.
+- 2. 프로젝트.war 로 압축하여 webapps 폴더 하위에 복사한 후 톰캣을 기동하여 자동 배포
+- 3. 톰캣 관리자 페이지에서 프로젝트.war 파일을 등록하여 자동으로 배포
+
+- 2,3번의 경우에는 로컬에서 개발하여 FTP 등을 통해 원격 운영서버로 war파일만 옮겨 배포하는 경우등에 유용
+
+
+
+
+# 4. Aritifact란?
 - java 빌드 후 생성되는 것이 아티팩트(artifact)이다.
 - artefact는 영국식 영어에서 주로 사용하는 스펠링이고, artifact는 미국식 영어에서 주로 사용하는 스펠링 방식이다
 - (in Intelli J) artifact 의 output layout 속에 있는 available elements는 빌드시 사용되는 JAR 파일들이다.
@@ -70,6 +90,10 @@ https://smiler.tistory.com/entry/JAR-파일이란 [아직은 내가 쓴 글보�
 https://docs.oracle.com/javase/tutorial/deployment/jar/  
 
 3번 참고자료 :  
+https://dololak.tistory.com/31  
+https://hashcode.co.kr/questions/778/%EC%9E%90%EB%B0%94%EC%97%90%EC%84%9C-war%EC%99%80-jar%EC%9D%98-%EC%B0%A8%EC%9D%B4%EA%B0%80-%EB%AD%94%EA%B0%80%EC%9A%94  
+
+4번 참고자료 :  
 http://a.zany.kr:9003/board/bView.asp?bCode=52299899&aCode=13729  
 http://forensic-proof.com/archives/3710  
 https://mirrortuttle.tistory.com/entry/What-is-Artifact [업계에서 사용되는 다양한 artifact의 의미를 알고 싶으면 이 url로 들어가야 한다]  
