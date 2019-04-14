@@ -134,7 +134,7 @@ https://joosjuliet.github.io/index_guidline/
 ## 단점
 - transaction은 ACID를 잘 보장해야 하는데 동시성(Concurrency)의 성능이 떨어지기 때문에, 멀티 스레드 환경에서는 성능이 낮고, 따라서 OLTP(transaction) 환경에서는 아직 적용하기에 무리가 있다.
 - OLAP(분석), DW(Data Warehouse)에서는 적합함
-
+[OLAP, DW, OLTP 용어참고링크!](https://joosjuliet.github.io/oltp_data_warehouse_data_mart_olap/)
 
 ## Fractal-Tree의 동작원리
 ![fractal_tree](/images/2019-01-09-index_structure/fractal_tree.png)
