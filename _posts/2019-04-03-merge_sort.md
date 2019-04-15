@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: "Title"
+title: "[merge sort] sort algorithm with python3"
 category: Algorithm
-tags: [ 'algorithm', 'python' ]
+tags: [ 'algorithm', 'python', 'merge_sort' ]
 comments: true
 ---
 제 블로그의 모든 글은 IMHO로 쓴 것입니다.

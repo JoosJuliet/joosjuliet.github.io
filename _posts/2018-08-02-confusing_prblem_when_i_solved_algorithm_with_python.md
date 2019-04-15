@@ -453,6 +453,21 @@ print(s[-1])
 3. 최대한 크게 패턴을 나눈다.
 4. 패턴의 기준점을 정한다.
 5. 그 걸 기준으로 계속 함수를 시키고 쪼갤수 없는 상황일 때 패턴을 그린다.
+
+# python에서 def 에서 return값 까지 주기
+
+``` python
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+  def definition_name(self, l1: ListNode, l2: ListNode) -> ListNode:
+    return 
+```
+
+
 -------
 참고 자료:
 http://seorenn.blogspot.com/2011/04/python-isdigit.html
