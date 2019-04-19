@@ -28,24 +28,12 @@ comments: true
 - 상속보다는 구성(Composition) 을 이용
 - Interface와 로직의 class와의 관계를 composition 하고 유닛에서 상황에 맞는 로직을 쓰게끔 유도
 
->사전지식
 
-https://hyeonstorage.tistory.com/176 -> 접근제어자, 접근 권한
-- protected
-동일 패키지와 동일 패키지에 포함되지는 않지만 하위 클래스 관계에 있는 클래스도 접근할 수 있다.
+---
 
 https://hyeonstorage.tistory.com/146 ->여기에서 4번 보여주기
 
 
-
-출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
-
-출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
-
-출처: https://flowarc.tistory.com/entry/1-Strategy-Pattern [Jamin's Dev log]
-
-
----
 https://flowarc.tistory.com/entry/1-Strategy-Pattern
 
 출처: https://flowarc.tistory.com/entry/디자인-패턴-옵저버-패턴Observer-Pattern [Jamin's Dev log]
