@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "WAS와 웹서버(WAS 도입효과)"
+title: "[WAS와 Web-server 1편]WAS와 웹서버란?(WAS 도입효과)"
 category: Web
 tags: [ 'Web', 'WAS', 'web_server' ]
 comments: true
@@ -10,7 +10,13 @@ comments: true
 잘못된 부분이 있으면 덧글을 통해서 소통을 하면 더 좋은 글로 발전이 될 수 있을 것 같습니다.
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
+---
 
+
+이 글은 시리즈 물입니다.
+1편 : https://joosjuliet.github.io/was_vs_webserver/  
+2편 : https://joosjuliet.github.io/appache_tomcat  
+---
 
 <span style="background-color:yellow"><b> 웹 서버와 WAS를 구별 짓는 것은 동적 서버 콘텐츠를 수행하는가? 만약 수행한다면 WAS로 보면 된다. </b></span>
 
@@ -20,17 +26,17 @@ comments: true
 - 클라이언트로부터 HTTP 요청을 받아들이고, HTML 문서와 같은 웹 페이지를 정적으로 처리해 반환하는 프로그램
 - 웹 페이지를 클라이언트로 전달하고, 클라이언트로부터 컨텐츠를 전달 받는 역할
 - 인증, 정적 컨텐츠 관리, HTTPS지원, 컨텐츠 압축, 가상 호스팅, 대용량 파일 지원 등의 기능을 지원
-- Apache, 엔터프라이즈 서버, Nginx
+- <b>Apache</b>, 엔터프라이즈 서버, Nginx
 
 
 
 
 # WAS(Web Application Server)
-  - <span style="background-color:yellow"><b>HTTP를 통해 컴퓨터나, 장치에 애플리케이션을 수행해주는 미들웨어</b></span>
-  - <span style="background-color:yellow"><b>동적인 처리를 담당하는 서버</b></span>
-  - DB와 연결되어 데이터를 주고 받거나 프로그램으로 데이터 조작이 필요한 경우에는 WAS를 활용 해야 한다.
-  - 분산 트랜잭션, 보안, 메시징, 쓰레드 처리 등의 기능 처리
-  - Tomcat
+- <span style="background-color:yellow"><b>HTTP를 통해 컴퓨터나, 장치에 애플리케이션을 수행해주는 미들웨어</b></span>
+- <span style="background-color:yellow"><b>동적인 처리를 담당하는 서버</b></span>
+- DB 서버와 같이 서비스를 수행
+- 분산 트랜잭션, 보안, 메시징, 쓰레드 처리 등의 기능 처리
+- <b>Tomcat</b>
 - 실무에서 둘을 연동하여 사용하는데, WAS는 동적 처리에 최적화 되어 있는 서비스이기 때문에처리속도를 위해,  
 정적처리는 웹서버에서 처리를 하고, 동적 컨텐츠는 WAS에서 처리한다.
 
@@ -44,10 +50,12 @@ comments: true
   - Transaction 처리 자동화
   - Web Service 플랫폼으로써의 역할
 
-
+# was와 web서버
+<img alt="was_web-server" src = "/images/2019-04-05-appache_tomcat/was_web-server.png"/>
 
 
 # WAS 도입효과
+(사용 목적에 따라 다르다)
 - 안정된 시스템 구성
   - 안정적 서비스 보장, 자동적인 어플리케이션 복구 기능 제공, 업무 로직이 중간 어플리케이션 서버에 존재, 쉽고 빠르게 구축
 - DB성능 보장

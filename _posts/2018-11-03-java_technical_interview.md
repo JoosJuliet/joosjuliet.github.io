@@ -23,6 +23,14 @@ comments: true
 
 
 # 2. Interface, Abstract
+
+- interface랑 abstract 사용하는 이유
+  - 객체는 상태와 행동을 의미한다.
+  - 동물 객체는 특별한 무언가를 지칭해서 한것이 아니다.
+  - 특정 생명체(?)들을 가지고 이런 경우에는 동물이라고 하자! 한 것들이 동물이다.
+  - 즉 불완전한 것들이다.
+  - 그런것들을 interface와 abstract로 만든느 것이다. 
+
 - Interface
   - 특정 method 강제시키는 게 목적이다.
   - 일종의 추상 클래스
