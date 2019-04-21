@@ -1,13 +1,14 @@
 ---
 layout: post
 section-type: post
-title: "Flyweight Pattern(플라이급 패턴)이란?(feat. Java)"
+title: "Flyweight Pattern(플라이웨이트 패턴)이란?(feat. Java)"
 category: Spring
 tags: [ 'Java', 'SKEncarLunchStudy', 'FlyweightPattern', 'DesignPattern' ]
 comments: true
 ---
 
-[!flyweight_pattern](/images/2019-02-13-flyweight_pattern/flyweight_pattern.png)
+<img alt="success" src = "/images/2019-02-13-flyweight_pattern/flyweight_pattern.png"/>
+
 # Flyweight Pattern 패턴
 
 <span style="background-color:yellow"><b> 동일하거나 유사한 객체들끼리 공유하여 메모리 사용량을 최소화하는 소프트웨어 디자인 패턴 </b></span>
