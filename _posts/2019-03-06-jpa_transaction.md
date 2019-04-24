@@ -27,3 +27,13 @@ comments: true
 @transactional
 @transactional이란?
 https://lng1982.tistory.com/299
+
+aop와 transaction
+https://devks.tistory.com/38
+
+선언적 transaction
+https://snoopy81.tistory.com/332
+
+
+aop란?
+https://private.tistory.com/43
