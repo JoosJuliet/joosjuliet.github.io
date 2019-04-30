@@ -75,7 +75,9 @@ WAS에 웹 어플리케이션을 배포하기 위해서는 톰캣을 기준으�
 # 4. Aritifact란?
 - java 빌드 후 생성되는 것이 아티팩트(artifact)이다.
 - artefact는 영국식 영어에서 주로 사용하는 스펠링이고, artifact는 미국식 영어에서 주로 사용하는 스펠링 방식이다
-- (in Intelli J) artifact 의 output layout 속에 있는 available elements는 빌드시 사용되는 JAR 파일들이다.
+- (in Intelli J)
+  - Artifactes는 Build Setting이다.
+  - artifact 의 output layout 속에 있는 available elements는 빌드시 사용되는 JAR 파일들이다.
 
 
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "JPA에는 aggregate나 sum, max,min같은 함수가 없나?"
+title: "[작성중]JPA에는 aggregate나 sum, max,min같은 함수가 없나?"
 categories: Spring
 tags: [ 'Spring', 'orm', 'stream' ]
 comments: true

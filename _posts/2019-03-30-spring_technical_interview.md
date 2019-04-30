@@ -80,6 +80,10 @@ Maven 자체에 설정 값을 바꾸는 일은 일단 잘 없으므로 넘어가
 spring에서
 Django Debug Toolbar, Django Extensions Debugger 같은 거
 
+
+# 5. aop란?
+비즈니스 로직과 트랜잭션 경계설정의 분리를 통해 성격이 다른 코드를 각각 독릭적인 코드로 만들 수 있다.
+
 ---
 참고링크 :
 
