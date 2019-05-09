@@ -7,7 +7,15 @@ comments: false
 ---
 
 <center><a href="http://joosjuliet.github.io"><b>Joos</b></a></center>
+<!-- 사내 시스템 개발
+- oop를 생각하며 디자인을 함
+- 언제든 원하는 기능이 추가될 수 있게 낮은 결합력과 높은 응집도 신경을 써서 짰다.
 
+레거시 검색 서비스에 코드 추가 및 코드 개선
+- 주도적으로 레거시 극복을 해 나감
+- Dependency Breaking을 하는데 집중
+
+서비스에서 모니터링을 할 수 있게 로그를 수집하는 것을 중간에 둔 경험 -->
 # Profile
 <hr>
 ## Education
