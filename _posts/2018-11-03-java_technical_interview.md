@@ -29,7 +29,7 @@ comments: true
   - 동물 객체는 특별한 무언가를 지칭해서 한것이 아니다.
   - 특정 생명체(?)들을 가지고 이런 경우에는 동물이라고 하자! 한 것들이 동물이다.
   - 즉 불완전한 것들이다.
-  - 그런것들을 interface와 abstract로 만든느 것이다. 
+  - 그런것들을 interface와 abstract로 만든느 것이다.
 
 - Interface
   - 특정 method 강제시키는 게 목적이다.
@@ -86,7 +86,7 @@ comments: true
 
 # 6. Primitive type vs Reference type
 - Primitive type
-  - 변수에 값 자체를 저장
+  - <b>변수에 값 자체를 저장</b>
   - 종류
     - 정수형 byte, short, int, long
     - 실수형 float, double
@@ -96,10 +96,11 @@ comments: true
 예) int→Integer, char→Character(int와 char를 제외한 Primitive type의 다른 자료형들은 맨 앞 알파벳을 대문자로 바꿔주면 된다. float→Float)*
 
 - Reference type
-  - 메모리상에 객체가 있는 위치를 저장
+  - <b>메모리상에 객체가 있는 위치를 저장</b>
   - 종류
     - Class, Interface, Array 등
 
+primitive type은 javaVM에서 지원하는 비객체형 타입. 비객체형 타입은 객체형 타입은 아니지만 예외적으로 지원을 해야하는 기본형 타입. 자바에서 사용하는 메소드를 통해서 사용이 불가능하다. 자바에서 기본형으로 사용가능하지만 객체로는 가공할 수 없다. primitive type은 stack영역에서 생성,종료 refference type은 java에서 최상인 Object클래스를 상속하는 모든 클래스이다. 물론 new로 인하여 생성하는 것들은 메모리영역인 heap영역에 생성을 하게 되고, garbage collector라는 곳에 등록하게 되서 버려진다. String은 또 예외인데. 다시 정리해야
 
 # 7. string과 char 차이
 char 는 단일 문자
@@ -273,6 +274,9 @@ c. 개발자를 위한 다양한 도구들이 지원된다.
 http://rongscodinghistory.tistory.com/m/44  
 http://hahahoho5915.tistory.com/16 [넌 잘하고 있어]  
 https://yolojeb.tistory.com/20 [개발 일기]  
+
+6번 참고:
+https://inetizenseo.tistory.com/12
 
 21번 구조체에 대한 설명  
 http://knkky.tistory.com/53 [남깐느]  
