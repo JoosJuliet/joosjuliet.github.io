@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[Null Safety] @NOTNULL"
+title: "[Null Safety] NPE란? 극복법은? Optional 과 @NotEmpty, @NotBlank, @NotNull 차이"
 category: Algorithm
 tags: [ 'algorithm', 'python' ]
 comments: true
