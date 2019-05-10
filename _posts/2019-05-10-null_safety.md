@@ -121,13 +121,6 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 
 
 
-
-# 대체 왜?
-
-- reference type을 다룰 때는 항상 null 값에 대비하여 프로그래밍을 해야 한다.
-- 이 과정에서 때로는 불필요한 null 확인 코드가 포함되며, nested object 참조 과정에서 반복적인 null 확인으로 코드의 가독성을 떨어트리곤 한다.
-
-
 ---
 참조 :
 참고자료: https://www.baeldung.com/java-bean-validation-not-null-empty-blank  
