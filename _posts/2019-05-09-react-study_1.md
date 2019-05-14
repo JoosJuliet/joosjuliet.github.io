@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[React] react 점심스터디(react-route, link, exact, NavLink, props)"
+title: "[React] react 점심스터디 1일차 (react-route, link, exact, NavLink, props)"
 category: React
 tags: [ 'React', 'SKEncarLunchStudy' ]
 comments: true
