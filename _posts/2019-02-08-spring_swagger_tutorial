@@ -8,199 +8,26 @@ http://code.i-harness.com/ko-kr/q/9e17
 hashmap vs hashtable
 
 ---
-java.util.Optional<T>라는 새로운 클래스를 도입하였습니다! :tada:
-
-Optional이란?
-값이 있거나 또는 없는 경우를 표현하기 위한 클래스
-map, filter등의 고차원 함수를 가짐.
-Optional는 “존재할 수도 있지만 안 할 수도 있는 객체”, 즉, “null이 될 수도 있는 객체”을 감싸고 있는 일종의 래퍼 클래스입니다.
-원소가 없거나 최대 하나 밖에 없는 Collection이나 Stream으로 생각하셔도 좋습니다.
-직접 다루기에 위험하고 까다로운 null을 담을 수 있는 특수한 그릇으로 생각하시면 이해가 쉬우실 것 같습니다.
-
-Optional의 효과
-Optional로 객체를 감싸서 사용하시게 되면…
-
-NPE를 유발할 수 있는 null을 직접 다루지 않아도 됩니다.
-수고롭게 null 체크를 직접 하지 않아도 됩니다.
-명시적으로 해당 변수가 null일 수도 있다는 가능성을 표현할 수 있습니다. (따라서 불필요한 방어 로직을 줄일 수 있습니다.)
-Optional 기본 사용법
-자, 그럼 각설하고 java.util.Optional<T> 클래스를 어떻게 사용하는지 좀 더 구체적으로 살펴볼까요?
-
-Optional 변수 선언하기
-제네릭을 제공하기 때문에, 변수를 선언할 때 명기한 타입 파라미터에 따라서 감쌀 수 있는 객체의 타입이 결정됩니다.
-
-
-``` Optional<Order> maybeOrder; // Order 타입의 객체를 감쌀 수 있는 Optional 타입의 변수 ```
-
-Optional 클래스는 간편하게 객체 생성을 할 수 있도록 3가지 정적 팩토리 메소드를 제공합니다.
-
-Optional.empty()
-null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵니다.
-이 비어있는 객체는 Optional 내부적으로 미리 생성해놓은 싱글턴 인스턴스입니다.
-
-1
-Optional<Member> maybeMember = Optional.empty();
-Optional.of(value)
-null이 아닌 객체를 담고 있는 Optional 객체를 생성합니다.
-null이 넘어올 경우, NPE를 던지기 때문에 주의해서 사용해야 합니다.
-
-1
-Optional<Member> maybeMember = Optional.of(aMember);
-Optional.ofNullable(value)
-null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.
-Optional.empty()와 Optional.ofNullable(value)를 합쳐놓은 메소드라고 생각하시면 됩니다.
-null이 넘어올 경우, NPE를 던지지 않고 Optional.empty()와 동일하게 비어 있는 Optional 객체를 얻어옵니다.
-해당 객체가 null인지 아닌지 자신이 없는 상황에서는 이 메소드를 사용하셔야 합니다.
-
-1
-2
-Optional<Member> maybeMember = Optional.ofNullable(aMember);
-Optional<Member> maybeNotMember = Optional.ofNullable(null);
-
-
-
-위에서 설명드린 것 처럼 get() 메소드는 비어있는 Optional 객체를 대상으로 호출할 경우, 예외를 발생시키므로 다음과 같이 객재 존재 여부를 bool 타입으로 반환하는 isPresent()라는 메소드를 통해 null 체크가 필요합니다.
-
-1
-2
-3
-4
-5
-6
-7
-8
-String text = getText();
-Optional<String> maybeText = Optional.ofNullable(text);
-int length;
-if (maybeText.isPresent()) {
-	length = maybeText.get().length();
-} else {
-	length = 0;
-}
-같은 코드를 다시 Optional 없이 작성해보겠습니다.
-
-1
-2
-3
-4
-5
-6
-7
-String text = getText();
-int length;
-if (text != null) {
-	length = maybeText.get().length();
-} else {
-	length = 0;
-}
-위 코드를 보시고 이렇게 말씀하시는 분들이 많으실 겁니다. “이럴꺼면 뭐하러 Optional을 사용하는 걸까요? Optional을 사용해서 도대체 뭐가 좋아진거죠?
-사실 이렇게 코딩하실 거라면 차라리 Optional을 사용하지 않는 편이 나을 것 같습니다.”
-
-안타깝게도 Optional 관련해서 개발자들이 제일 많이 하는 질문 중 하나가 “Optional 적용 후 어떻게 null 체크를 해야하나요?” 입니다.
-사실 이 질문에 대한 답변은 “null 체크를 하실 필요가 없으시니 하시면 안 됩니다.” 입니다.
-
-제 말이 무슨 말인지 혼란스러우신 분도 있으실 겁니다. :dizzy_face: 저도 처음 Optional을 접했을 때 그랬으니까요.
-우리가 Optional을 사용하려는 이유는 앞에서 설명드렸던 것 처럼 고통스러운 null 처리를 직접하지 않고 Optional 클래스에 위임하기 위함입니다.
-
-존에 조건문으로 null을 대하던 생각을 함수형 사고로 완전히 새롭게 바꿔야 합니다.
-
-1
-int length = Optional.ofNullable(getText()).map(String::length).orElse(0);
-
 optional을 optional 답게 쓰는 법
 http://www.daleseo.com/java8-optional-effective/
 
 swift optional 좀 더 이해가 잘된다.
 https://zeddios.tistory.com/16
 
-aop
-
-기능에 중점둬서 나눌수도 있다.
-
-
+aop - 기능에 중점둬서 나눌수도 있다.
 aop정리(3) ->기억보다 기록
-
-
-
 
 -> 이모든게 결국은 srp (single response principle)
 
 
+<!-- 신용결제 납부 처리밑의 것, payment/service/PaymentService.java
+성철 스프링캠프
+
+
+# stream이란?
+-  ::란?
+# cookie session
 
 
 
-
-// /Users/encr/encarweb/WebContent/WEB-INF/jsp/layout/header.jsp
-//	여기서는 web-inf속에 있는 것을 고쳐야 한다.
-
-
-
-
-	public static String nullToString(String str) {
-		String returnstr = "";
-
-		try {
-			if (str == null) {
-				returnstr = "";
-			} else if ("NULL".equals(str.toUpperCase())) {
-				returnstr = "";
-			} else {
-				returnstr = str.trim();
-			}
-		} catch (Exception e) {
-			System.out.println("-- error: " + e.getMessage());
-			e.printStackTrace();
-			returnstr = "";
-		}
-
-		return returnstr;
-	}
-
-	public static boolean isNull(String str) {
-		if (nullToString(str).equals("")) {
-			return true;
-		}
-		return false;
-	}
-
-	/ 입력된 첫번째인자가 "" 인경우 0을 반환
-	public static String numberToZero(String str) {
-		if (str == null) {
-			return "0";
-		} else if (str.equals("")) {
-			return "0";
-		}
-		return str;
-	}
-
-	// 입력된 인자가 null 인경우 ""을 반환
-	public static String nullToBlank(String str) {
-		if (str == null) {
-			return "";
-		}
-		return str;
-	}
-
-	/**
-	 * TextArea에서 입력받은 캐리지 리턴값을 <BR>태그로 변환
-	 */
-	public static String nl2br(String comment) {
-		int length = comment.length();
-		StringBuffer buffer = new StringBuffer();
-
-		for (int i = 0; i < length; ++i) {
-			String comp = comment.substring(i, i + 1);
-			if ("\n".compareTo(comp) == 0) {
-				buffer.append("<BR>\r");
-			}
-			buffer.append(comp);
-		}
-		return buffer.toString();
-	}
-
-	public static long nullToLong(String str) {
-		if (isNull(str)) {
-			return 0;
-		}
-		return Long.parseLong(str);
-	}
+ -->
