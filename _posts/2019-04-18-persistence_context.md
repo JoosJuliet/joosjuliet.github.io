@@ -16,7 +16,7 @@ comments: true
 - Entity를 영구 저장하는 환경, 논리적 개념
 
 
-Entity Manager
+## Entity Manager
 - Entity 저장, 조회 시 Entity Manager는 영속성 컨텍스트에 Entity 보관, 관리
 - persist()
   - Entity Manager의 method는 Entity Manager를 사용해 회원 Entity를 영속성 context에 저장

@@ -11,11 +11,30 @@ comments: true
 [2탄 Hibernate의 구조를 알자!] https://joosjuliet.github.io/hibernate_structure/  
 [3탄 Hibernate가 어떻게 obejct를 만드는가?] https://joosjuliet.github.io/hibernate_first_step/  
 
-
+시작하기전 기본마음가짐:
 *db위주 프로그래밍에서 벗어나기*
 DB중심 위주의 프로그래밍이 아닌 현실 위쥐의 객체지향적 프로그래밍으로 전환해야겠다.
 - DB설계 → 프로그램설계 가 아니라
 - 프로그램 설계 → DB설계로 바꿔야겠다.
+
+
+# 영속성이란?
+
+# 영속성 컨텍스트의 이점
+- 1차 캐시
+
+# 캐시?
+- Insert를 한 뒤에 커밋을 하지 않고 Select를 하면 데이터가 나온다.
+- 그러면 이 데이터는 어디에 저장된 것일까?
+- 그것이 바로 캐시이다.
+- 즉, 실제 데이터베이스에 저장되진 않았지만 임시적으로 중간(캐시)에 저장된다.
+
+이것이 바로 영속성 컨텍스트이다.  
+
+
+트랜잭션을 위해 이 기능을 이용한다.  
+캐시에는 데이터가 아니고 객체형태로 들어간다.  
+
 
 # ORM이란?
 - <span style="background-color:yellow"><b>객체가 테이블이 되도록 매핑 시켜주는 프레임워크</b></span>
@@ -44,7 +63,6 @@ RDB는 데이터 중심으로 구조화 되어있고, 집합적인 사고를 요
 <span style="background-color:yellow"><b>JPA를 사용하기 위해서 JPA를 구현한 ORM 프레임워크</b></span>
 
 <img alt="success" src = "/images/2019-01-31-hibernate/Hibernate.png"/>
-
 
 
 ---

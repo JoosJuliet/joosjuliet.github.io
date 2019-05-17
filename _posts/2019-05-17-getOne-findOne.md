@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "lazy loading이란? getOne과 findOne차이?"
+title: "getOne과 findOne차이?"
 category: Spring
 tags: [ 'Spring', 'JPA' ]
 comments: true
@@ -11,17 +11,6 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 ---
-
-# lazyloading이란?
-- Lazy loading은 객체가 필요한 시점까지 객체 초기화를 연기하기 위해 컴퓨터 프로그래밍에서 일반적으로 사용되는 디자인 패턴
-
-- 필요한 정보 만 필요한 부분을로드하는 개념을 나타 내기 위해 데이터베이스에서 자주 사용되는 용어입니다.
-- 여러 테이블을 조인 한 레코드가 필요하다고 가정합니다.
-- 한 번에 모두 가져 오면 주 테이블 만 가져 오는 것보다 오래 걸릴 것입니다.
-- lazy-loading을 사용하면 나머지 정보는 필요한 경우에만 가져옵니다. 따라서 특정 시나리오에서는 실제로 '효율적인로드'입니다.
-
-참고자료 : https://code.i-harness.com/ko-kr/q/8db2
-
 
 # getOne vs findOne
 - getOne() 은 lazy-loading 을 통해 객체를 전달한다.
