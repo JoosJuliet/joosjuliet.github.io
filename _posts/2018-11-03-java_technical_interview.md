@@ -85,8 +85,12 @@ comments: true
 
 
 # 6. Primitive type vs Reference type
+- JAVA Primitive, Reference Type은 메모리 저장 방식이 다릅니다.
+- JAVA에 call-by-reference는 없습니다. pass-by-value reference 정보를 가진 객체가 복사됩니다.
+
 - Primitive type
   - <b>변수에 값 자체를 저장</b>
+  - Primitive Type 마다 사용하는 메모리 사이즈가 fix 되어있습니다.
   - 종류
     - 정수형 byte, short, int, long
     - 실수형 float, double
@@ -103,12 +107,21 @@ comments: true
 
 - Reference type
   - <b>메모리상에 객체가 있는 위치를 저장</b>
+  - 기본 1Byte + @ (class variable size의 합)의 메모리를 사용합니다.
   - 종류
     - Class, Interface, Array 등
   - reference type은 java에서 최상인 Object클래스를 상속하는 모든 클래스이다.
   - 물론 new로 인하여 생성하는 것들은 메모리영역인 heap영역에 생성을 하게 되고, garbage collector라는 곳에 등록하게 되서 버려진다.
 
-- String은 또 예외. 제임스 고슬링이 char의 array라 했다.
+
+*String*  
+- String은 좀 독특한 존재이다.
+- String은 reference Type 입니다.
+- String은 제임스 고슬링이 char의 array라 했다.
+- String은 String constant pool을 이용한 메모리 관리 합니다. 리터럴 방식으로 생성하면 컴파일러가 효율적으로 사용할수 있게 해줍니다.
+
+참고자료 : https://againsee.com/2018/06/15/java-datatype/
+
 
 # 7. string과 char 차이
 char 는 단일 문자
