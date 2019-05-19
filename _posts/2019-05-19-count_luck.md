@@ -14,6 +14,20 @@ comments: true
 
 문제 : https://www.hackerrank.com/challenges/count-luck/problem
 
+# 목표:
+- M에서 * 가기
+
+# 조건:
+- 선택지가 있을 때마다 count가 +1된다.
+- X, * 로 인해 선택지가 count가 늘지 않는다.
+
+# solution 설명 :
+1. M에서 * 로 간다.
+2. dfs를 이용해서 계속 돌아다닌다.
+2. 돌아다닐 때 지금 위치가 갈림길인지 아닌지 확인한다.
+3. 갈림길 이면 1, 아니면 X를 한다.
+4. * 을 만나면 끝!
+
 일단 is_splited_way은 오로지 갈림길인지 확인하고 X를 준다.
 그리고 어차피 M의 위치를 아니까 그걸 가지고 한다.
 가는길에 갈림길인 곳만 1로 되고 그것이 바로... !
@@ -100,3 +114,6 @@ def start():
 start()
 
 ```
+
+코드 출처:
+https://github.com/depromeet/algoStudy/blob/master/medium/1901/190107/count_luck_jang.py
