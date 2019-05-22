@@ -89,8 +89,6 @@ Optional.ofNullable(value)
 우리가 Optional을 사용하려는 이유는 고통스러운 null 처리를 직접하지 않고 Optional 클래스에 위임하기 위함입니다.
 
 # annotation으로 하는 법
-
-
 ## 코드
 ``` java
 @NotNull //return 값이 NotNull
@@ -111,7 +109,19 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 - @NotNull
   - nullvalues 검증
 
-## nullable
+
+
+
+
+## @NotNull vs @Column(nullable = false)
+*(in Hibernate)Column의 default는 nullable이다.*
+- @NotNull 은 JSR 303 Bean Validation annotation
+- @NotNull 은 db constraints를 신경쓰지 않는다.
+- @Column(nullable = false)은 열을 null이 아니게 선언하는 JPA 방식입니다.
+- @NotNull 는 유효성 검증을위한 것이고 @Column(nullable = false)는 데이터베이스 스키마 세부 사항을 나타 내기위한 것
+- 즉 validation annotation에 대한 Hibernate의 도움을 받고있다.
+
+
 
 
 ## 설정법
@@ -121,7 +131,13 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 
 
 
+
+*비슷한 팁*
+- 빈 list를 줄 때는 Collections.emptyList()로 쓰는 게 더 좋다.
+
 ---
 참조 :
 참고자료: https://www.baeldung.com/java-bean-validation-not-null-empty-blank  
-http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220791552394
+http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220791552394  
+
+https://stackoverflow.com/questions/7439504/confusion-notnull-vs-columnnullable-false  
