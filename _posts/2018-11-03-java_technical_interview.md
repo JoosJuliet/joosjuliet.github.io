@@ -7,6 +7,21 @@ tags: [ 'interview', 'technology', 'it', 'Java' ]
 comments: true
 ---
 
+이글은 tech interview를 볼 때 기본적으로 물어보는 것들을 정리하기 위해 쓴 글입니다.
+깊이 보다는 compact 성을 강조합니다.
+---
+이 글은 시리즈 물입니다.
+
+[tech interview 1 편] DB https://joosjuliet.github.io/db_technical_interview/  
+[tech interview 2 편] JAVA https://joosjuliet.github.io/java_technical_interview/  
+[tech interview 3 편] Network https://joosjuliet.github.io/network_technical_interview/  
+[tech interview 4 편] Operating System
+ https://joosjuliet.github.io/os_technical_interview/  
+[tech interview 5 편] WEB https://joosjuliet.github.io/web_technical_interview/  
+[tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
+---
+
+
 아무래도 java를 쓰는 회사들이 많아서 신입면접에는 java에 대한 질문도 꽤 하는 것 같다.
 1편과 마찬가지로 얕게만 쓴다
 
@@ -58,6 +73,22 @@ comments: true
   - extends 키워드
   - 객체를 생성할 수 없다.
   - 생성자를 선언할 수 있다.(그렇지만 생성자를 직접 호출하여 객체를 생성할 수는 없다. super() 메소드를 이용),
+
+
+그런데 JPA에서는 직접 entity attribute에 intntity attribute에 interface불가능
+
+directly mapping interfaces as an entity attribute is not supported by JPA.
+
+You can only map top level classes directly annotated with @Entity. This top level class may implement an interface though.
+
+This feature has been requested and discussed for a long time.
+
+Also take a look at this and this.
+
+Depending on what you're trying to accomplish, @Inheritance annotation with table-per-class strategy could be an option.
+
+
+출처: https://stackoverflow.com/questions/12627607/jpa-entity-with-a-interface-attribute-is-it-possible
 
 
 
