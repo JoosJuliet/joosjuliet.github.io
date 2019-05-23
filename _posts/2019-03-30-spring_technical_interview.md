@@ -81,7 +81,15 @@ Maven 자체에 설정 값을 바꾸는 일은 일단 잘 없으므로 넘어가
 2) pom.xml
 하나의 자바 프로젝트에 빌드 툴로 maven을 설정했다면, 프로젝트 최상위 디렉토리에 "pom.xml"이라는 파일이 생성되었을 것이다. pom.xml은 POM(Project Object Model)을 설정하는 부분으로 프로젝트 내 빌드 옵션을 설정하는 부분이다. 꼭 pom.xml이라는 이름을 가진 파일이 아니라 다른 파일로 지정할 수도 있다. (mvn -f ooo.xml test) 그러나 maven의 원칙(습관에 의한 편의성?)으로 다른 개발자들이 헷갈릴 수 있으므로 그냥 pom.xml으로 쓰기를 권장한다.
 
-# 4. EntityGraph란?
+# 4. Entity란
+- JPA entity class는 POJO(Plain Old Java Object)이다.
+- 데이터베이스에있는 객체를 나타내는 능력을 가진 것으로 annotated된 일반 자바 클래스.
+- JPA를 사용한 database에서 특정 object를 저장하기 위해서 우리는 entity class를 저장해야한다.
+- 개념적으로 이는 serialize class와 비슷하며, serialize할 수 있는 능력이 있다는 것을 보여준다.
+
+(Entity에 관련된 내용을 담은 url : https://joosjuliet.github.io/entity/)
+
+## 4-1. EntityGraph란?
 - 엔티티들은 서로 연관되어 있는 관계가 보통이며 이 관계는 그래프로 표현이 가능
 - EntityGraph는 JPA가 어떤 엔티티를 불러올 때 이 엔티티와 관계된 엔티티를 불러올 것인지에 대한 정보를 제공
 
