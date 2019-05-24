@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "(작성중) javascript falsy"
+title: "(작성중) [react study 4]javascript falsy"
 category: Javascript
 tags: [ 'Javascript', 'falsy' ]
 comments: true
