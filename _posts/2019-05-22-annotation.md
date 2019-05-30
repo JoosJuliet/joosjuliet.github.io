@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: " Annotation이란? Reflection이란? @Component? @Repository? @Service? @Controller?"
-category: Algorithm
-tags: [ 'algorithm', 'python' ]
+title: " Annotation이란? Reflection이란?  @Component와  @Repository, @Service, @Controller 차이"
+category: Spring
+tags: [ 'Spring', 'Java', '@Component', '@Repository', '@Service', '@Controller',  'Annotation', 'Reflection' ]
 comments: true
 ---
 제 블로그의 모든 글은 IMHO로 쓴 것입니다.
@@ -89,16 +89,25 @@ annotation 에 사용되는 annotation
 
 
 
+# @Component? @Repository? @Service? @Controller? 차이?
+스프링 레퍼런스 5장 10.1절에 보면 .
+```
+@Repository, @Service, and @Controller are specializations of @Component for more specific use cases, for example, in the persistence, service, and presentation layers, respectively.
+```
+라고 나와있다.
+
+즉 @Component 의 특정 종류들이 바로 @Repository, @Service, @Controller 이다.
 
 
-┌────────────┬─────────────────────────────────────────────────────┐
-│ Annotation │ Meaning                                             │
-├────────────┼─────────────────────────────────────────────────────┤
-│ @Component │ generic stereotype for any Spring-managed component │
-│ @Repository│ stereotype for persistence layer                    │
-│ @Service   │ stereotype for service layer                        │
-│ @Controller│ stereotype for presentation layer (spring-mvc)      │
-└────────────┴─────────────────────────────────────────────────────┘
+
+- @Component  
+  - 모든 Spring-managed component 의 일반적인 stereotype
+- @Repository
+  - persistence layer(영속성을 가지는 [파일, db등]) stereotype
+- @Service    
+  - service layer의 stereotype
+- @Controller
+  - presentation layer(spring-mvc)의 stereotype
 
 
 ---
@@ -111,3 +120,6 @@ annotation 에 사용되는 annotation
 
 2. Annotation 좋은 글이자 참고자료:
 http://www.nextree.co.kr/p5864/
+
+3. @Component 와  @Repository, @Service, @Controller 차이
+출처: https://namocom.tistory.com/421 [나모의 노트]
