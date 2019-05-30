@@ -104,6 +104,14 @@ Django Debug Toolbar, Django Extensions Debugger 같은 거
 # 5. aop란?
 비즈니스 로직과 트랜잭션 경계설정의 분리를 통해 성격이 다른 코드를 각각 독릭적인 코드로 만들 수 있다.
 
+# 6. @Embedded - @Embeddable vs @OneToOne
+객체를 쪼개고 싶을 때 주로 @Embedded - @Embeddable, @OneToOne 을 쓴다.
+@Embedded - @Embeddable 는 table이 분리되어 있지 않지만 종속관계에 있다.
+@OneToOne 은 table도 분리하고, 부모와 자식 객체의 라이프사이클이 하나다.
+
+좀 더 자세한 설명은 :  
+https://joosjuliet.github.io/embedded-embeddable  
+
 ---
 참고링크 :
 
