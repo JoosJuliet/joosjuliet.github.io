@@ -7,46 +7,59 @@ tags: [ 'interview', 'technology', 'it', 'OS' ]
 comments: true
 ---
 
+이글은 tech interview를 볼 때 기본적으로 물어보는 것들을 정리하기 위해 쓴 글입니다.
+깊이 보다는 compact 성을 강조합니다.
+---
+이 글은 시리즈 물입니다.
+
+[tech interview 1 편] DB https://joosjuliet.github.io/db_technical_interview/  
+[tech interview 2 편] JAVA https://joosjuliet.github.io/java_technical_interview/  
+[tech interview 3 편] Network https://joosjuliet.github.io/network_technical_interview/  
+[tech interview 4 편] Operating System
+ https://joosjuliet.github.io/os_technical_interview/  
+[tech interview 5 편] WEB https://joosjuliet.github.io/web_technical_interview/  
+[tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
+---
 
 
-1. What is an operating system?
+# 1. What is an operating system?
 
 An operating system is a program that acts as an intermediary between the user and the computer hardware. The purpose of an OS is to provide a convenient environment in which user can execute programs in a convenient and efficient manner.
 
 
-2. What are the different operating systems?
+# 2. What are the different operating systems?
 
-1.     Batched operating systems
+# 3. Batched operating systems
 
-2.     Multi-programmed operating systems
+# 4. Multi-programmed operating systems
 
-3.     timesharing operating systems
+# 5. timesharing operating systems
 
-4.     Distributed operating systems
+# 6. Distributed operating systems
 
-5.     Real-time operating systems
-
-
+# 7. Real-time operating systems
 
 
-3. What are the basic functions of an operating system?
+
+
+# 8. What are the basic functions of an operating system?
 
 Operating system controls and coordinates the use of the hardware among the various applications programs for various uses. Operating system acts as resource allocator and manager. Also operating system is control program which controls the user programs to prevent errors and improper use of the computer. It is especially concerned with the operation and control of I/O devices.
 
 
 
-4. What is kernel?
+# 9. What is kernel?
 
 Kernel is the core and essential part of computer operating system that provides basic services for all parts of OS.
 
 
-6. What is dead lock?
+# 10. What is dead lock?
 
 Deadlock is a situation or condition where the two processes are waiting for each other to complete so that they can start. This result both the processes to hang.
 
 
 
-7. What is a process?
+# 11. What is a process?
 
 A program in execution is called a process.
 
@@ -56,7 +69,7 @@ Processes are of two types:
 
 
 
-8. What are the states of a process?
+# 12. What are the states of a process?
 
 1. New
 2. Running
@@ -65,7 +78,7 @@ Processes are of two types:
 5. Terminated
 
 
-9. What is starvation and aging?
+# 13. What is starvation and aging?
 
 Starvation is Resource management problem where a process does not get the resources it needs for a long time because the resources are being allocated to other processes.
 
@@ -73,30 +86,30 @@ Aging is a technique to avoid starvation in a scheduling system.
 
 
 
-10. What is semaphore?
+# 14. What is semaphore?
 
 Semaphore is a variable, whose status reports common resource, Semaphore is of two types one is Binary semaphore and other is Counting semaphore.
 
 
 
-11. What is context switching?
+# 15. What is context switching?
 
 Transferring the control from one process to other process requires saving the state of the old process and loading the saved state for new process. This task is known as context switching.
 
 
 
-12. What is a thread?
+# 16. What is a thread?
 
 A thread is a program line under execution. Thread sometimes called a light-weight process, is a basic unit of CPU utilization; it comprises a thread id, a program counter, a register set, and a stack
 
 
-13. What is process synchronization?
+# 17. What is process synchronization?
 
 A situation, where several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place, is called race condition. To guard against the race condition we need to ensure that only one process at a time can be manipulating the same data. The technique we use for this is called process synchronization.
 
 
 
-14. What is virtual memory?
+# 18. What is virtual memory?
 
 Virtual memory is hardware technique where the system appears to have more memory that it actually does. This is done by time-sharing, the physical memory and storage parts of the memory one disk when they are not actively being used.
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[Null Safety] NPE란? 극복법은? Optional 과 @NotEmpty, @NotBlank, @NotNull 차이"
+title: "[Null Safety 1편] NPE(NullPointerException)란? 극복법은? @NotEmpty, @NotBlank, @NotNull 차이란? @Column(nullable = false)이란? @Nullable이란? "
 category: Algorithm
 tags: [ 'algorithm', 'python' ]
 comments: true
@@ -10,6 +10,10 @@ comments: true
 잘못된 부분이 있으면 덧글을 통해서 소통을 하면 더 좋은 글로 발전이 될 수 있을 것 같습니다.
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
+---
+이 글은 시리즈 물입니다.
+[Null Safety 1편] NPE(NullPointerException)란? 극복법은? @NotEmpty, @NotBlank, @NotNull 차이란? @Column(nullable = false)이란? @Nullable이란? https://joosjuliet.github.io/orm_jpa_hibernate/  
+[Null Safety 2편] Optional이란? https://joosjuliet.github.io/optional/  
 ---
 
 # 시작하는글
@@ -89,8 +93,6 @@ Optional.ofNullable(value)
 우리가 Optional을 사용하려는 이유는 고통스러운 null 처리를 직접하지 않고 Optional 클래스에 위임하기 위함입니다.
 
 # annotation으로 하는 법
-
-
 ## 코드
 ``` java
 @NotNull //return 값이 NotNull
@@ -111,8 +113,23 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 - @NotNull
   - nullvalues 검증
 
-## nullable
 
+
+
+
+## @NotNull vs @Column(nullable = false)
+*(in Hibernate)Column의 default는 nullable이다.*
+- @NotNull 은 JSR 303 Bean Validation annotation
+- @NotNull 은 db constraints를 신경쓰지 않는다.
+- @Column(nullable = false)은 열을 null이 아니게 선언하는 JPA 방식입니다.
+- @NotNull 는 유효성 검증을위한 것이고 @Column(nullable = false)는 데이터베이스 스키마 세부 사항을 나타 내기위한 것
+- 즉 validation annotation에 대한 Hibernate의 도움을 받고있다.
+
+
+
+## @Nullable 이란?
+- 메서드가 null 값을 받아들이는지, 그리고 메서드를 재정의하는 경우 null 값을 받아 들여야한다는 것을 분명히합니다.
+또한 FindBugs 같은 코드 분석기에 대한 힌트 역할을합니다. 예를 들어, 먼저 해당 메소드가 null을 확인하지 않고 인수를 역 참조하면 FindBugs가 경고를 내 보냅니다.
 
 ## 설정법
 - preferenes/configure annotations 에 스프링에 관련된 annotation이 없다. 추가 해야한다.
@@ -121,7 +138,50 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 
 
 
+@Nullable: 널 값이 허용되며 예상되어야 함
+@NonNullByDefault: 널 어노테이션이 없는 메소드 서명의 유형은 널이 아닌 항목으로 간주됩니다.
+
+어노테이션 @NonNull 및 @Nullable은 다음 위치에서 지원됩니다.
+
+메소드 매개변수
+메소드 리턴(구문상 여기에서는 메소드 어노테이션이 사용됨)
+로컬 변수
+필드
+Java 8에서는 추가 위치에 널 유형 어노테이션으로 어노테이션을 작성할 수 있습니다.
+@NonNullByDefault는 다음에 제공됨
+
+메소드 - 이 메소드의 서명에서 모든 유형에 영향을 줌
+유형(클래스, 인터페이스, 열거) - 유형 본문의 모든 메소드에 영향을 줌
+패키지(package-info.java 파일을 통해) - 패키지에서 모든 유형에 영향을 줌
+
+
+널 어노테이션으로 표현할 수 있는 세 가지 레벨이 있습니다.
+
+리더(사용자 및 컴파일러)에 대한 산발적인 힌트
+규약에 의한 디자인: 일부 또는 모든 메소드에 대한 API 스펙
+확장 유형 시스템을 사용하는 전체 스펙
+
+
+nullable-annotation-usage
+This annotation is commonly used to eliminate NullPointerExceptions. @Nullable is often says that this parameter might be null. Good example of such behaviour can be found in Google Guice. In this lightweight dependency injection framework you tell that this dependency might be null. If you would try to pass null and without annotation the framework would refuse to do it's job.
+
+What is more @Nullable might be used with @NotNull annotation. Here you can find some tips how to use them properly. Code inspection in IntelliJ checks the annotations and helps to debug the code.
+
+https://stackoverflow.com/questions/14076296/nullable-annotation-usage/14076320
+
+
+
+
+*비슷한 팁*
+- 빈 list를 줄 때는 Collections.emptyList()로 쓰는 게 더 좋다.
+
 ---
 참조 :
 참고자료: https://www.baeldung.com/java-bean-validation-not-null-empty-blank  
-http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220791552394
+http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220791552394  
+
+https://stackoverflow.com/questions/7439504/confusion-notnull-vs-columnnullable-false  
+
+https://codeday.me/ko/qa/20190306/6221.html  
+https://www.ibm.com/support/knowledgecenter/ko/SSRTLW_9.6.0/org.eclipse.jdt.doc.user/tasks/task-using_null_annotations.htm  
+http://wonwoo.ml/index.php/post/1987  

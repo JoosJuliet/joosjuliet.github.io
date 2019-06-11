@@ -10,7 +10,19 @@ comments: true
 잘못된 부분이 있으면 덧글을 통해서 소통을 하면 더 좋은 글로 발전이 될 수 있을 것 같습니다.
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
+---
+이글은 tech interview를 볼 때 기본적으로 물어보는 것들을 정리하기 위해 쓴 글입니다.
+깊이 보다는 compact 성을 강조합니다.
+---
+이 글은 시리즈 물입니다.
 
+[tech interview 1 편] DB https://joosjuliet.github.io/db_technical_interview/  
+[tech interview 2 편] JAVA https://joosjuliet.github.io/java_technical_interview/  
+[tech interview 3 편] Network https://joosjuliet.github.io/network_technical_interview/  
+[tech interview 4 편] Operating System
+ https://joosjuliet.github.io/os_technical_interview/  
+[tech interview 5 편] WEB https://joosjuliet.github.io/web_technical_interview/  
+[tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
 ---
 # 1. Spring Framework(스프링 프레임워크)
 
@@ -69,7 +81,15 @@ Maven 자체에 설정 값을 바꾸는 일은 일단 잘 없으므로 넘어가
 2) pom.xml
 하나의 자바 프로젝트에 빌드 툴로 maven을 설정했다면, 프로젝트 최상위 디렉토리에 "pom.xml"이라는 파일이 생성되었을 것이다. pom.xml은 POM(Project Object Model)을 설정하는 부분으로 프로젝트 내 빌드 옵션을 설정하는 부분이다. 꼭 pom.xml이라는 이름을 가진 파일이 아니라 다른 파일로 지정할 수도 있다. (mvn -f ooo.xml test) 그러나 maven의 원칙(습관에 의한 편의성?)으로 다른 개발자들이 헷갈릴 수 있으므로 그냥 pom.xml으로 쓰기를 권장한다.
 
-# 4. EntityGraph란?
+# 4. Entity란
+- JPA entity class는 POJO(Plain Old Java Object)이다.
+- 데이터베이스에있는 객체를 나타내는 능력을 가진 것으로 annotated된 일반 자바 클래스.
+- JPA를 사용한 database에서 특정 object를 저장하기 위해서 우리는 entity class를 저장해야한다.
+- 개념적으로 이는 serialize class와 비슷하며, serialize할 수 있는 능력이 있다는 것을 보여준다.
+
+(Entity에 관련된 내용을 담은 url : https://joosjuliet.github.io/entity/)
+
+## 4-1. EntityGraph란?
 - 엔티티들은 서로 연관되어 있는 관계가 보통이며 이 관계는 그래프로 표현이 가능
 - EntityGraph는 JPA가 어떤 엔티티를 불러올 때 이 엔티티와 관계된 엔티티를 불러올 것인지에 대한 정보를 제공
 
@@ -83,6 +103,14 @@ Django Debug Toolbar, Django Extensions Debugger 같은 거
 
 # 5. aop란?
 비즈니스 로직과 트랜잭션 경계설정의 분리를 통해 성격이 다른 코드를 각각 독릭적인 코드로 만들 수 있다.
+
+# 6. @Embedded - @Embeddable vs @OneToOne
+객체를 쪼개고 싶을 때 주로 @Embedded - @Embeddable, @OneToOne 을 쓴다.
+@Embedded - @Embeddable 는 table이 분리되어 있지 않지만 종속관계에 있다.
+@OneToOne 은 table도 분리하고, 부모와 자식 객체의 라이프사이클이 하나다.
+
+좀 더 자세한 설명은 :  
+https://joosjuliet.github.io/embedded-embeddable  
 
 ---
 참고링크 :

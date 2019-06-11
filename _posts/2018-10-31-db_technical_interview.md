@@ -6,9 +6,20 @@ categories: Tech_Interview
 tags: [ 'interview', 'technology', 'it', 'DB' ]
 comments: true
 ---
-
 이글은 tech interview를 볼 때 기본적으로 물어보는 것들을 정리하기 위해 쓴 글입니다.
 깊이 보다는 compact 성을 강조합니다.
+---
+이 글은 시리즈 물입니다.
+
+[tech interview 1 편] DB https://joosjuliet.github.io/db_technical_interview/  
+[tech interview 2 편] JAVA https://joosjuliet.github.io/java_technical_interview/  
+[tech interview 3 편] Network https://joosjuliet.github.io/network_technical_interview/  
+[tech interview 4 편] Operating System
+ https://joosjuliet.github.io/os_technical_interview/  
+[tech interview 5 편] WEB https://joosjuliet.github.io/web_technical_interview/  
+[tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
+---
+
 
 1. db 정규화란?
 관계형 db에서 중복을 최소화하기 위해 db를 구조화하는 작업입니다.
