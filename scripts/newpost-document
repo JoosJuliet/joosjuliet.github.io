@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+POSTS_DIR = '_posts/'
+post = ARGV[0]
+File.open(POSTS_DIR + Date.today.strftime("%Y-%m-%d-") + post + '.md', 'w') {|f| f.write(
+  "---\nlayout: post\nsection-type: post\ntitle: \"Title\"\ncategory: Spring\ntags: [ 'spring', 'java' ]\ncomments: true\n---\n제 블로그의 모든 글은 IMHO로 쓴 것입니다.\n잘못된 부분이 있으면 덧글을 통해서 소통을 하면 더 좋은 글로 발전이 될 수 있을 것 같습니다.\n그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.\n감사합니다:)\n")
+}
+puts('[+] Created ' + post + ' post')

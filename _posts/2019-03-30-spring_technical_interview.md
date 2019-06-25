@@ -112,6 +112,9 @@ Django Debug Toolbar, Django Extensions Debugger 같은 거
 좀 더 자세한 설명은 :  
 https://joosjuliet.github.io/embedded-embeddable  
 
+# 7.
+
+
 ---
 참고링크 :
 
