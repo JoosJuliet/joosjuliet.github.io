@@ -101,7 +101,10 @@ spring에서
 Django Debug Toolbar, Django Extensions Debugger 같은 거
 
 
-# 5. aop란?
+# 5. aop(aspect oriented Programming)란?
+흩어진 aspect를 모듈화 할 수 있는 프로그래밍
+oop를 보완하는 수단(aspect를 한곳에 모음으로서)
+
 비즈니스 로직과 트랜잭션 경계설정의 분리를 통해 성격이 다른 코드를 각각 독릭적인 코드로 만들 수 있다.
 
 # 6. @Embedded - @Embeddable vs @OneToOne
@@ -111,6 +114,32 @@ Django Debug Toolbar, Django Extensions Debugger 같은 거
 
 좀 더 자세한 설명은 :  
 https://joosjuliet.github.io/embedded-embeddable  
+
+
+
+
+1. AOP(aspect oriented Programming)란?
+2. Interface와 abstract의 차이
+3. DI란?
+3. IoC란?
+4. IoC 컨테이너란?
+5. Reflection이란?
+
+5. 데이터베이스 인덱스의 용도, 장단점 등.. 아는대로 다 말하기(B Tree, B+ Tree, 어느 상황에 어떻게 쓰이는 지)
+6. 데이터베이스 설계한다면 어떤 순서로?
+7. 트랜잭션에 대해서 아는대로(ACID, lock, Isolation Level)
+8. 알고있는 디자인 패턴에 대해 설명하고, 구현까지 해보기 ( 싱글턴 제외 )
+9. 제 1~3 정규화에 대해 아는대로 설명 (정규화의 목적 포함)
+10. overloading과 overriding의 차이
+11. 다형성에 대해 설명
+12. LinkedList와 ArrayList의 차이
+13. MVC 패턴
+14. JVM의 역할에 대해서 설명
+15. 가비지 컬렉션 동작 방식
+16. 비동기와 동기의 차이점
+
+
+
 
 ---
 참고링크 :
