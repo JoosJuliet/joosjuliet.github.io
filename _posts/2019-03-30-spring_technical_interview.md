@@ -107,6 +107,9 @@ oop를 보완하는 수단(aspect를 한곳에 모음으로서)
 
 비즈니스 로직과 트랜잭션 경계설정의 분리를 통해 성격이 다른 코드를 각각 독릭적인 코드로 만들 수 있다.
 
+
+대표예제 :
+
 # 6. @Embedded - @Embeddable vs @OneToOne
 객체를 쪼개고 싶을 때 주로 @Embedded - @Embeddable, @OneToOne 을 쓴다.
 @Embedded - @Embeddable 는 table이 분리되어 있지 않지만 종속관계에 있다.
