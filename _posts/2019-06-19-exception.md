@@ -41,31 +41,33 @@ comments: true
 @RequestMapping(produces = "application/vnd.error+json")
 ```
 
-
-그리고 controlleradvice는 하려면 밑에 restcontroller가 밑에 있어야한다.
+반드시 controlleradvice는 하려면 밑에 restcontroller가 밑에 있어야한다.
 
 
 
 
 ## 방법 2 : @ExceptionHandler를 사용한 컨트롤러단 예외처리
-
-
 # 예외란?
 
 오류(Error)와 예외(Exception)의 개념
 
-- 오류가 시스템 레벨에서 발생한다면, 예외(Exception)는 개발자가 구현한 로직에서 발생한다.
+- <span style="background-color:yellow"><b> 오류가 시스템 레벨에서 발생하는 것, 예외는 개발자가 구현한 로직에서 발생한다. </b></span>
 - 즉, 예외는 발생할 상황을 미리 예측하여 처리할 수 있다.
-- 즉, 예외는 개발자가 처리할 수 있기 때문에 예외를 구분하고 그에 따른 처리 방법을 명확히 알고 적용하는 것이 중요
+- 그러므로 예외를 구분하고 처리 방법을 명확히 알고 적용하는 것이 중요
 
-<img alt="success" src = "/images/2019-06-19-exception/exception-class.png"/>
+<img alt="예외클래스의 구조" src = "/images/2019-06-19-exception/exception-class.png"/>
+*예외클래스의 구조*
 
+- 모든 예외클래스는 Throwable 클래스를 상속받고 있으며, Throwable은 최상위 클래스 Object의 자식 클래스이다.
+- Trowable을 상속받는 클래스는 Error와 Exception이 있다.
+  - Error는 시스템 레벨의 심각한 수준의 에러이기 때문에 시스템에 변화를 주어 문제를 처리해야 하는 경우가 일반적이다.
+  - Exception은 개발자가 로직을 추가하여 처리할 수 있다.
 
-위 [그림1]은 예외클래스의 구조이다. 모든 예외클래스는 Throwable 클래스를 상속받고 있으며, Throwable은 최상위 클래스 Object의 자식 클래스이다.
+Exception은 수많은 자식클래스를 가지고 있다. 그 중 **RuntimeException** 을 주목해야 한다.
 
-Trowable을 상속받는 클래스는 Error와 Exception이 있다. Error는 시스템 레벨의 심각한 수준의 에러이기 때문에 시스템에 변화를 주어 문제를 처리해야 하는 경우가 일반적이다. 반면에 Exception은 개발자가 로직을 추가하여 처리할 수 있다.
-
-Exception은 수많은 자식클래스를 가지고 있다. 그 중 RuntimeException을 주목해야 한다. RuntimeException은 CheckedException과 UncheckedException을 구분하는 기준이다. Exception의 자식 클래스 중 RuntimeException을 제외한 모든 클래스는 CheckedException이며, RuntimeException과 그의 자식 클래스들을 Unchecked Exception이라 부른다. CheckedException과 UncheckedException에 대해 더 자세히 살펴보자
+- **RuntimeException** 은 CheckedException과 UncheckedException을 구분하는 기준
+- Exception의 자식 클래스 중 <span style="background-color:yellow"><b> RuntimeException을 제외한 모든 클래스는 CheckedException </b></span>
+- <span style="background-color:yellow"><b> RuntimeException과 그의 자식 클래스들을 Unchecked Exception이라 부른다. </b></span>
 
 ## 3. Checked Exception과 Unchecked(Runtime) Exception
 

@@ -150,6 +150,9 @@ Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범
 T1이 끝날때까지 HONG GILDONG에 lock이 걸려있다고 하더라도, 추후에 생길 Bob에 대한 튜플과는 관련이 없으므로 Bob이 그대로 삽입된다.
 T1이 다시 읽기를 하게 되면, Bob이라는 유령(Phantom)이 삽입되어 있다.
 next key lock이 해결방법이다.(다음에 들어올 tuple에도 lock을 건다.)
+
+
+
 ---
 참고: https://m.blog.naver.com/PostView.nhn?blogId=adidas_83&logNo=130152784549&proxyReferer=https%3A%2F%2Fwww.google.com%2F  
 https://d2.naver.com/helloworld/407507  
