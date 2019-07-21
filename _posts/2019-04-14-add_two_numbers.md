@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: "[hacker_rank]Add Two Numbers with python3"
+title: "[leet_code]Add Two Numbers with python3"
 categories: Algorithm
-tags: [ 'algorithm', 'hacker_rank', 'python' ]
+tags: [ 'algorithm', 'leet_code', 'python' ]
 comments: true
 ---
 
