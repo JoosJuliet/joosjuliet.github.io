@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[1편] 트랜잭션 (트랜잭션의 정의, 대상, ACID)"
+title: "[1편] 트랜잭션 (트랜잭션의 정의, 대상, Lock, ACID, Isolation Level)"
 category: Algorithm
 tags: [ 'transaction' ]
 comments: true
@@ -14,9 +14,9 @@ comments: true
 *이 글은 시리즈물 입니다.*
 - [1편] 트랜잭션 (트랜잭션의 정의, 대상, ACID)
   - https://joosjuliet.github.io/transaction/  
-- [2편] DB에서의 트랜잭션( 제어어(TCL)[COMMIT, ROLLBACK, SAVEPOINT], mysql에서의 트랜잭션)
+- (작성중)[2편] DB에서의 트랜잭션(제어어(TCL)[COMMIT, ROLLBACK, SAVEPOINT], mysql에서의 트랜잭션)
   - https://joosjuliet.github.io/tcl/
-- [3편] SPRING에서의 트랜잭션(jpa에서 transaction이란)
+- (작성중)[3편] SPRING에서의 트랜잭션(jpa에서 transaction이란)
   - https://joosjuliet.github.io/jpa_transaction/  
 ---
 
@@ -122,7 +122,13 @@ Logging and Recovery는 Atomicity와 Durability를 실현시켜 가능해졌다.
 
 
 ## Locking만으로 동시성 문제 해결?
-- TODO 선혁이한테 묻기
+- 단순히 locking을 사용한다고 해서 동시성 문제가 완전하게 해결되지는 않는다.
+- 언제 lock을 주고 unlock을 주느냐에 따라 다르다.
+
+
+## 해결책
+- 2Phase Locking(2PL) Protocol
+- 다중단위 lock
 
 ## 2Phase Locking(2PL) Protocol
 ![lock_point](/images/2019-07-06-transaction/lock_point.png)
@@ -145,12 +151,77 @@ Logging and Recovery는 Atomicity와 Durability를 실현시켜 가능해졌다.
   - 상대적으로 정교하지 않게 하는 것은 coarse grained lock이다.
 
 ### Phantom Read
+<<<<<<< HEAD
 lock을 tuple단위로 걸었다고 하자.
 Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범위에 해당되는 경우
 T1이 끝날때까지 HONG GILDONG에 lock이 걸려있다고 하더라도, 추후에 생길 Bob에 대한 튜플과는 관련이 없으므로 Bob이 그대로 삽입된다.
 T1이 다시 읽기를 하게 되면, Bob이라는 유령(Phantom)이 삽입되어 있다.
 next key lock이 해결방법이다.(다음에 들어올 tuple에도 lock을 건다.)
 
+
+
+![phantom_read](/images/2019-07-06-transaction/phantom_read.png)
+- lock을 tuple단위로 걸었다고 하자.
+- Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범위에 해당되는 경우
+- T1이 끝날때까지 HONG GILDONG에 lock이 걸려있다고 하더라도, 추후에 생길 Bob에 대한 튜플과는 관련이 없으므로 Bob이 그대로 삽입된다.
+- T1이 다시 읽기를 하게 되면, Bob이라는 유령(Phantom)이 삽입되어 있다.
+- next key lock이 해결방법이다.(다음에 들어올 tuple에도 lock을 건다.)
+  - 근데 이건 구현체 마다 다르다.
+
+
+
+
+# Logging and Recovery
+
+## Recovery
+- 트랜잭션을 수행하는 도중에 시스템이 다운된다면?
+- 디스크의 헤드가 고장나면?
+- 트랜잭션이 종료된 직후에 시스템이 다운되면? 디스크에 기록되지 않으면?
+**이런 경우에도 트랜잭션의 원자성과 지속성을 보장해야 한다.**
+- 그래서 Logging을 해 Recovery를 할 수 있게 하는 것이다.
+
+
+
+## 회복 관련 용어 정리
+- Main memory의 buffer는 디스크로부터 데이터를 읽거나 디스크에 데이터를 기록하는 비용을 최소화 하기 위한 완충 역할을 수행한다.
+- REDO: 고장이 발생한 시점 전에 트랜잭션이 이미 commit된 상태라면 REDO
+- UNDO: 트랜잭션이 commit을 완료하지 못했다면 원자성을 보장하기 위해 UNDO
+- backup: DB를 주기적으로 자기 테이프에 복사
+- logging: 현재 수행 중인 트랜잭션의 상태와 DB 갱신 사항을 기록
+- check point: 시스템이 붕괴된 후 재기동되었을 때 특정 포인트까지만 복구함으로서 REDO하거나 UNDO해야하는 트랜잭션들의 수를 줄여준다.(일반적으로 10~20분마다 한번씩 수행)
+
+![check_point_do_vs_undo](/images/2019-07-06-transaction/check_point_do_vs_undo.png)
+
+
+## 로그를 사용한 즉시 갱신
+
+- 트랜잭션 수행 중에 갱신 결과를 DB에 즉시 반영하고 Log에 기록한다.
+- Log에는 갱신되는 항목의 이전 값과 새로운 값 모두를 기록한다.
+- 트랜잭션이 완료가 된 상태면 Redo, 완료가 되지 않은 상태면 Undo를 수행한다.
+![log_record](/images/2019-07-06-transaction/log_record.png)
+
+### WAL(Write-Ahead-Logging)
+- 당연히 로그 내용이 있어야 데이터 베이스 내용을 복구를 해야한다.
+- 그래서 로그를 먼저 쓰고 데이터베이스에 쓰는 행위를 WAL이라한다.
+- 로그-먼저-쓰기: Write-Ahead-Logging
+
+
+
+## Isolation Level(고립 수준)
+- READ UNCOMMITED
+  - 가장 낮은 고립 수준. Commit 되지도 않은 데이터를 읽어들인다. 즉, S-lock을 걸지 않고, X-lock만 건다. 따라서 Dirty read가 일어날 수 있다.
+- READ COMMITED
+  - Commit된 데이터를 읽는다, 하지만 그렇다고 하더라도 read를 반복적으로 하는 트랜잭션 도중에 데이터의 내용이 commit 된다면 일관성이 깨질 수 있으므로 Unrepeatable read 문제는 여전히 남아있다.
+- REPEATABLE READ
+  - 검색되는 데이터에 대해 S-lock을 걸고, 트랜잭션이 끝날때까지 보유한다. 검색되는 데이터가 트랜잭션 중간에 추가되고, 다시 한번 read 한다면 phantom read가 일어날 수 있다.
+- SERIALIZABLE
+  - Phantom read까지 다 없앤 고립수준. 내부의 구현 방식은 DB마다 다름. 예를 들면 next key lock을 사용해 해결.
+
+
+
+
+# 고립수준이 높을 수록 얻는 문제
+한번에 많은 것을 고립시키다보니 그걸 기다리다보니 속도가 느려질 수 밖에 없다.  
 
 
 ---
