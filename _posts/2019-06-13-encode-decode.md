@@ -18,7 +18,7 @@ comments: true
 
 
 # Percent-encoding이란?
-- Percent-encoding이란 URI 혹은 URL에 문자를 표현하는 인코딩 방식으로 ``` RFC 3986 ``` 에 따라서 알파벳이나 숫자 등 몇몇 문자를 제외한 문자들에 대해서 옥텟 값으로 묶어서 16진수 값으로 코딩하는 방식
+- Percent-encoding이란 URI 혹은 URL에 문자를 표현하는 인코딩 방식으로 ``` RFC 3986 ``` 에 따라서 알파벳이나 숫자 등 몇몇 문자를 제외한 문자들에 대해서 octet(8bit가 한데 모인 것) 값으로 묶어서 16진수 값으로 코딩하는 방식
 - 예시 : "/internet url" -> "internet%20url"
 
 
@@ -33,13 +33,6 @@ comments: true
 - 암호화로는 사용 불가능
 - 종류로는 ASCII , URL , HTML , Base64 , MS Script 인코딩이 있다
 
-전기환경차 검색,
-http://localhost:8080/ev/ev_carsearchlist.do?carType=ev&searchType=model&wtClick_kor=003&TG.R=D#!
-엔카진단차량
-http://localhost:8080/ev/ev_carcheckedlist.do?carType=ev&wtClick_kor=053&TG.R=D1#!
-헛걸음 보상차량
-http://localhost:8080/ev/ev_carcompensatelist.do?carType=ev&WT.hit=header_carcompensatelist&TG.R=F1#!
-# 디코딩이란?
 
 # percent-encoding
 - URL encoding
@@ -51,13 +44,23 @@ http://localhost:8080/ev/ev_carcompensatelist.do?carType=ev&WT.hit=header_carcom
 - URI 표준 규정
 
 
-
+서로 다른 bit를 기준으로 만든 글자를 이해하기 위해서 서로 이해가 되는 코드로 바꾸는 것이 인코딩과 디코딩이다
+Base64는 이진 데이터를 거의 모든 컴퓨터 시스템에 알려진 ASCII 문자 집합으로 인코딩하여 내용 자체의 손실이나 수정없이 데이터를 전송하는 방법입니다.
+예를 들어, 메일 시스템은 ASCII (텍스트) 데이터를 예상하기 때문에 이진 데이터를 처리 할 수 ​​없습니다. 따라서 이미지 또는 다른 파일을 전송하려는 경우 데이터 처리 방식으로 인해 손상 될 수 있습니다.
+참고 : base64 인코딩은 암호화 방법이 아니며 데이터를 압축하는 방법이 아닙니다. 실제로 base64로 인코딩 된 데이터 조각은 원래 데이터 조각보다 1.333 배 더 큽니다. 전송하는 동안 데이터가 손실되거나 수정되지 않도록하는 유일한 방법입니다.
 
 # encodeURI()와 decodeURI() 함수
 encodeURI() : 일반 문자열을 퍼센트 인코딩된 문자열로 변환
 decodeURI() : 인코딩된 문자열을 일반 문자열로 변환
 
+``` javascript
+var uri = "my test.asp?name=ståle&car=saab";
+var enc = encodeURI(uri);
+var dec = decodeURI(enc);
 
+console.log(enc); //"my%20test.asp?name=st%C3%A5le&car=saab"
+console.log(dec); //"my test.asp?name=ståle&car=saab"
+```
 
 ---
 참고:  
