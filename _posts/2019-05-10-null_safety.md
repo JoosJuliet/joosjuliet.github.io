@@ -25,11 +25,26 @@ https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions
 
 
 # NullPointerException(NPE)이란?
+
 - 자바 데이터 타입은 기본 타입(primitive type)과 참조 타입(reference type)이 있다.
-- 참조 타입은 객체의 생성 이전에는 할당된 메모리 주소가 없는 null을 참조하는 변수이다.
+- Java는 기본적으로 초기화되지 않은 객체 참조 변수에 null을 할당합니다.
+- 즉, 참조 변수를 선언하고 초기화하지 않으면 java에서 null로 지정된 특수 값을 지정합니다.
 - 이를 가지고 아래 작업을 수행하면 NPE가 발생하게 된다.
 
 
+``` java
+public class TestClass {
+    String string1;
+    String string2 = null;
+
+    public static void main(String[] a){
+        TestClass testClass = new TestClass();
+
+        System.out.println(testClass.string1);    // Output: null
+        System.out.println(testClass.string2);    // Output: null
+    }
+}
+```
 
 
 ## NPE가 발생하는 경우
@@ -41,8 +56,12 @@ https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions
 
 
 
+# 해결하는 법
+- optional로 하는 법
+- annotation으로 하는 법
 
-# optional로 하는 법
+
+## optional로 하는 법
 ``` java
 //자바8에서 Optional의 ofNullabledm을 사용하여 null 처리
 String strVal = null;
@@ -53,59 +72,24 @@ System.out.println("return: " + value); //return: -1
 
 ```
 
-
-*Optional이란?*
-값이 있거나 또는 없는 경우를 표현하기 위한 클래스
-Optional는 “존재할 수도 있지만 안 할 수도 있는 객체”
-즉, “null이 될 수도 있는 객체”을 감싸고 있는 일종의 래퍼 클래스입니다.
-직접 다루기에 위험하고 까다로운 null을 담을 수 있는 특수한 그릇
+> Optional의 자세한 내용은
+[Null Safety 2편] Optional이란? https://joosjuliet.github.io/optional/  
+을 참고해주세요
 
 
-*Optional 클래스 쓰는 법*
-1. null이 아닌 객체를 담고 있는 Optional 객체
-2. null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성
 
 
-## 1. null이 아닌 객체를 담고 있는 Optional 객체
-``` Java
-Optional<Member> maybeMember = Optional.empty();
-Optional.of(value)
-```
-- null이 아닌 객체를 담고 있는 Optional 객체를 생성합니다.
-- null이 넘어올 경우, NPE를 던지기 때문에 주의해서 사용해야 합니다.
-
-
-## 2. null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성
-``` JAVA
-Optional<Member> maybeMember = Optional.of(aMember);
-Optional.ofNullable(value)
-```
-- null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.
-- Optional.empty()와 Optional.ofNullable(value)를 합쳐놓은 메소드라고 생각하시면 됩니다.
-- null이 넘어올 경우, NPE를 던지지 않고 Optional.empty()와 동일하게 비어 있는 Optional 객체를 얻어옵니다.
-- 해당 객체가 null인지 아닌지 자신이 없는 상황에서는 이 메소드를 사용하셔야 합니다.
-
-*가장 큰 오류*
-“Optional 적용 후 어떻게 null 체크를 해야하나요?”
-“null 체크를 하실 필요가 없으시니 하시면 안 됩니다.”
-
-
-우리가 Optional을 사용하려는 이유는 고통스러운 null 처리를 직접하지 않고 Optional 클래스에 위임하기 위함입니다.
-
-# annotation으로 하는 법
-## 코드
+## annotation으로 하는 법
+### 코드
 ``` java
 @NotNull //return 값이 NotNull
-public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매개변수가 NotNull*/
-
+public void makeSpaghetti(@NotNull String tomato , @Nullable String noodle) { /*매개변수가 NotNull*/
   return tomato + noodle
 }
 ```
 
 
-
-
-## @NotEmpty, @NotBlank, @NotNull 차이
+### @NotEmpty, @NotBlank, @NotNull 차이
 - @NotEmpty
   - null이나 size가 0 검증(String, Collection)
 - @NotBlank
@@ -117,7 +101,7 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 
 
 
-## @NotNull vs @Column(nullable = false)
+### @NotNull vs @Column(nullable = false)
 *(in Hibernate)Column의 default는 nullable이다.*
 - @NotNull 은 JSR 303 Bean Validation annotation
 - @NotNull 은 db constraints를 신경쓰지 않는다.
@@ -127,19 +111,23 @@ public void makeDinner(@NotNull String tomato , @Nullable String noodle) { /*매
 
 
 
-## @Nullable 이란?
+### @Nullable 이란?
 - 메서드가 null 값을 받아들이는지, 그리고 메서드를 재정의하는 경우 null 값을 받아 들여야한다는 것을 분명히합니다.
 또한 FindBugs 같은 코드 분석기에 대한 힌트 역할을합니다. 예를 들어, 먼저 해당 메소드가 null을 확인하지 않고 인수를 역 참조하면 FindBugs가 경고를 내 보냅니다.
 
-## 설정법
-- preferenes/configure annotations 에 스프링에 관련된 annotation이 없다. 추가 해야한다.
-- Nullabale, NonNull등을 .
-- 재 시작해야한다.
+### 설정법
+- preferenes/configure annotations 에 스프링에 관련된 annotation이 없다.
+- 즉 추가 Nullabale, NonNull등을 해야한다.
+- 그리고 재 시작!
 
 
 
-@Nullable: 널 값이 허용되며 예상되어야 함
-@NonNullByDefault: 널 어노테이션이 없는 메소드 서명의 유형은 널이 아닌 항목으로 간주됩니다.
+
+## @Nullable 과 @NonNullByDefault
+- @Nullable
+  - 널 값이 허용되며 예상되어야 함
+- @NonNullByDefault
+  - 널 어노테이션이 없는 메소드 서명의 유형은 널이 아닌 항목으로 간주됩니다.
 
 어노테이션 @NonNull 및 @Nullable은 다음 위치에서 지원됩니다.
 
@@ -155,11 +143,11 @@ Java 8에서는 추가 위치에 널 유형 어노테이션으로 어노테이�
 패키지(package-info.java 파일을 통해) - 패키지에서 모든 유형에 영향을 줌
 
 
-널 어노테이션으로 표현할 수 있는 세 가지 레벨이 있습니다.
+# 널 어노테이션으로 표현할 수 있는 세 가지 레벨이 있습니다.
 
-리더(사용자 및 컴파일러)에 대한 산발적인 힌트
-규약에 의한 디자인: 일부 또는 모든 메소드에 대한 API 스펙
-확장 유형 시스템을 사용하는 전체 스펙
+- 리더(사용자 및 컴파일러)에 대한 산발적인 힌트
+- 규약에 의한 디자인: 일부 또는 모든 메소드에 대한 API 스펙
+- 확장 유형 시스템을 사용하는 전체 스펙
 
 
 nullable-annotation-usage
@@ -177,6 +165,7 @@ https://stackoverflow.com/questions/14076296/nullable-annotation-usage/14076320
 
 ---
 참조 :
+https://www.amitph.com/avoid-nullpointerexception-using-java-8-optional/  dm
 참고자료: https://www.baeldung.com/java-bean-validation-not-null-empty-blank  
 http://blog.naver.com/PostView.nhn?blogId=tmondev&logNo=220791552394  
 

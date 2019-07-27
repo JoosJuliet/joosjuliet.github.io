@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: " Annotation이란? Reflection이란?  @Component와  @Repository, @Service, @Controller 차이"
+title: " (작성중) Annotation이란? Reflection이란?  @Component와  @Repository, @Service, @Controller 차이"
 category: Spring
 tags: [ 'Spring', 'Java', '@Component', '@Repository', '@Service', '@Controller',  'Annotation', 'Reflection' ]
 comments: true
@@ -11,28 +11,29 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 ---
-# 1. Reflection이란?
-스프링에선 리플렉션을 너무 많이 사용중이라고 한다.
-근데 처음 들어봤다.
+# 1. Reflection이란?(작성중)
+- 리플렉션은 컴파일러를 무시하고, 런타임 상황에서 메모리에 올라간 클래스나 메서드등의 정의를 동적으로 찾아서 조작할 수 있는 일련의 행위이다.
 
-Reflection이란 프로그램이 실행 중에 자신의 구조와 동작을 검사하고, 조사하고, 수정하는 것입니다.
 
-객체 지향 프로그래밍 언어에서 reflection을 사용하면 컴파일 타임에 interface, field, method의 이름을 알지 못해도, 실행 중에 각 요소에 접근할 수 있다.
-또한 새로운 객체의 인스턴스화 및 메소드 호출을 허용합니다.
-이 말은 밑에 일단 아직 컴파일이 완료되지 않아서, 객체화가 되지도 않은 class의 인스턴스를 만들어준다는건가? 의 뜻인가?
+즉 Reflection이란 <span style="background-color:yellow"><b> 프로그램이 실행 중에 자신의 구조와 동작을 검사하고, 조사하고, 수정하는 것 </b></span>
+
+
+- 프레임워크에서 유연성이 있는 동작을 위해 자주 사용하기도 합니다.
+
+- 객체 지향 프로그래밍 언어에서 reflection을 사용하면 컴파일 타임에 interface, field, method의 이름을 알지 못해도, 실행 중에 각 요소에 접근할 수 있다.
+- 또한 새로운 객체의 인스턴스화 및 메소드 호출을 허용합니다.
+- 즉 아직 컴파일이 완료되지 않은 것( 객체화가 되지도 않은 class)의 인스턴스를 만들어준다.
 
 
 ## 스프링에서 Reflection 활용기1.
-스프링에서 BeanFactory 라는 Container를 공부할 때 객체가 호출되면 객체의 인스턴스를 생성하게 되는데, 이 때 필요하다.  
-일단 아직 컴파일이 완료되지 않아서, 객체화가 되지도 않은 class의 인스턴스를 만들어준다는건가?
-<b> 즉 프레임워크에서 유연성 있는 동작을 위해 쓴다. </b>
+- 스프링에서 BeanFactory 라는 Container를 공부할 때 객체가 호출되면 객체의 인스턴스를 생성하게 되는데, 이 때 필요하다.  
+  - <b> 즉 프레임워크에서 유연성 있는 동작을 위해 쓴다. </b>
 
 
 ## 스프링에서 Reflection 활용기2.
 
-리플랙션은 annotation 지정만으로 원하는 클래스를 주입하는데,
-클래스 주입은 enum을 사용해서 한다?
-enum은 변수를 선언시 변수타입으로 사용가능하다.를선언
+- 리플랙션은 annotation 지정만으로 원하는 클래스를 주입하는데, 클래스 주입은 enum을 사용해서 한다?
+  - enum은 변수를 선언시 변수타입으로 사용가능하다.를선언
 
 ### 사용법
 ``` Java
@@ -42,11 +43,9 @@ Unknown macro: {winter, spring, summer, fall}
 // 변수 time은 가질 수 있는 값이 제한되어 Season의 값 4개 중 하나만 가질 수 있다. 값 4질
 Season time = Season.spring;
 ```
-
-
-기본적으로 private이어서, new 로 새로운 인스턴스를 만들 수 없다.
-https://jojoldu.tistory.com/122
-여기서 enum을 사용한 프로젝트가 있다.(후에 프로젝트에 도입 해야지)
+기본적으로 private이어서, new 로 새로운 인스턴스를 만들 수 없다.  
+여기서 enum을 사용한 프로젝트가 있다.  
+관련 url[https://joosjuliet.github.io/enum/]
 
 
 annotation 자체는 아무런 동작을 가지지 않는 단순한 표식일 뿐이지만,  

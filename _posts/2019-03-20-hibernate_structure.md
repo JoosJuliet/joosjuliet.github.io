@@ -91,8 +91,10 @@ comments: true
   - JTA (Java Transaction API)
   - JNDI (Java Naming Directory Interface)
 
-
-
+session에서 하는 일을 repository가 알아서 해주는 것이다.
+- 한건 조회시 기본으로 되는데 findall 을 하면 lazy가 일어나서 n+1문제가 일어나서
+해결책 -> 최신 스팩을 사용하면 entitygraph라는 anotate사용하면 join으로 가져올 수 잇게 된다.
+그 전이면 query jpql을 사용해서 fetch라는 쿼리를 날리거나
 
 ---
 사진 출처 : https://viralpatel.net/blogs/introduction-to-hibernate-framework-architecture/  

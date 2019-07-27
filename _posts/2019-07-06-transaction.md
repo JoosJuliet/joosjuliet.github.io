@@ -151,6 +151,15 @@ Logging and Recovery는 Atomicity와 Durability를 실현시켜 가능해졌다.
   - 상대적으로 정교하지 않게 하는 것은 coarse grained lock이다.
 
 ### Phantom Read
+<<<<<<< HEAD
+lock을 tuple단위로 걸었다고 하자.
+Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범위에 해당되는 경우
+T1이 끝날때까지 HONG GILDONG에 lock이 걸려있다고 하더라도, 추후에 생길 Bob에 대한 튜플과는 관련이 없으므로 Bob이 그대로 삽입된다.
+T1이 다시 읽기를 하게 되면, Bob이라는 유령(Phantom)이 삽입되어 있다.
+next key lock이 해결방법이다.(다음에 들어올 tuple에도 lock을 건다.)
+
+
+
 ![phantom_read](/images/2019-07-06-transaction/phantom_read.png)
 - lock을 tuple단위로 걸었다고 하자.
 - Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범위에 해당되는 경우

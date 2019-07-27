@@ -14,7 +14,8 @@ comments: true
 감사합니다:)
 ---
 이글은 tech interview를 볼 때 기본적으로 물어보는 것들을 정리하기 위해 쓴 글입니다.
-깊이 보다는 compact 성을 강조합니다.
+깊이 보다는 compact 성을 강조합니다. 이것과 관련된 깊은 내용들은 정리하는 대로 url을 덧붙일 예정입니다.
+
 ---
 이 글은 시리즈 물입니다.
 
@@ -26,6 +27,7 @@ comments: true
 [tech interview 5 편] WEB https://joosjuliet.github.io/web_technical_interview/  
 [tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
 ---
+
 # 1. WAS와 웹서버의 차이점은?
 - 웹 서버와 WAS를 구별 짓는 것은 동적 서버 콘텐츠를 수행하는가? 만약 수행한다면 WAS로 보면 된다.
 - 웹 서버(Web Server)
@@ -40,11 +42,10 @@ comments: true
 
 
 
-
 # 2. URI vs URL vs URN
 URI는 규약이고, URL은 규약에 대한 형태(RFC 3986 기준)
 ## URI(Uniform Resource Identifier)
-- URI는 숫자, 문자 및 기호의 짧은 문자열을 사용하여 문서를 식별하기위한 *표준* 입니다.
+- URI는 숫자, 문자 및 기호의 짧은 문자열을 사용하여 문서를 식별하기위한 *표준규약* 입니다.
 
 **이 URI에는 두 가지 형태가 있는데 이것이, URL, URN이라는 것이다.**
 
@@ -85,6 +86,19 @@ URL은 항상 프로토콜 (http)로 시작하며 일반적으로 네트워크 �
 javascript에서 "{ }" 문법은 객체 리터럴 이다.  
 즉 위의 코드는 객체를 정의하기 위한 코드이다. json은 객체를 정의하기 위한 문법이라고 볼 수 있다.
 
+
+
+
+# 4. REST란?
+representational state transfer의 약자로 자원의 상태를 주고 받는 모든 것입니다.  
+optional 포함 6가지 규칙이 있는데 http를 쓰면 기본적으로 다 지켜지고, uniform interface와 hateoas가 가장 안지켜집니다.  
+uniform interface는 return 값에 대한 정보를 document없이 이해할 수 있게 해주는 규칙이고,
+hateoas는 해당 return값으로 인해 front에서 변화가 있을 때 그것에 대한 정보를 써 주는 것입니다.  
+
+
+
+
+# 5. 
 
 
 ---
