@@ -20,7 +20,7 @@ comments: true
 ## What is cross origin?
 - not same-origin is cross-origin
 - Same-origin is Same protocol, same port, same host.
-![same-origin-and-url-form](/images/2019-08-11-cors/same-origin-and-url-form.png)
+![same-origin-and-url-form](/images/2019-08-11-cors-english/same-origin-and-url-form.png)
 
 
 
@@ -38,7 +38,7 @@ Add "Access-Control-Allow-Origin:\*" to the response header.
 Using preflight request  
 that request checks to see if the CORS protocol is autohrized.
 
-![preflight](/images/2019-08-11-cors/preflight.png)
+![preflight](/images/2019-08-11-cors-english/preflight.png)
 
 1. client -> server (in preflight request)
 using OPTIONS method
