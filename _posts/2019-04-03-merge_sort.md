@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[merge sort] sort algorithm with python3"
+title: "[sort 시리즈 1탄] [merge sort] sort algorithm with python3"
 category: Algorithm
 tags: [ 'algorithm', 'python', 'merge_sort' ]
 comments: true
@@ -11,7 +11,23 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 ---
+이 컨텐츠는 시리즈물입니다.  
 
+- [sort 시리즈 intro]
+  - sorting algorithm (with. python3)
+    - https://joosjuliet.github.io/sort/
+
+- [sort 시리즈]
+  - [sort 시리즈 1탄] [merge sort] sort algorithm with python3
+    - https://joosjuliet.github.io/merge_sort/
+  - [sort 시리즈 2탄] 삽입정렬(insertion sort) with python3
+    - https://joosjuliet.github.io/insertion_sort/
+
+- [sort 시리즈 번외편]
+  - [python] python의 기본 sort tim_sort란!
+    - https://joosjuliet.github.io/tim_sort/
+
+---
 
 ``` python
 number_list = [21, 10, 12, 20, 25, 13, 15, 22]
