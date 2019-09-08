@@ -21,6 +21,11 @@ comments: true
 [tech interview 6 편] SPRING https://joosjuliet.github.io/spring_technical_interview/
 ---
 
+1. OSI를 7계층으로 나눈 이유는?
+- 네트워크는 내용이 복잡한데, 그 복잡한 것을 단계를 나눠서 설명하고 싶어서 layer를 나눈것.  
+즉 논리적 layer만 있는 것이다. 실제로 나눠져 있는 것은 아니고 그냥 논리적으로 나눈 것이다.  
+
+
 # 글 요약
 ## 5-Layer TCP/IP Internet Model
 ￼
@@ -592,3 +597,9 @@ Application Layer.
 
 Describe VPN?
 VPN - Virtual Private Network. It is a technology that allows a secure tunnel to be created across a network such as the Internet.
+
+
+---
+참고자료  
+1번:
+https://donald-dh.github.io/donald-dh.github.io/osi-seven-layer-purpose/
