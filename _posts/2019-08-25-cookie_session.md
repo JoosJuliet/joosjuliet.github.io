@@ -22,6 +22,10 @@ When next time browser sends any request to web server then it sends those cooki
 
 
 ---
-reference:
+Url would be nice together :  
+[http의 개념](https://joosjuliet.github.io/http/)  
+[what is https](https://joosjuliet.github.io/http_vs_https_english/)  
+
+reference:  
 https://www.tutorialspoint.com/What-is-the-difference-between-session-and-cookies
 https://farahbloggingworld.wordpress.com/2013/09/11/cookies-vs-sessions/
