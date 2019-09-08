@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "http의 개념, https가 생긴 이유, http와 https의 차이"
 category: Computer_science
-tags: [ 'computer_science', 'network' ]
+tags: [ 'computer_science', 'network', '글또3기' ]
 comments: true
 ---
 https를 알기 앞서 http를 먼저 설명 고!
@@ -44,7 +44,7 @@ HTTP는 평문 데이터를 기반으로 하기 때문에, 유저정보와 같�
 
 ## HTTPS란?
 
-![https](images/2019-09-08-http_vs_https/https.png)
+![https](/images/2019-09-08-http_vs_https/https.png)
 
 SSL은 데이터 보안을 위해서 개발한 통신 레이어다.  
 HTTPS는 SSL 레이어 위에 HTTP를 통과 시키는 방식이다. 즉 평문의 HTTP 문서는 SSL 레이어를 통과하면서 암호화 돼서 목적지에 도착하고, 목적지에서는 SSL 레이어를 통과하면서 복호화 돼서 웹 브라우저에 전달된다. 또한 SSL은 표현계층의 프로토콜로 응용 계층 아래에 있기 때문에, 어떤 응용 계층의 데이터라도 암호화해서 보낼 수 있다.  
