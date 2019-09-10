@@ -15,15 +15,14 @@ comments: true
 
 # 1. JDBC란?
 - Java Database Connectivity
-- Java에서 DB 프로그래밍을 하기 위해 사용되는 API
+- Java에서 DB에 쿼리를 날리기 위해 사용되는 API
 
-database 의 API (드리이버.jar 에 들어있음) 를 사용하여 DB 쿼리를 하기 위한
-자바의 API. 어떤 database (JDBC 드리이버)를 사용하더라고 사용법은 동일하다.
+database 의 API (드리이버.jar 에 들어있음) 를 사용하여 DB 쿼리를 날리기 위한 자바의 API.  
+어떤 database (JDBC 드리이버)를 사용하더라고 사용법은 동일하다.
 > Connection, Statement, ResultSet 등
 
 ## JDBC 드라이버 :
-database 종류마다 내부 API 가 틀리며, 자바에서 이를 인식하기 위해
-JDBC 드라이버를 설치해야한다.
+database 종류마다 내부 API 가 틀리며, 자바에서 이를 인식하기 위해 JDBC 드라이버를 설치해야한다.
 
 
 - JDBC 드라이버 : 각 DBMS에 알맞는 클라이언트
