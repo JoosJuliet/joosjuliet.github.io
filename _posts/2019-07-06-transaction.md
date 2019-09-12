@@ -104,13 +104,15 @@ Logging and Recovery는 Atomicity와 Durability를 실현시켜 가능해졌다.
 - 트랜잭션이 수행을 시작해 데이터 항목을 접근할 때마다 요청한 lock에 대한 정보는 lock table 등에 유지된다
 ### Lock의 종류
 #### Shared lock (공유 잠금)
-  - 리소스를 다른 사용자가 동시에 읽을 수 있게 하되 변경은 불가하게 하는 것
-  - 어떤 자원에 shared lock이 동시에 여러개 적용될 수 있다.
-  - 어떤 자원에 shared lock이 하나라도 걸려있으면 exclusive lock을 걸 수 없다.
+- S-lock
+- 리소스를 다른 사용자가 동시에 읽을 수 있게 하되 변경은 불가하게 하는 것
+- 어떤 자원에 shared lock이 동시에 여러개 적용될 수 있다.
+- 어떤 자원에 shared lock이 하나라도 걸려있으면 exclusive lock을 걸 수 없다.
 #### Exclusive lock (배타적 잠금)
-  - 어떤 트랜잭션에서 데이터를 insert/update를 할 때 해당 트랜잭션이 완료될 때까지 해당 테이블 혹은 레코드(row)를 다른 트랜잭션에서 읽거나 쓰지 못하게 lock을 걸고 트랜잭션을 진행시키는 것이다.
-  - exclusive lock에 걸리면 shared lock을 걸 수 없다.
-  - exclusive lock에 걸린 테이블, 레코드등의 자원에 대해 다른 트랜잭션이 exclusive lock을 걸 수 없다.
+- X-lock
+- 어떤 트랜잭션에서 데이터를 insert/update를 할 때 해당 트랜잭션이 완료될 때까지 해당 테이블 혹은 레코드(row)를 다른 트랜잭션에서 읽거나 쓰지 못하게 lock을 걸고 트랜잭션을 진행시키는 것이다.
+- exclusive lock에 걸리면 shared lock을 걸 수 없다.
+- exclusive lock에 걸린 테이블, 레코드등의 자원에 대해 다른 트랜잭션이 exclusive lock을 걸 수 없다.
 
 
 **Lock은 잠금 비용과 동시성비용을 고려해야한다.**
@@ -146,12 +148,11 @@ Logging and Recovery는 Atomicity와 Durability를 실현시켜 가능해졌다.
 - lock은 충돌을 검사하고 lock 정보를 기록해야 하기 때문에 자주 걸면 overhead가 발생한다.
 - 따라서 lock의 단위, 범위를 다양하게 할 수 있다.
 - 데이터베이스, Relation, 디스크블록(페이지), 레코드(튜플)의 단위로 lock을 걸 수 있다. (뒤로 갈수록 overhead가 많이 발생하고, 동시성의 정도가 증가한다.)
-  - 단위가 작아질 수록 fine grained lock이 된다.
-  - lock을 정교하게 거는 것이 fine grained lock이다.
-  - 상대적으로 정교하지 않게 하는 것은 coarse grained lock이다.
+- 단위가 작아질 수록 fine grained lock이 된다.
+- lock을 정교하게 거는 것이 fine grained lock이다.
+- 상대적으로 정교하지 않게 하는 것은 coarse grained lock이다.
 
 ### Phantom Read
-<<<<<<< HEAD
 lock을 tuple단위로 걸었다고 하자.
 Transaction이 Range를 조건절로 걸었고, 새로운 데이터도 Range 범위에 해당되는 경우
 T1이 끝날때까지 HONG GILDONG에 lock이 걸려있다고 하더라도, 추후에 생길 Bob에 대한 튜플과는 관련이 없으므로 Bob이 그대로 삽입된다.
