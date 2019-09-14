@@ -398,6 +398,9 @@ max = sys.maxsize
 min = -sys.maxsize -1
 ```
 
+``` python
+math.inf #integer중 가장 큰 수
+```
 # max에서 key사용
 https://stackoverflow.com/questions/18296755/python-max-function-using-key-and-lambda-expression
 
