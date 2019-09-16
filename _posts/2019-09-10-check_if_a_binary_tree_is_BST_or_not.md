@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: "이진 트리가 BST인지 확인하는 프로그램"
+title: "BST(binary search tree)란? 이진 트리가 BST인지 확인하는 법은?"
 category: Spring
-tags: [ 'spring', 'java' ]
+tags: [ 'binary_search_tree', 'BST' ]
 comments: true
 ---
 제 블로그의 모든 글은 IMHO로 쓴 것입니다.
@@ -11,6 +11,12 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 ---
+
+# BST란?
+![bst](/images/2019-09-10-check_if_a_binary_tree_is_BST_or_not/binary-search-tree.png)
+
+
+
 
 A binary search tree (BST) is a node based binary tree data structure which has the following properties.
 • The left subtree of a node contains only nodes with keys less than the node’s key.
@@ -72,3 +78,7 @@ min 및 max의 초기 값은 INT_MIN 및 INT_MAX 여야합니다.
 ---
 출처:  
 https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/  
+
+bst의 사진출처:
+
+https://muckycode.blogspot.com/2015/01/binary-search-treebst.html  

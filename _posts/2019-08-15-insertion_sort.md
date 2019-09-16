@@ -29,11 +29,12 @@ comments: true
 # insertion sort의 과정
 ![insertion_sort_process](/images/2019-08-15-insertion_sort/insertion-sort-process.png)
 
-1회전: 두 번째 자료인 5를 Key로 해서 그 이전의 자료들과 비교한다.
-Key 값 5와 첫 번째 자료인 8을 비교한다. 8이 5보다 크므로 8을 5자리에 넣고 Key 값 5를 8의 자리인 첫 번째에 기억시킨다.
-2회전: 세 번째 자료인 6을 Key 값으로 해서 그 이전의 자료들과 비교한다.
-Key 값 6과 두 번째 자료인 8을 비교한다. 8이 Key 값보다 크므로 8을 6이 있던 세 번째 자리에 기억시킨다.
-Key 값 6과 첫 번째 자료인 5를 비교한다. 5가 Key 값보다 작으므로 Key 값 6을 두 번째 자리에 기억시킨다.
+- 1회전: 두 번째 자료인 5를 Key로 해서 그 이전의 자료들과 비교한다.  
+  - Key 값 5와 첫 번째 자료인 8을 비교한다. 8이 5보다 크므로 8을 5자리에 넣고 Key 값 5를 8의 자리인 첫 번째에 기억시킨다.
+- 2회전: 세 번째 자료인 6을 Key 값으로 해서 그 이전의 자료들과 비교한다.
+  - Key 값 6과 두 번째 자료인 8을 비교한다. 8이 Key 값보다 크므로 8을 6이 있던 세 번째 자리에 기억시킨다.
+  - Key 값 6과 첫 번째 자료인 5를 비교한다.
+  - 5가 Key 값보다 작으므로 Key 값 6을 두 번째 자리에 기억시킨다.
 
 
 
@@ -75,7 +76,7 @@ Key 값 6과 첫 번째 자료인 5를 비교한다. 5가 Key 값보다 작으�
 
 
 # python으로 개발하기
-```
+``` python
 def insertionSort(arr):
     for i in range(1, len(arr)): # 2번째 숫자부터 한다.
         key = arr[i] # 미리 key에다가 arr[i]값을 저장해 놓는다.
@@ -97,6 +98,6 @@ insertionSort(arr)
 참고 :
 https://gmlwjd9405.github.io/images/algorithm-insertion-sort/insertion-sort.png
 geek for geeks
-출처:
+
 insertion_sort_process 사진출처:
 https://gmlwjd9405.github.io/images/algorithm-insertion-sort/insertion-sort.png
