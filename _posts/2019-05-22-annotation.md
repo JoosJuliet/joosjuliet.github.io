@@ -1,9 +1,9 @@
 ---
 layout: post
 section-type: post
-title: " (작성중) Annotation이란? Reflection이란?  @Component와  @Repository, @Service, @Controller 차이"
+title: " (작성중) Annotation(@Component와  @Repository, @Service, @Controller 차이)이란? Reflection이란?"
 category: Spring
-tags: [ 'Spring', 'Java', '@Component', '@Repository', '@Service', '@Controller',  'Annotation', 'Reflection' ]
+tags: [ 'Spring', 'Java', '@Component', '@Repository', '@Service', '@Controller',  'Annotation', 'Reflection', 'spring_structure' ]
 comments: true
 ---
 제 블로그의 모든 글은 IMHO로 쓴 것입니다.
