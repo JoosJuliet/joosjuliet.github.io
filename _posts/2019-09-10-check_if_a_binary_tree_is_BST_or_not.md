@@ -16,28 +16,15 @@ comments: true
 ![bst](/images/2019-09-10-check_if_a_binary_tree_is_BST_or_not/binary-search-tree.png)
 
 
-
-
-A binary search tree (BST) is a node based binary tree data structure which has the following properties.
-• The left subtree of a node contains only nodes with keys less than the node’s key.
-• The right subtree of a node contains only nodes with keys greater than the node’s key.
-• Both the left and right subtrees must also be binary search trees.
-
-From the above properties it naturally follows that:
-• Each node (item in the tree) has a distinct key.
-
-
 이진 검색 트리 (BST)는 다음과 같은 속성을 갖는 노드 기반 이진 트리 데이터 구조입니다.
-• 노드의 왼쪽 하위 트리에는 키가 노드 키보다 작은 노드 만 포함됩니다.
-• 노드의 오른쪽 하위 트리에는 키가 노드 키보다 큰 노드 만 포함됩니다.
-• 왼쪽 및 오른쪽 하위 트리는 모두 이진 검색 트리 여야합니다.
+- 노드의 왼쪽 하위 트리에는 키가 노드 키보다 작은 노드 만 포함됩니다.
+- 노드의 오른쪽 하위 트리에는 키가 노드 키보다 큰 노드 만 포함됩니다.
+- 왼쪽 및 오른쪽 하위 트리는 모두 이진 검색 트리 여야합니다.
 
-위의 속성에서 자연스럽게 다음을 따릅니다.
-• 각 노드 (트리의 항목)에는 고유 키가 있습니다.
 
 
 # 비효율적 방법
-각 노드에 대해 왼쪽 하위 트리의 최대 값이 노드보다 작고 오른쪽 하위 트리의 최소값이 노드보다 큰지 확인하십시오.
+각 노드에 대해 왼쪽 하위 트리의 최대 값이 노드보다 작고 오른쪽 하위 트리의 최소값이 노드보다 큰지 확인한다.
 
 
 ``` java
@@ -74,6 +61,57 @@ min 및 max의 초기 값은 INT_MIN 및 INT_MAX 여야합니다.
 
 아래는 위의 접근 방식의 구현입니다.
 
+``` python
+import sys
+INT_MAX = sys.maxsize
+INT_MIN = -sys.maxsize-1
+
+# A binary tree node
+class Node:
+
+    # Constructor to create a new node
+    def __init__(self, data):
+        self.data = data  
+        self.left = None
+        self.right = None
+
+
+# Returns true if the given tree is a binary search tree
+# (efficient version)
+def isBST(node):
+    return (isBSTUtil(node, INT_MIN, INT_MAX))
+
+# Retusn true if the given tree is a BST and its values
+# >= min and <= max
+def isBSTUtil(node, mini, maxi):
+
+    # An empty tree is BST
+    if node is None:
+        return True
+
+    # False if this node violates min/max constraint
+    if node.data < mini or node.data > maxi:
+        return False
+
+    # Otherwise check the subtrees recursively
+    # tightening the min or max constraint
+    return (isBSTUtil(node.left, mini, node.data -1) and
+          isBSTUtil(node.right, node.data+1, maxi))
+
+# Driver program to test above function
+root = Node(4)
+root.left = Node(2)
+root.right = Node(5)
+root.left.left = Node(1)
+root.left.right = Node(3)
+
+if (isBST(root)):
+    print "Is BST"
+else:
+    print "Not a BST"
+
+# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
+```
 
 ---
 출처:  
