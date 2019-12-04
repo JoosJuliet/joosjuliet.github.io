@@ -7,6 +7,34 @@ tags: [ 'algorithm' ]
 comments: true
 ---
 
+
+# Binary
+``` Python
+python('{0:08b}'.format(6))
+# '00000110'
+# Just to explain the parts of the formatting string:
+```
+
+{} -> places a variable into a string  
+0 -> takes the variable at argument position 0  
+: -> adds formatting options for this variable (otherwise it would represent decimal 6)  
+08 -> formats the number to eight digits zero-padded on the left  
+b -> converts the number to its binary representation  
+
+
+same with  
+``` python
+print(f'{6:08b}')
+# '00000110'
+```
+
+same with  
+
+``` python
+print(bin(8))
+# '0b10011010010'
+```
+
 # 0부터 시작하는지 1부터 시작하는지 헷갈릴 때
 
 0부터 시작하는 것이 있음 그건 인덱스라고 생각하고
