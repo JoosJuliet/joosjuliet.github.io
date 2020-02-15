@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[DataStructure] binary_search_tree by python3"
+title: "[DataStructure] binary_search_tree(이진탐색트리) by python3"
 categories: DataStructure, Algorithm
 tags: [ 'python', 'binary_search_tree' ]
 comments: true
@@ -56,6 +56,8 @@ def insert(self, data):
 
 우리가 잘 알고 있는 순회는 모두 깊이 우선 순회 방법(Depth First Traversal) 이다.
 깊이 우선 순회에는 세가지 방법이 있다.
+
+![travelsal_tree](/images/2018-09-09-binary_search_tree/traversal_tree.png)
 
 1. 전위 순회(Pre-order traversal)
 2. 정위 순회(In-order traversal)
