@@ -6,7 +6,16 @@ categories: Algorithm
 tags: [ 'algorithm' ]
 comments: true
 ---
-
+#lru_cache
+``` python
+from functools import lru_cache
+@lru_cache(None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+print(fib(15))
+```
 
 # Binary
 ``` Python
