@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[글또] 2019년 상반기 계획"
+title: "2019년 상반기 계획"
 category: Geek
 tags: [ '글또 2기' ]
 comments: true

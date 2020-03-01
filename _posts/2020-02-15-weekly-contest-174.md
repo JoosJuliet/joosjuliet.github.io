@@ -1,7 +1,7 @@
 ---
 layout: post
 section-type: post
-title: "[ leet_code ] [weekly-contest-174] The K Weakest Rows in a Matrix, Reduce Array Size to The Half, Maximum Product of Splitted Binary Tree, Jump Game V"
+title: "[ leet_code ] [weekly-contest-174 solution] The K Weakest Rows in a Matrix, Reduce Array Size to The Half, Maximum Product of Splitted Binary Tree, Jump Game V"
 category: Algorithm
 tags: [ 'algorithm', 'python' ]
 comments: true
