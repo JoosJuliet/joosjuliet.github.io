@@ -73,16 +73,13 @@ Router는 크게 두가지 일을 한다.
 패킷 포워딩은
  패킷을 받아서 도착지로 가는 최단경로로 가기 위해 다음 router로 가게 해주는 것이다.
 형식 변환은
- 서로 다른 네트워크는 주소/패킷의 형태가 다를 수 있음으로 이를 변환해 주는 것이다. 이 형식변환은 프로토콜 소프트웨어가 해결한다. ** 이 건 Layer3에 있는 IP라는 프로토콜** 로 해결한다.
+ 서로 다른 네트워크는 주소/패킷의 형태가 다를 수 있음으로 이를 변환해 주는 것이다. 이 형식변환은 프로토콜 소프트웨어가 해결한다. **이 건 Layer3에 있는 IP라는 프로토콜** 로 해결한다.
 
 > protocol이란 논리적으로 프레임 안에 있는 각 항목의 뜻과 기능, 자료 전송의 절차들을 구성할 수 있게 세운 규칙이다.
 > 인터넷은 하나의 네트워크라고 말했지만, 실제로는 라우터와 작은 네트워크들로 구성되어 있음으로 존재하지는 않는다. 그래서 virtual network라고도 부른다.
 
 ## 계층 3 IP 프로토콜에서 일어나는 일
 전체의 네트워크에서 동일한 주소를 사용해야 하기 때문에, IP주소를 만들어 모든 네트워크가 주소를 이해할 수 있게 한다.
-
-
-
 
 forwarding table은  update는 목적과 의도에 따라 지속적으로 바꾼다.
 (forwarding table과 routing table은 single network connection을 가진 system에서는 거의 비슷하게 행동하나 완전히 다른 일을 하는 것이다.)
@@ -103,8 +100,6 @@ http://datamining.dongguk.ac.kr/lectures/2009-1/info/internet-1.pdf
 
 
 
-
-라우팅
 
 2. mac adress [l2가지고 하는 것]
 [이 것에 해당되는 포스팅도 분할 하겠습니다]
@@ -180,7 +175,7 @@ https://www.psychz.net/client/kb/ko/learn-about-anycast-and-some-of-its-advantag
 gclb는 내가 ssl을 직접 올려야 한다. cloudfront는 알아서 자기가 해준다.
 
 
-라우팅
+# 라우팅
 1. url 입력
 도메인[ip -> l4  dns로] + path [l7이 처리해주는 것]
 2. mac adress [l2가지고 하는 것]
@@ -219,11 +214,6 @@ loadbalance는  L4(IP),L7(APPLICATION)  두가지 버젼이 있다.
 instance group
 
 
-라우팅
-1. url 입력
-도메인[ip -> l4  dns로] + path [l7이 처리해주는 것]
-2. mac adress [l2가지고 하는 것]
-
 애니캐스트?
 dns에게 알려줘서 그 근처 dns인 kt에게
 같은 아이피인데 통신사마다 다른 곳으로 알려주는 것 [dns를 통해]
@@ -261,7 +251,7 @@ loadbalance가 해주는 게
 
  | L4 | L7 |
  | :--- | :---  |
- | IP를 LOADBALACE |  loadbalacing하는데 데이터 흐름에 대해서 분배를 해준다. |
+ | IP를 LOADBALANCE |  loadbalacing하는데 데이터 흐름에 대해서 분배를 해준다. |
  | roundrobin으로 routing한다. |  정해진 url로 보낸다.  |
 
 참고 ) round robin이란?
@@ -598,6 +588,7 @@ Application Layer.
 Describe VPN?
 VPN - Virtual Private Network. It is a technology that allows a secure tunnel to be created across a network such as the Internet.
 
+https://medium.com/harrythegreat/aws-%EA%B0%80%EC%9E%A5%EC%89%BD%EA%B2%8C-vpc-%EA%B0%9C%EB%85%90%EC%9E%A1%EA%B8%B0-71eef95a7098
 
 ---
 참고자료  
