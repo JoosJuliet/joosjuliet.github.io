@@ -13,6 +13,14 @@ comments: true
 
 ---
 
+간편하게 인증서 취득
+AWS Certificate Manager는 웹 사이트 또는 애플리케이션에 대한 SSL/TLS 인증서를 취득하는 데 필요한 시간 소모적이고 오류가 발생하기 쉬운 단계를 없애줍니다. 키 페어 또는 CSR(Certificate Signing Request)을 생성하거나, CSR을 인증 기관에 제출하거나, 취득한 인증서를 업로드 및 설치할 필요가 없습니다. AWS Management Console에서 클릭 몇 번으로 AWS에서 신뢰할 수 있는 SSL/TLS 인증서를 요청할 수 있습니다. 인증서가 생성되면, AWS Certificate Manager에서 인증서 배포를 처리하므로 사용자가 웹 사이트 또는 애플리케이션에 대해 SSL/TLS를 활성화할 수 있습니다.
+
+
+AWS Certificate Manager는 AWS 서비스 및 연결된 내부 리소스에 사용할 공인 및 사설 SSL/TLS(Secure Sockets Layer/전송 계층 보안) 인증서를 손쉽게 프로비저닝, 관리 및 배포할 수 있도록 지원하는 서비스입니다. SSL/TLS 인증서는 네트워크 통신을 보호하고 인터넷상에서 웹 사이트의 자격 증명과 프라이빗 네트워크상에서 리소스의 자격 증명을 설정하는 데 사용됩니다. AWS Certificate Manager는 SSL/TLS 인증서를 구매, 업로드 및 갱신하는 데 드는 시간 소모적인 수동 프로세스를 대신 처리합니다.
+
+AWS Certificate Manager에서는 사용자가 신속하게 인증서를 요청하고, Elastic Load Balancer, Amazon CloudFront 배포, API Gateway 기반 API와 같은 ACM 통합 AWS 리소스에 배포한 후, AWS Certificate Manager가 인증서 갱신을 처리하도록 할 수 있습니다. 또한, 내부 리소스에 대한 사설 인증서를 생성하고 중앙에서 인증서 수명 주기를 관리할 수도 있습니다. ACM 통합 서비스에 사용하도록 AWS Certificate Manager를 통해 프로비저닝한 공인 및 사설 인증서는 무료입니다. 애플리케이션을 실행하기 위해 생성한 AWS 리소스에 대한 비용만 지불하면 됩니다. AWS Certificate Manager Private Certificate Authority를 사용하면 사설 CA 작업과 발급한 사설 인증서에 대해 매월 요금을 지불하게 됩니다.
+
 ``` python
 #Define the domain name
 
@@ -131,3 +139,4 @@ openssl x509 -in "${DIR}/"$DOMAIN".crt" -noout -text
 ```
 ---
 참고: https://github.com/quickbooks2018/bash-scipts/blob/master/aws-self-signed-acm.sh
+https://aws.amazon.com/ko/certificate-manager/
