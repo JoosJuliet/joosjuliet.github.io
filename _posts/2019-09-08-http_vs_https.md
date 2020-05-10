@@ -47,16 +47,84 @@ https는 SSL프로토콜 내부에서 돌아가는 프로토콜입니다.
 ![https](/images/2019-09-08-http_vs_https/https.png)
 
 SSL은 데이터 보안을 위해서 개발한 통신 레이어다.  
-HTTPS는 SSL 레이어 위에 HTTP를 통과 시키는 방식이다. 
-즉 평문의 HTTP 문서는 SSL 레이어를 통과하면서 암호화 돼서 목적지에 도착하고, 목적지에서는 SSL 레이어를 통과하면서 복호화 돼서 웹 브라우저에 전달된다. 
+HTTPS는 SSL 레이어 위에 HTTP를 통과 시키는 방식이다.
+즉 평문의 HTTP 문서는 SSL 레이어를 통과하면서 암호화 돼서 목적지에 도착하고, 목적지에서는 SSL 레이어를 통과하면서 복호화 돼서 웹 브라우저에 전달된다.
 또한 SSL은 표현계층의 프로토콜로 응용 계층 아래에 있기 때문에, 어떤 응용 계층의 데이터라도 암호화해서 보낼 수 있다.  
 
 
 간혹 HTTPS를 하나의 프로토콜로 인식하기도 하는데, HTTP와 SSL은 전혀 다른 계층의 프로토콜의 조합이다. HTTPS over SSL로 보는게 좀더 정확한 시각이다.
 
 
+### SSL/TLS
+TLS는 SSL의 ver.3정도 이기 때문에 함께 봐도 거진 상관이 없다.
+SSL은 TCP/IP환경에서만 작동하며, TCP,UDP중 TCP에서만 작동된다.
+
+- 메세지 암호 서비스
+- 서버 인증 서비스
+- 메세지 무결성을 인증
+이것을 바로 "3 way handshake"라고 한다.
 
 
+![ssl-on-the-7layer](images/2019-09-08-http_vs_https/ssl-on-the-7layer.png)
+
+응용계층과 인터넷 계층에서 암호화 하지 않는 이유는  
+응용계층에서 암호화 하면 프로토콜도 많이 존재해, 그것들을 일일히 암호화하려면 프로토콜에 해당하는 암호시스템이 필요하게 되어버린다.
+그러므로 시간도 많이들고, 복잡해진다.
+
+인터넷 계층에서 하지 않는 이유는  
+IP하나만 구동하기에 데이터의 분별력이 떨어지고 비연결형 프로토콜인 UDP까지 해당되어 낭비이다.
+
+
+#### SSL/TLS 구조
+- Change ciper
+    - 암호화 해주는 부분
+- Alert
+    - 동작 중 에러가 발생하는 곳을 발견 후 처리
+- Hand-Shake
+    - 클라이너트와 서버간의 TCP 연결을 담당하여 데이터 송/수신 담당
+- Record Layer
+    - 암/복호화 확실히 되었는지 검증하는 곳
+
+
+#### SSL/TLS Handshake
+![ssl-handshake](/images/2019-09-08-http_vs_https/ssl-handshake.png)
+1. 클라이언트가 서버에게 (자신이 사용할 SSL버전정보 + Cipher suite list + Client Random)을 보낸다.
+
+Cipher suite List
+- Cipher suite = 대칭키 암호시스템 + 공개키 암호시스템 + 해쉬함수  
+- 자신이 사용할 수 있는 Cipher suite의 리스트
+Client Random
+- 클라이언트 자체에서 생성한 난수
+
+2. 클라이언트에서 받은 세가지 정보를 가지고 서버쪽에서 사용할 SSL 버전 맞추고  
+(Cipher suite 사용할 것 + Server Random + 서버의 인증서)을 보낸다
+- 여기서 대칭키 시스템, 공개키 시스템, 해쉬 함수 결정
+서버 인증서
+- 자신이 서버라는 것을 인증할 수 있는 정보
+- 상위 인증기관의 인증이 있어야 최종적 인증서 사용
+- 서버의 공개키+ CA인증기관+ CA의 전자서명 등으로 이루어져 있다.
+- *주의* 클라이언트는 CA에 의한 인증이 되어있는지 확인 후 서버의 공개키를 사용해야 한다.
+
+3. 서버의 인증서를 받은 클라이언트는 Premaster 값 생성  
+Premaster
+- 사전에 주고받은 Client Random과 Server Random을 추가하여 키 계산
+- 계산 결과는 110 ~~~ 011으로 나온다.
+- 앞 세자리인 110은 서버와 클라이언트간 사용할 대칭키로
+- 마지막 세자리 011은 mac 계산용 키로 지정
+
+4. 서버쪽에서 Premaster를 암호화
+- 여기서 암호화할 때 사용될 키는 전단계에서 사버의 인증서로 받은 서버의 공개키
+- 이 과정에서 암호문을 받은 서버는 자신의 개인키로 암호문 복호화
+- 만약 보낸 곳이 해당 서버가 아니라면 복호화 불가능
+- 따라서 클라이언트는 서버를 인증하게 된다.
+
+
+위 과정을 통해 서버도 클라이언트처럼 복호화를 통해 얻게된 Premaster값에 Client Random, Server Random을 계산해
+키 블록을 생성하고 대치이와 mac 계산용 키를 지정
+
+*참고* mac 계산용 키  
+암호화에 등장했던 해쉬함수의 다른 사용법에 둘만 아는 키 k  
+해쉬하면 mac이 나온다.
 
 *참고* OpenSSL이 뭘까??
 보통의 경우 웹서비스에 https를 적용할 경우 SSL인증서를 VeriSign라는 곳에서 발급받아야 하는데, 이때 비용이 발생하기 때문에 실제 운영서버가 아니면 발급 받기에 부담이 될 수 있다.  
@@ -69,6 +137,7 @@ HTTPS는 SSL 레이어 위에 HTTP를 통과 시키는 방식이다.
 http에 대한 설명  
 https://ko.wikipedia.org/wiki/HTTP  
 https://www.joinc.co.kr/w/Site/Network_Programing/AdvancedComm/HTTP +https설명까지  
-
+ssl에 대한 설명  
+http://blog.naver.com/PostView.nhn?blogId=rytjs873&logNo=220704307322&parentCategoryNo=&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView  
 중간자 공격 설명  
 https://blog.naver.com/PostView.nhn?blogId=ucert&logNo=221201640816&categoryNo=37&parentCategoryNo=0  
