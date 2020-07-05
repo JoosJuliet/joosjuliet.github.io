@@ -3,7 +3,7 @@ layout: post
 section-type: post
 title: "객체지향의 사실과 오해 1단원 정리"
 category: Object
-tags: [ '객체지향의 사실과 오해 ' ]
+tags: [ '북리뷰' ]
 comments: true
 ---
 제 블로그의 모든 글은 IMHO로 쓴 것입니다.
@@ -11,6 +11,10 @@ comments: true
 그렇지만 소통을 할 때 서로의 감정을 존중하는 선에서 해주셨으면 좋겠습니다.
 감사합니다:)
 ---
+
+http://www.yes24.com/Product/Goods/18249021?Acode=101
+위 책의 내용을 요약하며 쓴 포스트 입니다.
+
 
 # 협력하는 객체들의 공동체
 
