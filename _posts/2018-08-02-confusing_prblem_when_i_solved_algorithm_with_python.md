@@ -186,6 +186,80 @@ print(1 in seen)
 
 ```
 
+
+
+
+## 교집합
+- isdisjoint(): 두 Set 간의 교집합 여부를 bool값으로 준다.
+- issubset(): 부분집합 여부를 bool값으로 준다.
+- issuperset(): 포함집합superset 여부를 bool값으로 준다.
+
+
+``` python
+x = {1, 2, 3}
+y = {3, 4, 5}
+z = {3, 5}
+
+x.isdisjoint(y)
+# False
+
+z.issubset(y)
+# True
+
+y.issuperset(z)
+# True
+```
+
+
+## 디스조인트 셋(Disjoint Set)
+S=1,2,3,4 이고, A=1,2, B=3,4, C=2,3,4, D=4라면 A와 B는 S의 분할입니다.  
+이 때 A와 B가 디스조인트 셋입니다. 하지만 A와 C는 S의 분할이 아닙니다. 겹치는 원소가 있기 때문입니다. A와 D 또한 S의 분할이 아닙니다. 둘을 합쳐도 S가 되지 않기 때문입니다.  
+
+
+
+
+## 차집합
+- difference(): 차집합을 낸 값
+- difference_update(): 차집합을 낸 값으로 업데이트
+
+
+``` python
+s={1,2,3,4,5}
+t={3,5}
+s.difference(t)
+# {1, 2, 4}
+s
+# {1, 2, 3, 4, 5}
+s.difference_update(t)
+s
+# {1, 2, 4}
+```
+
+
+
+
+## 교집합
+- intersection(): 교집합
+- intersection_update(): 교집합을 낸 값으로 업데이트
+
+
+``` python
+x = {1, 2, 3}
+y = {3, 4, 5}
+
+x.intersection(y)
+# {3}
+x & y
+# {3}
+
+x.intersection_update(y)
+x
+# {3}
+y
+# {3, 4, 5}
+```
+
+
 # 숫자 -> alphabet, alphabet -> 숫자
 
 ``` python
