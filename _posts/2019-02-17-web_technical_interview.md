@@ -98,8 +98,38 @@ hateoas는 해당 return값으로 인해 front에서 변화가 있을 때 그것
 
 
 
-# 5. 
+# 5. JWT란?
+Json Web Token으로 사용자를 인증할 때 쓰는 방식 중 하나이며, 인증용 서버를 따로 두지 않아도 됨으로 확장성이 높은 인증 방식입니다.
 
+
+## 구조
+`Encoded Header + "." + Encoded Payload + "." + Verify Signature`
+
+header, palyoad는 인코딩만 되있고 그래서 누구나 볼 수 있는 것만 넣는다.  
+verify signature 중요한 정보를 담겨있기에 암호화가 되었있다.  
+어떤 암호화방식으로 되어있는지를 header에 써있따.  
+
+그렇게 되면 암호화의 의미가 없을 것이라 생각할 수도 있지만, 암호화 시 salt값을 넣기 때문에 상관 없다.  
+
+# 취약점
+토큰 탈취시 이 토큰 가지고 사용자가 모든 정보를 열람할 수 있다.
+그래서 만료시간과 refresh token을 만드는 것이다.
+
+
+## Access Token & Refresh Token
+
+토큰의 유효 기간을 짧게 하여 보안을 강화할 수 있지만 사용자의 입장에서는 로그인을 자주 해야 하기 때문에 불편 합니다. 그래서 사용 하는 것이 refresh token 입니다.  
+
+refresh token은 access token과 같은 형태이다. 처음에 로그인을 완료 했을 때 access token과 동시에 발급되고 긴 유효 기간을 가지면서 access token이 만료 되었을 때 새로 발급해주는 열쇠가 된다.  
+
+사용 예)  
+
+- access token : 유효 기간 1시간
+- refresh token : 유효 기간 2주  
+
+access token을 가지고 1시간 동안 통신을 하다가 만료 되었을 때 유효한 refresh token을 가지고 새로운 access token을 발급 받는다.  
+
+만료되면 클라도 알기 때문에, 클라에서 바로 리플레시 토큰으로 새로 발급받아서 사용되면 된다.  
 
 ---
 

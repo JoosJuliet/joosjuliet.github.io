@@ -7,7 +7,7 @@ tags: [ 'Security', 'english' ]
 comments: true
 ---
 
-### rainbow table attack (따로 파야할듯)
+### rainbow table attack 
 - Why this attack is born?
 because hash have no decryption algorithm. so just compare hash value and anticipate decrypted password.
 so this is need to beforehand attack first, and make dictionary table for searching password.
