@@ -6,35 +6,31 @@ category: Architect
 tags: [ 'Architect']
 comments: true
 ---
-# What is brute force attack?
-when we want to solve specific password, assign the number of all cases password randomly.
+# What is a brute-force attack?
+
+A brute-force attack occurs when someone wants to find a specific password, so they test various configurations of all potential passwords randomly.
 
 
-# Kinds of brute force attack
+# Kinds of brute-force attacks
+The kinds of brute-force attacks include random sequential assignment and dictionary assignment.
 - Random sequential assignment
 - Dictionary assignment
 
 ## Random sequential assignment
-It implement the feature of brute-force assignment, They try to assign all the strings that can be combined all possibility in order one by one. In theory, given enough time for the attack, we will get the password. However, in reality, as the length and complexity of the password increases, the time required for an attack increases exponentially, so it is difficult to say that it is one hundred percent successful. In order to reduce the time required for a list of predefined strings is sometimes used.
+This method implements the brute-force assignment strategy by trying to guess all the possible combined strings of characters that can form a password, in order, one-by-one. In theory, if given enough time for the attack, this method will eventually find the password. However, in reality, as the length and complexity of the password increases, the time required for an attack increases exponentially, so it is difficult to say that it could be one hundred percent successful. In order to reduce the time required, a list of predefined strings is sometimes used.
 
 ## Dictionary assignment
 - representatives : rainbow table attack  
-This is a method to shorten the time compared to the random sequential assignment method, and is a method of assigning a predefined list of strings. An attack using a dictionary file is called a dictionary attack. Pre-defined password dictionary is prepared and assigned one by one. the dictionary file is a file that has been used statistically or is a file that has previously defined password combinations that people commonly use in the form of a list. Since people use surprisingly simple passwords a lot and sometimes use the same password across different sites, the pre-assignment method is a very efficient and effective attack technique that increases the attack success rate while dramatically reducing the time required for brute force attacks.
+One example of a dictionary assignment is the rainbow table attack.
+This is a method to shorten the time used compared to the random sequential assignment method, and it is a method of assigning a predefined list of strings. An attack using a dictionary file is called a dictionary attack. A predefined password dictionary is prepared and assigned one by one. The dictionary file is a file that has been used statistically, or that contains previously defined password combinations that people commonly use in the form of a list. Since people use surprisingly simple passwords a lot and sometimes use the same password across different sites, the pre-assignment method is a very efficient and effective attack technique that increases the attack success rate while dramatically reducing the time required for brute force attacks.
 
 
 # Preventation
-## User perspectives
-1. Use of long and complex passwords
-2. Use unpredictable password
-## Company perspectives
-1. Add a several restrictions for password
-2. Logging and Monitoring
-  - Increase comparison time between user’s input and password.
-3. Regular suggestion of password change.
-4. Use Multi-factor
-  - Captcha
+There are a couple of methods we can turn to in order to prevent brute-force attacks. First of all, from a user perspective, I would advise people to use long and complex passwords, and also to use unpredictable passwords - what that means is different passwords for each account or website.
+Second of all, from a company perspective, I would advise adding several restrictions for passwords, increased logging and monitoring of server/user activity, and also regularly changing passwords. Finally, I would recommend companies to use a multi-factor login approach, such as Captcha.
 
 
+Let me explain further:
 
 ## Add a several restrictions for password
 For instance, The length must be longer than 8 and mix alphabet and number, even special character. Because The longer and more complex the password, the less likely the attack will be successful. But this is a tradeoff that can make the user's experience bad, so If the user experience is important in service, I don't recommend making a lot of restrictions.
