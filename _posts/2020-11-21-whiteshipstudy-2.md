@@ -11,6 +11,11 @@ comments: true
 존중이 담기지 않은 덧글은 언제든 삭제될 수 있습니다.
 감사합니다:)  
 ---  
+
+전반적 다 좋아
+https://github.com/yeo311/java-study-with-whiteship/tree/main/week2
+
+https://catch-me-java.tistory.com/14 ->https://docs.google.com/presentation/d/1Ni0FMbVBSTxiOWHvp928quGT8sTjTG_ZuAWxaCFGT1E/edit#slide=id.p
 # 2주차 자바 데이터 타입, 변수 그리고 배열
 
 
@@ -33,15 +38,19 @@ comments: true
 
 
 ```
+unsigned int있다.
+근데 좀 사용하기 힘들어서 그냥 bigint쓰장
+찬고: https://www.notion.so/2-38b5d67c7f5a48238529bb8f1617ea0d
 
+->->> https://blog.naver.com/hsm622/222144931396 혹은 https://github.com/kksb0831/Practice_project/blob/master/Java_Study_02.md
+왜 저 영역인지 설명
 
-
+돈은 bigdecimal로 해야한다. float이나 long안돼!
 
 ## 프리미티브 타입과 레퍼런스 타입
 
 프리미티브 타입은 진짜 값을 저장하고
 레퍼런스 타입은 그 값을 저장해 놓은 곳의 주소를 저장하는 것이다.
-
 
 
 
@@ -52,22 +61,34 @@ comments: true
 final int number = 1;
 ```
 - immutable class를 제외한 클래스들은 동적으로 값을 변화시키기 때문에 리터럴이 될 수 없다.
+```
+class Bus:
+  string handle;
+  int tire;
 
 
+final bus Bus = new Bus();
+```
+->정수 리터럴
+정수를 표현하는 방법은 여러가지가 있다. 일반적으로 사용하는 10진법 부터 2진법 8진법 과 같은 방법이 있고 자바에서는 다양한 진법을 지원한다.
+10진수 26을 다양한 리터럴로 표현해보자.
+
+  int decimal = 26;	   // 일반적인 형태 10진법
+  int ocatal = 032;        // 제일 앞에 0 이 붙으면 8진법
+  int heaxaDecimal = 0x1a; // 0x가 붙으면 16진법
+  int binary = 0b11010;    // 0b가 붙으면 2진법
+정수 리터럴은 기본적으로 int 형이고, long 타입을 표현하려면 l,L을 마지막에 붙여야 한다.
+
+https://velog.io/@jaden_94/2%EC%A3%BC%EC%B0%A8-%ED%95%AD%ED%95%B4%EC%9D%BC%EC%A7%80
 
 
 ## 변수 선언 및 초기화하는 방법
-- 지역변수
-  - 명시적 초기화 (직접 대입), 생성자, 클래스/인스턴스 초기화 블럭
-- 배열
-  - 동일한 타입의 데이터들을 연속적으로 저장하고 그 저장된 부분을 가르키는 곳을 변수에 묶어서 관리한다.
-  - 배열은 선언할 때 참조변수를 선언해 크기와 값을 이후에 초기화가 가능하게 해주지만 기본적으로 최초 선언한 값으로 고정되어 있다.?!!?
-
 
 
 
 ## 변수의 스코프와 라이프타임
-
+참고: https://catsbi.oopy.io/6541026f-1e19-4117-8fef-aea145e4fc1b
+언제 메모리에 올라오는지가 중요하다
 ``` java
 public class test{
 
@@ -85,6 +106,7 @@ public class test{
 
         System.out.println(instanceVariable);
         System.out.println(localVariable); //에러
+        block()
 
     }  
 
@@ -143,8 +165,8 @@ System.out.println(b[1][2]); // 12
 System.out.println(b[2][1]); // 20
 
 ```
-
-
+배열을 어떻게 하는지 좀 볼 수 있는 것
+참고 : https://b-programmer.tistory.com/225
 
 
 ## 타입 추론과 var
@@ -153,8 +175,14 @@ System.out.println(b[2][1]); // 20
   - java의 경우 초기값을 기본적으로 넣어준다.
   - 이때 사용하는 type이 `var`
   - 전역변수에서는 작동하지 않는다.
-
-
+  ``` java
+  var a ; // error
+  var a = 1; // fine
+  ````
+-> 제너릭이랑 관련된
+찬고: https://www.notion.so/2-38b5d67c7f5a48238529bb8f1617ea0d
+->타입추론 좋은 글
+참고: https://www.notion.so/2-00ffb2aeb41d450aa446675b8a9e91d5
 ---
 
 참고 url:
