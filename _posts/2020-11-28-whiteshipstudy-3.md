@@ -12,10 +12,21 @@ comments: true
 감사합니다:)  
 ---  
 3주차 : 연산자
-# 산술 연산자 (arithmetic)
+# 산술 연산자 (arithmetic)와 관계 연산자 (relational)
+- 보통 수학을 할 때 쓰는 연산자와 같다.
+- 산술 연산자
+
 ```
 + 	- 	/ 	* 	% 	++ 	--
 ```
+- 관계 연산자
+
+```
+== 	!= 	> 	< 	>= 	<=
+```
+
+
+
 # 비트 연산자 (bitwise)
 
 ```
@@ -24,9 +35,9 @@ AND	OR 	XOR	NOT			Zero-fill Rshift
 ```
 
 
-# 비트 연산
+## 비트 연산
 
-## &.|,^ 연산
+### &.|,^ 연산
 <img alt="success" src = "/images/2018-08-19-bit/bit_operation.png"/>
 
 두 수 A,B를 비트 연산 하는 경우, 가장 뒷 자리 부터 하나씩 연산을 수행하면 된다.
@@ -39,7 +50,7 @@ A&B = 19, A|B = 91, A^B = 73
 <img alt="success" src = "/images/2018-08-19-bit/27_83_bit_operation.png"/>
 
 
-## ~ 연산
+### ~ 연산
 A = 83 = 1010011
 ~A = 10101100 *8bit*
 A = 01010011 -> 10101100
@@ -50,9 +61,9 @@ A = 01010011 -> 10101100
 
 자료형이 signed랑 unsinged에도 값이 달라진다.
 
-## shift 연산(<<, >>)
+### shift 연산(<<, >>)
 
-### <<
+#### <<
 A << B (A를 왼쪽으로 Bbit만큼 민다.)
 = A * 2**B
 
@@ -64,7 +75,7 @@ A << B (A를 왼쪽으로 Bbit만큼 민다.)
 - 3 << 3 = 24 (11000)
 - 5 << 10 = 5120 (1010000000000)
 
-### >>
+#### >>
 A >> B (A를 오른쪽으로 Bbit만큼 민다.)
 = A // 2**B
 
@@ -76,7 +87,7 @@ A >> B (A를 오른쪽으로 Bbit만큼 민다.)
 - 30 >> 1 = 15 (1111)
 - 1024 >> 10 = 1 (1)
 
-# 비트 마스크
+## 비트 마스크
 True/False 로 구분하는 것이다.
 True이면 1놓고 False이면 0을 놓는 것이다.
 
@@ -84,7 +95,7 @@ True이면 1놓고 False이면 0을 놓는 것이다.
     = {1,3,4,5,9}</br>
     = 1000111010
 
-## 포함 되어있는지 검사
+### 포함 되어있는지 검사
 0이 포함되어 있는지 궁금하면 0번째 비트를 1로 표현을 해주고 &연산을 하면 된다.
 
 ```
@@ -94,6 +105,7 @@ True이면 1놓고 False이면 0을 놓는 것이다.
          0
 ```
 즉 x가 들어있는지 궁금함으로 x번째 비트만 1로 만들면 되니 쉬프트 연산을 하면된다.
+
 
 그렇게 하면 판단 할 수 있는 이유는 and 연산은 둘중 하나라도 0이면 0 이기 때문이다.
 둘다 1이여야만 나오기 때문에 위치를 알려준다.
@@ -108,23 +120,24 @@ True이면 1놓고 False이면 0을 놓는 것이다.
   570 & (2**3) = 570 & (1 << 3) = 8
 
 
-관계 연산자 (relational)
-```
-== 	!= 	> 	< 	>= 	<=
-```
-논리 연산자
+
+
+
+# 논리 연산자
 ```
 && 	||	!
 ```
-(출처 : https://www.tutorialspoint.com/java/java_basic_operators.htm)
 
-instanceof
+
+
+
+
+# instanceof
 객체 instanceof 객체타입 == true
-
 자녀객체 instanceof 부모타입 == true
-
 부모객체 instanceof 자녀타입 == false
 
+``` java
 class Main {
     class Parent { }
     class Child extends Parent { }
@@ -145,23 +158,34 @@ class Main {
         main.run();
     }
 }
-* type ${variable} : primitive types에 사용
+```
+- type ${variable} : primitive types에 사용
 
-assignment(=) operator
+# assignment(=) operator
+```
 = 	+= 	-= 	*= 	/= 	%= 	<<= 	>>= 	&= 	^= 	|=
-						|--> bitwise assignment operator <--|
-* Comma operator (in for-loop) : left to right
+					            	|bitwise assignment operator|
+```
+- Comma operator (in for-loop) : left to right
 
-화살표(->) 연산자
-"Lambda Expression" in java 8, 일명 "익명함수"
+# 화살표(->) 연산자
+- Lambda Expression" in java 8
+- 일명 "익명함수"
+- 문법
+  (parameter...) -> {expression}
+- 예제
+``` java
+Runnable givePizza = () -> {
+  System.out.println("페페로니");
+  System.out.println("하와이안");
+}
 
-syntax : (parameter...) -> {expression}
-
-@FunctionalInterface interface와 같이 쓰는 경우가 많다.
+```
 
 
-3항 연산자
-int answer = condition ? true_value : false_value
+# 3항 연산자
 
-연산자 우선 순위
-외우기 힘들어서 생략. 내용은 대충 알고 있다.
+- 문법
+``` java
+boolean answer = condition ? true_value : false_value
+```
