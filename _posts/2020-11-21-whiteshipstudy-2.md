@@ -89,7 +89,7 @@ https://velog.io/@jaden_94/2%EC%A3%BC%EC%B0%A8-%ED%95%AD%ED%95%B4%EC%9D%BC%EC%A7
 ## 변수의 스코프와 라이프타임
 참고: https://catsbi.oopy.io/6541026f-1e19-4117-8fef-aea145e4fc1b
 언제 메모리에 올라오는지가 중요하다
-``` java
+```
 public class test{
 
     int instanceVariable = 10; //인스턴스 변수
@@ -132,7 +132,7 @@ public class test{
 ### 타입 캐스팅
 자신의 표현할 수 있는 범위내에서 데이터 타입으로 변화시키는 것
 만약 표현 할 수 없는 범위를 내면 문제가 데이터에 문제가 생긴다.
-```java
+```
 int a = 10;     
 byte b = (byte)a;
 System.out.println(b); //  -> 10
@@ -147,7 +147,7 @@ System.out.println(b); //  -> 10
 타입캐스팅과 반대로 크기가 더 작은 자료형을 더 큰 자료형에 대입하는 것을 의미한다. 예를들어 byte(1byte)타입의 데이터를 int(4byte) 타입에 대입하는 경우이다.
 그리고 이 경우에는 데이터 손실이나, 변형이 오지 않음으로 캐스팅할 때 처럼 명시적으로 적지 않아도 자동으로 변환이 가능하다.
 
-``` java
+```
 byte a = 10;
 int b = a;
 System.out.println(b); //  -> 10
@@ -157,7 +157,7 @@ System.out.println(b); //  -> 10
 
 
 ## 1차 및 2차 배열 선언하기
-``` Java
+```
 int[] a = {1,3,5,7,9};  
 int[][] b = {{00, 01, 02}, {10, 11, 12}, {20, 21, 22}, {31, 32, 33}};
 
@@ -175,10 +175,10 @@ System.out.println(b[2][1]); // 20
   - java의 경우 초기값을 기본적으로 넣어준다.
   - 이때 사용하는 type이 `var`
   - 전역변수에서는 작동하지 않는다.
-  ``` java
-  var a ; // error
-  var a = 1; // fine
-  ````
+```
+var a ; // error
+var a = 1; // fine
+````
 -> 제너릭이랑 관련된
 찬고: https://www.notion.so/2-38b5d67c7f5a48238529bb8f1617ea0d
 ->타입추론 좋은 글
