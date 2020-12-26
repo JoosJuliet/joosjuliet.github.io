@@ -43,27 +43,66 @@ class E extends D{};
 
 
 # super 키워드
-- super 참조변수
+class의 상속을 하면 해당 클래스의 인스턴스를 만들 때, 부모 클래스의 인스턴스가 내재적으로 만들어진다.  
+즉 언제든지 부모 클래스의 값들을 가져올 수 있는 연결고리가 생성된다.  
+그 연결고리를 이어주는 것이 바로 super 키워드이다.  
+
+- super 참조변수 및 메소드 호출
   - 자식클래스가 부모클래스로부터 상속받을 메소드나 필드를 명시적으로 참조를 위해 사용
-  ```
-  class Parent{
-     int tall = 190;
+``` java
+class Parent{
+   int tall = 190;
+   void sing(){System.out.println("hi i'm tall too");}
+}
 
-  }
+class Child extends Parent{
+    int tall = 180;
+    void message(){
+      System.out.println("hi i'm tall");
+    }
+    void display(){
+      message(); // 현재 클래스 메세지() 메소드가 호출 됨
+      super.message(); // 부모 클래스 메세지 () 메소드가 호출 됨
 
-  class Child extends Parent{
-      int tall = 180;
+    }
 
-      void childMethod(){
-             System.out.println(tall);         // 180
-             System.out.println(this.tall);     // 180
-             System.out.println(super.tall);   // 190
-  }
-  ```
+    void childMethod(){
+           System.out.println(tall);         // 180
+           System.out.println(this.tall);     // 180
+           System.out.println(super.tall);   // 190
+           display()
+           //"hi i'm tall too" "hi i'm tall"
+    }
+}
+```
 - super method
-  - this() 메소드가 같은 클래스의 다른 생성자를 호출할 때 사용된다면, super() 메소드는 부모 클래스의 생성자를 호출할 때 사용
+  - ```super()```는 부모 클래스 생성자를 즉시 호출 할 때 사용
   - 자식 클래스가 자신을 생성할 때 부모 클래스의 생성자를 불러 초기화 할때 사용된다.
-​
+``` java
+class Parent{
+  Parent(){System.out.println("Parent is created");}
+}
+
+class Child extends Parent{
+
+  Child(){
+    super(); // 부모 클래스 생성자가 호출
+    System.out.println("Child is created");
+  }
+
+  public static void main(String args[]){
+    Child c = new Child();
+  }
+}   
+```
+output :
+``` shell
+"Parent is created"
+"Child is created"
+```
+
+컴파일러에 의해 super ()는 자동으로 각 클래스 생성자에 추가
+
 
 
 # 메소드 오버라이딩
